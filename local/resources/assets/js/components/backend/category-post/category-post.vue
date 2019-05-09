@@ -60,13 +60,23 @@
                           @keydown="form.onKeydown($event)">
                         <div class="modal-body">
                             <div class="form-group">
-                                <input @keydown="changeSlug(event)" v-model="form.title" type="text" name="title"
+                                <input @change="showSlug" v-model="form.title" type="text" name="title"
                                        placeholder="Tiêu đề"
                                        class="form-control" :class="{ 'is-invalid': form.errors.has('title') }">
                                 <has-error :form="form" field="title"></has-error>
                             </div>
                             <div class="form-group">
-                                <span>Đường dẫn: {{form.slug}}</span>
+                                <span v-show="stateTitle">
+                                <span>Slug: <span v-show="!hideSpanSlug">{{slug}}</span></span><input ref="someName"
+                                                                                                      @change="changeInputSlug"
+                                                                                                      v-show="hideSpanSlug"
+                                                                                                      type="text"
+                                                                                                      v-model="form.slug"
+                                                                                                      class="form-control"><a
+                                        href="#" v-show="!hideSpanSlug"
+                                        @click="changeSlug">Đổi</a><a href="#" v-show="hideSpanSlug"
+                                                                      @click="cancelSlug">Hủy</a><a
+                                        href="#" v-show="hideSpanSlug" @click="applySlug">Đồng ý</a></span>
                             </div>
                             <div class="form-group">
                             <textarea id="description" v-model="form.description" name="description"
@@ -96,8 +106,11 @@
     export default {
         data() {
             return {
+                stateTitle: false,
+                hideSpanSlug: false,
                 editMode: false,
                 categories: {},
+                slug: '',
                 form: new Form({
                     id: '',
                     title: '',
@@ -107,8 +120,39 @@
             }
         },
         methods: {
-            changeSlug(event) {
-                this.form.slug = event.target.value;
+            changeInputSlug(event){
+                if (!this.hideSpanSlug) {
+                    this.slug = ChangeToSlug(event.target.value);
+                    this.form.slug = ChangeToSlug(event.target.value);
+                }
+
+            },
+            applySlug(){
+                this.changeInputSlug();
+                this.hideSpanSlug = false;
+                this.slug = ChangeToSlug(this.$refs.someName.value);
+                this.form.slug = ChangeToSlug(this.$refs.someName.value);
+
+            },
+            cancelSlug(){
+                this.hideSpanSlug = false;
+                this.form.slug = this.slug;
+            },
+            changeSlug(){
+                this.hideSpanSlug = true;
+
+            },
+            showSlug(event) {
+                if (event.target.value) {
+                    this.stateTitle = true;
+//
+                    this.slug = ChangeToSlug(event.target.value);
+                    this.form.slug = ChangeToSlug(event.target.value);
+                } else {
+                    this.stateTitle = false;
+                    this.slug = '';
+                    this.form.slug = '';
+                }
             },
             getResults(page = 1) {
                 axios.get('api/category-post?page=' + page)
