@@ -1,0 +1,15 @@
+
+// Fonts
+//@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+$fa-font-path: "../webfonts";
+// Bootstrap
+//@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import "~admin-lte/dist/css/adminlte.css";
+@import "~admin-lte/plugins/bootstrap/css/bootstrap.min.css";
+@import "~admin-lte/plugins/iCheck/square/blue.css";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~@fortawesome/fontawesome-free/scss/brands.scss";
