@@ -12,6 +12,7 @@ try {
     require('admin-lte');
     require('admin-lte/plugins/iCheck/icheck');
     require('admin-lte/plugins/bootstrap/js/bootstrap');
+    require('bootstrap-toggle/js/bootstrap-toggle');
 } catch (e) {}
 
 /**

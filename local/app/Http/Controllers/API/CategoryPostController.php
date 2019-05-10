@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class CategoryPostController extends Controller
 {
@@ -15,8 +16,8 @@ class CategoryPostController extends Controller
      */
     public function index()
     {
-        $category=new Category();
-        return $category->getCategoriesByType(CATEGORY_POST)->paginate(5);
+        $category = new Category();
+        return $category->getCategoriesByType(CATEGORY_POST)->get();
     }
 
     /**
@@ -32,15 +33,18 @@ class CategoryPostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $this->validate($request, [
             'title' => 'required|string|max:255',
-            'slug' => 'required|alpha_dash|slug|max:255|unique:categories',
+            'slug' => 'unique:categories',
         ]);
+        $category = new Category();
+        $parameters = $category->prepareParameters($request);
+        return Category::create($parameters->all());
 //        return User::create([
 //            'name' => $request['name'],
 //            'email' => $request['email'],
@@ -54,7 +58,7 @@ class CategoryPostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -65,7 +69,7 @@ class CategoryPostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -76,23 +80,33 @@ class CategoryPostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $this->validate($request, [
+            'title' => 'required|string|max:255',
+            'slug' => 'sometimes|unique:categories',
+        ]);
+        $parameters = $category->prepareParameters($request);
+        $category->update($parameters->all());
+
+        return ['message' => 'Update the category info'];
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return ['message' => 'Category deleted'];
     }
 }

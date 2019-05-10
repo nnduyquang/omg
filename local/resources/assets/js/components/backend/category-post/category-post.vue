@@ -20,27 +20,30 @@
                                 <th>Tên Chuyên Mục</th>
                                 <th>Đường Dẫn</th>
                                 <th>Ngày Tạo</th>
+                                <th>Tình Trạng</th>
                                 <th>Hành Động</th>
                             </tr>
 
-                            <tr v-for="category in categories.data" :key="user.id">
+                            <tr v-for="category in categories" :key="category.id">
                                 <td>{{category.id}}</td>
                                 <td>{{category.title}}</td>
                                 <td>{{category.slug}}</td>
                                 <td>{{category.created_at | myDate}}</td>
+                                <td v-if="category.is_active==1"><i style="color:green;" class="fas fa-circle"></i></td>
+                                <td v-if="category.is_active==0"><i style="color:red;"class="fas fa-circle"></i></td>
                                 <td>
                                     <a href="#" @click="editModal(category)"><i class="fa fa-edit"></i></a>
                                     /
-                                    <a href="#" @click="deleteCategory(category.id)"><i class="fa fa-trash"></i></a>
+                                    <a href="#" @click="deleteCategory(category.id)"><i style="color:red" class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
                     <!-- /.card-body -->
-                    <div class="card-footer">
-                        <pagination :data="categories" @pagination-change-page="getResults"></pagination>
-                    </div>
+                    <!--<div class="card-footer">-->
+                    <!--<pagination :data="categories" @pagination-change-page="getResults"></pagination>-->
+                    <!--</div>-->
                 </div>
                 <!-- /.card -->
             </div>
@@ -77,6 +80,7 @@
                                         @click="changeSlug">Đổi</a><a href="#" v-show="hideSpanSlug"
                                                                       @click="cancelSlug">Hủy</a><a
                                         href="#" v-show="hideSpanSlug" @click="applySlug">Đồng ý</a></span>
+                                <span style="color: red" v-if="form.errors.has('slug')">Đường dẫn đã tồn tại</span>
                             </div>
                             <div class="form-group">
                             <textarea id="description" v-model="form.description" name="description"
@@ -86,6 +90,11 @@
                             </textarea>
                                 <has-error :form="form" field="description"></has-error>
                             </div>
+                            <!--<div class="form-group">-->
+                            <span>Kích hoạt</span>
+                            <input name="is_active" type="checkbox"
+                                   data-toggle="toggle">
+                            <!--</div>-->
 
                         </div>
                         <div class="modal-footer">
@@ -115,30 +124,35 @@
                     id: '',
                     title: '',
                     slug: '',
-                    description: ''
+                    description: '',
+                    is_active: 0,
+                    type: 0
                 })
             }
         },
         methods: {
-            changeInputSlug(event){
+            checkActive(state) {
+                console.log('Trạng thái' + state);
+            },
+            changeInputSlug(event) {
                 if (!this.hideSpanSlug) {
                     this.slug = ChangeToSlug(event.target.value);
                     this.form.slug = ChangeToSlug(event.target.value);
                 }
 
             },
-            applySlug(){
+            applySlug() {
                 this.changeInputSlug();
                 this.hideSpanSlug = false;
                 this.slug = ChangeToSlug(this.$refs.someName.value);
                 this.form.slug = ChangeToSlug(this.$refs.someName.value);
 
             },
-            cancelSlug(){
+            cancelSlug() {
                 this.hideSpanSlug = false;
                 this.form.slug = this.slug;
             },
-            changeSlug(){
+            changeSlug() {
                 this.hideSpanSlug = true;
 
             },
@@ -154,19 +168,21 @@
                     this.form.slug = '';
                 }
             },
-            getResults(page = 1) {
-                axios.get('api/category-post?page=' + page)
-                    .then(response => {
-                        this.categories = response.data;
-                    });
-            },
+            // getResults(page = 1) {
+            //     axios.get('api/category-post?page=' + page)
+            //         .then(response => {
+            //             this.categories = response.data;
+            //         });
+            // },
             updateCategory() {
                 this.$Progress.start();
                 this.form.put('api/category-post/' + this.form.id).then(() => {
+                    this.stateTitle = false;
+                    this.hideSpanSlug = false;
                     $('#addNew').modal('hide');
                     toast.fire({
                         type: 'success',
-                        title: 'User updated in successfully'
+                        title: 'Danh mục bài viết đã được cập nhật'
                     });
                     Fire.$emit('ReloadTable');
                 }).catch(() => {
@@ -177,13 +193,25 @@
             newModal() {
                 this.editMode = false;
                 this.form.reset();
+                this.slug='';
+                this.stateTitle = false;
+                this.hideSpanSlug = false;
+                $('input[type=checkbox]').bootstrapToggle('off')
                 $('#addNew').modal('show');
             },
             editModal(category) {
                 this.editMode = true;
+                this.hideSpanSlug = false;
+                this.stateTitle = true;
+                this.slug = category.slug;
                 this.form.reset();
                 $('#addNew').modal('show');
                 this.form.fill(category);
+                if(category.is_active==1){
+                    $('input[type=checkbox]').bootstrapToggle('on')
+                }else{
+                    $('input[type=checkbox]').bootstrapToggle('off')
+                }
             },
             deleteCategory(id) {
                 swal.fire({
@@ -219,7 +247,7 @@
             loadCategories() {
                 // if (this.$gate.isAdminOrAuthor()) {
 //                axios.get('api/user').then(({data}) => (this.users = data.data));
-                axios.get('api/category-post').then(({data}) => (this.users = data));
+                axios.get('api/category-post').then(({data}) => (this.categories = data));
                 // }
             },
             createCategory() {
@@ -236,8 +264,6 @@
                     this.$Progress.fail();
                 });
                 this.$Progress.finish();
-
-
             }
         },
         created() {
@@ -253,7 +279,28 @@
             Fire.$on('ReloadTable', () => {
                 this.loadCategories();
             });
+            Fire.$on('checkActive', (data) => {
+                this.form.is_active = data;
+            });
+            // $('input[type=checkbox]').bootstrapToggle({
+            //     size:"large"
+            // });
 //            setInterval(()=>this.loadUsers(),3000);
+        },
+        mounted() {
+            $('input[type=checkbox]').bootstrapToggle({
+                size: "normal",
+                on: 'Có',
+                off: 'Không',
+                width: '100px'
+            });
+            $('input[type=checkbox]').change(function () {
+                if ($(this).prop('checked')) {
+                    Fire.$emit('checkActive', 1)
+                } else {
+                    Fire.$emit('checkActive', 0)
+                }
+            });
         }
     }
 </script>
