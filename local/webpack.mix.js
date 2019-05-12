@@ -14,4 +14,5 @@ mix.setResourceRoot('../');
  */
 
 mix.js('resources/assets/js/app.js', 'js/app.js')
-   .sass('resources/assets/sass/app.scss', 'css/app.css');
+    .sass('resources/assets/sass/app.scss', 'css/app.css')
+    .sass('resources/assets/sass/backend/backend.scss','css/backend.css').options({processCssUrls: false});

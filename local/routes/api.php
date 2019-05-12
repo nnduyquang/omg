@@ -20,3 +20,5 @@ Route::apiResources([
     'user' => 'API\UserController',
     'category-post' => 'API\CategoryPostController'
 ]);
+Route::post('category-post/sort','API\CategoryPostController@sort');
+

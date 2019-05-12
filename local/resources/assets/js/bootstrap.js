@@ -13,6 +13,7 @@ try {
     require('admin-lte/plugins/iCheck/icheck');
     require('admin-lte/plugins/bootstrap/js/bootstrap');
     require('bootstrap-toggle/js/bootstrap-toggle');
+    require('nestable/jquery.nestable');
 } catch (e) {}
 
 /**
