@@ -13,6 +13,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <title>AdminLTE 3 | Starter</title>
 
     <link rel="stylesheet" href="{{URL::to('css/app.css')}}">
+    <link rel="stylesheet" href="{{URL::to('css/backend.css')}}">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper" id="app">

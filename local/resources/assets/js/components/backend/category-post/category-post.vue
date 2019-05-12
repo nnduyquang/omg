@@ -7,13 +7,16 @@
                         <h3 class="card-title">Quản Lý Chuyên Mục Bài Viết</h3>
 
                         <div class="card-tools">
+                            <button class="btn btn-success" @click.prevent="sortModal">Sắp Xếp <i
+                                    class="fas fa-plus fa-fw"></i></button>
                             <button class="btn btn-success" @click.prevent="newModal">Thêm Mới <i
                                     class="fas fa-plus fa-fw"></i></button>
+
                         </div>
                     </div>
                     <!-- /.card-header -->
-                    <div class="card-body table-responsive p-0">
-                        <table class="table table-hover">
+                    <div class="card-body table-responsive p-0 dd">
+                        <table class="table table-hover dd-list">
                             <tbody>
                             <tr>
                                 <th>ID</th>
@@ -23,14 +26,22 @@
                                 <th>Tình Trạng</th>
                                 <th>Hành Động</th>
                             </tr>
-
-                            <tr v-for="category in categories" :key="category.id">
+                            <tr v-for="category in categories"
+                                :key="category.id">
                                 <td>{{category.id}}</td>
-                                <td>{{category.title}}</td>
+                                <td v-if="category.level==0">{{category.title}}</td>
+                                <td v-else-if="category.level==1">-{{category.title}}</td>
+                                <td v-else-if="category.level==2">--{{category.title}}</td>
+                                <td v-else-if="category.level==3">---{{category.title}}</td>
+                                <td v-else-if="category.level==4">----{{category.title}}</td>
                                 <td>{{category.slug}}</td>
                                 <td>{{category.created_at | myDate}}</td>
-                                <td v-if="category.is_active==1"><i style="color:green;" class="fas fa-circle"></i></td>
-                                <td v-if="category.is_active==0"><i style="color:red;"class="fas fa-circle"></i></td>
+                                <td v-if="category.is_active==1"><i style="color:green;"
+                                                                    class="fas fa-circle"></i>
+                                </td>
+                                <td v-if="category.is_active==0"><i style="color:red;"
+                                                                    class="fas fa-circle"></i>
+                                </td>
                                 <td>
                                     <a href="#" @click="editModal(category)"><i class="fa fa-edit"></i></a>
                                     /
@@ -39,6 +50,7 @@
                             </tr>
                             </tbody>
                         </table>
+
                     </div>
                     <!-- /.card-body -->
                     <!--<div class="card-footer">-->
@@ -106,6 +118,45 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="sortModal" tabindex="-1" role="dialog" aria-labelledby="addNewLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Sắp Xếp Chuyên Mục</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form @submit.prevent="applySort"
+                          @keydown="formSort.onKeydown($event)">
+                        <input type="hidden" id="custId" name="listSort" v-model="formSort.listSort">
+                        <div class="modal-body">
+                            <div class="dd" id="nestable">
+                                <ol class="dd-list">
+                                    <!--vòng lặp-->
+                                    <li :key="category.id" v-for="category in categories" class="dd-item"
+                                        :data-id="category.id" v-if="category.level==0">
+                                        <div class="dd-handle">
+                                            <span>{{category.title}}</span>
+                                        </div>
+                                        <category-post-item v-if="category.children.length!=0"
+                                                            :listChild="category.children"></category-post-item>
+                                    </li>
+                                    <!--kết thúc vòng lạp-->
+                                </ol>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                            <button type="submit" class="btn btn-success">Đồng ý</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -120,6 +171,9 @@
                 editMode: false,
                 categories: {},
                 slug: '',
+                formSort: new Form({
+                    listSort: '',
+                }),
                 form: new Form({
                     id: '',
                     title: '',
@@ -131,6 +185,25 @@
             }
         },
         methods: {
+            applySort(){
+                this.$Progress.start();
+                this.formSort.post('api/category-post/sort').then(() => {
+                    $('#sortModal').modal('hide');
+                    toast.fire({
+                        type: 'success',
+                        title: 'Danh mục bài viết đã được sắp xếp'
+                    });
+                    Fire.$emit('ReloadTable');
+                    Fire.$emit('ReloadModelCategories');
+                }).catch(() => {
+                    this.$Progress.fail();
+                });
+                this.$Progress.finish();
+            },
+            sortModal(){
+                this.loadCategories();
+                $('#sortModal').modal('show');
+            },
             checkActive(state) {
                 console.log('Trạng thái' + state);
             },
@@ -168,12 +241,6 @@
                     this.form.slug = '';
                 }
             },
-            // getResults(page = 1) {
-            //     axios.get('api/category-post?page=' + page)
-            //         .then(response => {
-            //             this.categories = response.data;
-            //         });
-            // },
             updateCategory() {
                 this.$Progress.start();
                 this.form.put('api/category-post/' + this.form.id).then(() => {
@@ -276,11 +343,16 @@
                 })
             });
             this.loadCategories();
+
             Fire.$on('ReloadTable', () => {
                 this.loadCategories();
             });
+
             Fire.$on('checkActive', (data) => {
                 this.form.is_active = data;
+            });
+            Fire.$on('changeSort', (data) => {
+                this.formSort.listSort = data;
             });
             // $('input[type=checkbox]').bootstrapToggle({
             //     size:"large"
@@ -301,6 +373,19 @@
                     Fire.$emit('checkActive', 0)
                 }
             });
+            function update_out(selector) {
+                let out = $(selector).nestable('serialize');
+                Fire.$emit('changeSort', window.JSON.stringify(out));
+            }
+
+            $('#nestable').nestable({
+                group: 1
+
+            }).on('change', function (e) {
+                update_out(nestable)
+            });
+//            $('.dd').nestable('serialize');
+
         }
     }
 </script>

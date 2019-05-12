@@ -17,7 +17,7 @@ class CategoryPostController extends Controller
     public function index()
     {
         $category = new Category();
-        return $category->getCategoriesByType(CATEGORY_POST)->get();
+        return $category->getCategoriesByType(CATEGORY_POST);
     }
 
     /**
@@ -89,7 +89,7 @@ class CategoryPostController extends Controller
         $category = Category::findOrFail($id);
         $this->validate($request, [
             'title' => 'required|string|max:255',
-            'slug' => 'sometimes|unique:categories',
+            'slug' => 'sometimes|unique:categories,slug,' . $category->id,
         ]);
         $parameters = $category->prepareParameters($request);
         $category->update($parameters->all());
@@ -108,5 +108,27 @@ class CategoryPostController extends Controller
         $category = Category::findOrFail($id);
         $category->delete();
         return ['message' => 'Category deleted'];
+    }
+
+    public function sort(Request $request)
+    {
+        $sortItems = json_decode($request->listSort);
+        $this->doSortItem($sortItems, null, 0);
+        return ['message' => 'Update the category info'];
+    }
+
+    public function doSortItem(array $sortItems, $parentId, $level)
+    {
+
+        foreach ($sortItems as $index => $sortItem) {
+            $item = Category::find($sortItem->id);
+            $item->order = $index + 1;
+            $item->parent_id = $parentId;
+            $item->level = $level;
+            $item->save();
+            if (isset($sortItem->children)) {
+                self::doSortItem($sortItem->children, $item->id, $item->level+1);
+            }
+        }
     }
 }
