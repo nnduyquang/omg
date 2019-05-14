@@ -136,15 +136,14 @@
                             <div class="dd" id="nestable">
                                 <ol class="dd-list">
                                     <!--vòng lặp-->
-                                    <!--<li :key="category.id" v-for="category in categories" class="dd-item"-->
-                                        <!--:data-id="category.id" v-if="category.level==0">-->
-                                        <!--<div class="dd-handle">-->
-                                            <!--<span>{{category.title}}</span>-->
-                                        <!--</div>-->
-                                        <!--<category-post-item v-if="category.children.length!=0"-->
-                                                            <!--:listChild="category.children"></category-post-item>-->
-                                    <!--</li>-->
-                                    <loop-li  v-for="(category,index) in categories" :index2="index"  :key="index" :category="category" :level="0"></loop-li>
+                                    <li :key="category.id" v-for="category in categories" class="dd-item"
+                                        :data-id="category.id" v-if="category.level==0">
+                                        <div class="dd-handle">
+                                            <span>{{category.title}}</span>
+                                        </div>
+                                        <category-post-item v-if="category.children.length!=0"
+                                                            :listChild="category.children"></category-post-item>
+                                    </li>
                                     <!--kết thúc vòng lạp-->
                                 </ol>
                             </div>
@@ -202,6 +201,7 @@
                 this.$Progress.finish();
             },
             sortModal(){
+                this.loadCategories();
                 $('#sortModal').modal('show');
             },
             checkActive(state) {
@@ -379,7 +379,7 @@
             }
 
             $('#nestable').nestable({
-//                group: 1
+                group: 1
 
             }).on('change', function (e) {
                 update_out(nestable)
