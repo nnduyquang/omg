@@ -134,7 +134,7 @@
                         <input type="hidden" id="custId" name="listSort" v-model="formSort.listSort">
                         <div class="modal-body">
                             <div class="dd" id="nestable">
-                                <ol class="dd-list">
+                                <ol ref="add_loop_li" class="dd-list">
                                     <!--vòng lặp-->
                                     <loop-li :key="index" v-for="(category,index) in categories" :level="0" :category="category"></loop-li>
                                     <!--kết thúc vòng lạp-->
@@ -144,7 +144,6 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" data-dismiss="modal" class="btn btn-danger">Đóng</button>
-                            <button @click.prevent="refreshModal"  class="btn btn-info"  aria-hidden="true">Làm mới</button>
                             <button type="submit" class="btn btn-success">Đồng ý</button>
                         </div>
                     </form>
@@ -157,9 +156,9 @@
 </template>
 
 <script>
-    import LoopLi from "./loop-li";
+//    import LoopLi from "./loop-li";
     export default {
-        components: {LoopLi},
+//        components: {LoopLi},
         data() {
             return {
                 stateTitle: false,
@@ -181,26 +180,19 @@
             }
         },
         methods: {
-            refreshModal(){
-                this.categories={};
-                this.$forceUpdate();
-                Fire.$emit('ReloadTable');
-            },
             applySort(){
 
                 this.$Progress.start();
                 this.formSort.post('api/category-post/sort').then(() => {
-                    // this.categories={};
-                    // this.$forceUpdate();
-                    // Fire.$emit('ReloadTable');
-                    $('#sortModal').modal('hide');
-                    toast.fire({
-                        type: 'success',
-                        title: 'Danh mục bài viết đã được sắp xếp'
-                    });
-
-                    Fire.$emit('ReloadTable');
-                    Fire.$emit('ReloadModelCategories');
+                    location.reload();
+//                    $('#sortModal').modal('hide');
+//                    toast.fire({
+//                        type: 'success',
+//                        title: 'Danh mục bài viết đã được sắp xếp'
+//                    });
+//
+//                    Fire.$emit('ReloadTable');
+//                    Fire.$emit('ReloadModelCategories');
                 }).catch(() => {
                     this.$Progress.fail();
                 });
