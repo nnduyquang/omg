@@ -25,7 +25,7 @@
         "laravel-vue-pagination": "^2.3.0",
         "moment": "^2.24.0",
         "nestable": "^0.2.0",
-        "sweetalert2": "^8.10.2",
+        "sweetalert2": "^8.10.7",
         "vform": "^1.0.0",
         "vue-progressbar": "^0.7.5"
     }

@@ -35,9 +35,10 @@ Vue.component(
     require('./components/backend/category-post/category-post.vue')
 );
 Vue.component(
-    'category-post-item',
-    require('./components/backend/category-post/category-post-item.vue')
+    'loop-li',
+    require('./components/backend/category-post/loop-li.vue')
 );
+
 
 //USING
 window.GloabalUrl=globals.config.base_url;

@@ -136,21 +136,15 @@
                             <div class="dd" id="nestable">
                                 <ol class="dd-list">
                                     <!--vòng lặp-->
-                                    <li :key="category.id" v-for="category in categories" class="dd-item"
-                                        :data-id="category.id" v-if="category.level==0">
-                                        <div class="dd-handle">
-                                            <span>{{category.title}}</span>
-                                        </div>
-                                        <category-post-item v-if="category.children.length!=0"
-                                                            :listChild="category.children"></category-post-item>
-                                    </li>
+                                    <loop-li :key="index" v-for="(category,index) in categories" :level="0" :category="category"></loop-li>
                                     <!--kết thúc vòng lạp-->
                                 </ol>
                             </div>
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                            <button type="button" data-dismiss="modal" class="btn btn-danger">Đóng</button>
+                            <button @click.prevent="refreshModal"  class="btn btn-info"  aria-hidden="true">Làm mới</button>
                             <button type="submit" class="btn btn-success">Đồng ý</button>
                         </div>
                     </form>
@@ -163,7 +157,9 @@
 </template>
 
 <script>
+    import LoopLi from "./loop-li";
     export default {
+        components: {LoopLi},
         data() {
             return {
                 stateTitle: false,
@@ -185,14 +181,24 @@
             }
         },
         methods: {
+            refreshModal(){
+                this.categories={};
+                this.$forceUpdate();
+                Fire.$emit('ReloadTable');
+            },
             applySort(){
+
                 this.$Progress.start();
                 this.formSort.post('api/category-post/sort').then(() => {
+                    // this.categories={};
+                    // this.$forceUpdate();
+                    // Fire.$emit('ReloadTable');
                     $('#sortModal').modal('hide');
                     toast.fire({
                         type: 'success',
                         title: 'Danh mục bài viết đã được sắp xếp'
                     });
+
                     Fire.$emit('ReloadTable');
                     Fire.$emit('ReloadModelCategories');
                 }).catch(() => {
@@ -315,6 +321,7 @@
                 // if (this.$gate.isAdminOrAuthor()) {
 //                axios.get('api/user').then(({data}) => (this.users = data.data));
                 axios.get('api/category-post').then(({data}) => (this.categories = data));
+
                 // }
             },
             createCategory() {
