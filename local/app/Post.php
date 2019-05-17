@@ -24,4 +24,7 @@ class Post extends Model
     {
         return $parameters;
     }
+    public function getAllPost($post_type){
+        return $this->where('post_type', $post_type)->orderBy('created_at','DESC')->get();
+    }
 }

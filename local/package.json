@@ -19,6 +19,8 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "@ckeditor/ckeditor5-alignment": "^11.1.0",
+        "@ckeditor/ckeditor5-vue": "^1.0.0-beta.2",
         "@fortawesome/fontawesome-free": "^5.8.2",
         "admin-lte": "^3.0.0-alpha.2",
         "bootstrap-toggle": "^2.2.2",

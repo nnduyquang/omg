@@ -144,7 +144,6 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" data-dismiss="modal" class="btn btn-danger">Đóng</button>
-                            <button @click.prevent="refreshModal"  class="btn btn-info"  aria-hidden="true">Làm mới</button>
                             <button type="submit" class="btn btn-success">Đồng ý</button>
                         </div>
                     </form>
@@ -157,9 +156,7 @@
 </template>
 
 <script>
-    import LoopLi from "./loop-li";
     export default {
-        components: {LoopLi},
         data() {
             return {
                 stateTitle: false,
@@ -181,26 +178,15 @@
             }
         },
         methods: {
-            refreshModal(){
-                this.categories={};
-                this.$forceUpdate();
-                Fire.$emit('ReloadTable');
-            },
             applySort(){
-
                 this.$Progress.start();
                 this.formSort.post('api/category-post/sort').then(() => {
-                    // this.categories={};
-                    // this.$forceUpdate();
-                    // Fire.$emit('ReloadTable');
                     $('#sortModal').modal('hide');
                     toast.fire({
                         type: 'success',
                         title: 'Danh mục bài viết đã được sắp xếp'
                     });
-
-                    Fire.$emit('ReloadTable');
-                    Fire.$emit('ReloadModelCategories');
+                    location.reload();
                 }).catch(() => {
                     this.$Progress.fail();
                 });

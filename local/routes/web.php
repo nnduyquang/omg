@@ -25,6 +25,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('category-post', function () {
         return view('backend.admin.category-post.index');
     })->name('category-post');
+    Route::get('post', function () {
+        return view('backend.admin.post.index');
+    })->name('post');
     Route::get('user', function () {
         return view('backend.admin.user.index');
     })->name('user.active');
