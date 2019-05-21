@@ -55,6 +55,18 @@
                                 <button v-show="!editMode" type="submit" class="btn btn-primary">Tạo Mới</button>
                             </div>
                         </form>
+                        <form-wrapper
+                        group="update-form" v-cloak
+                        >
+                            <div slot-scope="props">
+                                <fieldset class="fieldset">
+                                    <legend>
+                                        Personal details
+                                    </legend>
+                                    <div class="grid"></div>
+                                </fieldset>
+                            </div>
+                        </form-wrapper>
                     </div>
                     <!-- /.card -->
                 </div>

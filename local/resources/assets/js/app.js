@@ -47,6 +47,14 @@ Vue.component(
     'insert-post',
     require('./components/backend/post/insert-post.vue')
 );
+Vue.component(
+    'form-wrapper',
+    require('./components/backend/form/wrapper.vue')
+);
+Vue.component(
+    'text-area-ck-editor',
+    require('./components/backend/form/textarea/text-area.vue')
+);
 
 
 //USING
