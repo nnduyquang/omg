@@ -40,6 +40,11 @@
                             </textarea>
                                     <has-error :form="form" field="description"></has-error>
                                 </div>
+                                <div class="form-group">
+                            <vue-editor v-model="form.content">
+                            </vue-editor>
+                                    <has-error :form="form" field="description"></has-error>
+                                </div>
                                 <!--<div class="form-group">-->
                                 <span>Kích hoạt</span>
                                 <input name="is_active" type="checkbox"
@@ -47,26 +52,11 @@
                                 <!--</div>-->
 
                             </div>
-                            <div class="form-group">
-                                <ckeditor  :editor="editor" :config="editorConfig"></ckeditor>
-                            </div>
                             <div class="modal-footer">
                                 <button v-show="editMode" type="submit" class="btn btn-success">Cập Nhật</button>
                                 <button v-show="!editMode" type="submit" class="btn btn-primary">Tạo Mới</button>
                             </div>
                         </form>
-                        <form-wrapper
-                        group="update-form" v-cloak
-                        >
-                            <div slot-scope="props">
-                                <fieldset class="fieldset">
-                                    <legend>
-                                        Personal details
-                                    </legend>
-                                    <div class="grid"></div>
-                                </fieldset>
-                            </div>
-                        </form-wrapper>
                     </div>
                     <!-- /.card -->
                 </div>
@@ -84,35 +74,12 @@
 </template>
 
 <script>
-    import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-    import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
-    // ClassicEditor.builtinPlugins = [
-    //     Alignment                                                            // <--- ADDED
-    // ];
-
-    // Editor configuration.
-    // ClassicEditor.defaultConfig = {
-    //     toolbar: {
-    //         items: [
-    //             'heading',
-    //             '|',
-    //             'alignment',                                                 // <--- ADDED
-    //             'bold',
-    //             'italic',
-    //             'link',
-    //             'bulletedList',
-    //             'numberedList',
-    //             'imageUpload',
-    //             'blockQuote',
-    //             'undo',
-    //             'redo'                                           // <--- ADDED
-    //         ]
-    //     },
-    // };
+    import {VueEditor} from 'vue2-editor'
+    import { ImageDrop } from "quill-image-drop-module";
+    import ImageResize from "quill-image-resize-module"
     export default {
         data() {
             return {
-                editor: ClassicEditor,
                 stateTitle: false,
                 hideSpanSlug: false,
                 editMode: false,
@@ -125,31 +92,21 @@
                     title: '',
                     slug: '',
                     description: '',
+                    content:'',
                     is_active: 0,
                     type: 0
                 }),
-                editorConfig: {
-                    plugins: [
-                        Alignment
-                    ],
-
-                    toolbar: {
-                        items: [
-                            'heading',
-                            '|',
-                            'alignment',
-                            'bold',
-                            'italic',
-                            'link',
-                            'bulletedList',
-                            'numberedList',
-                            'imageUpload',
-                            'blockQuote',
-                            'undo',
-                            'redo'                                           // <--- ADDED
-                        ]
+                customModulesForEditor: [
+                    { alias: "imageDrop", module: ImageDrop },
+                    { alias: "imageResize", module: ImageResize }
+                ],
+                editorSettings: {
+                    modules: {
+                        imageDrop: true,
+                        imageResize: {}
                     }
                 }
+
             }
         },
         methods: {
