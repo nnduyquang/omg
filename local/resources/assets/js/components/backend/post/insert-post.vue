@@ -41,10 +41,14 @@
                                     <has-error :form="form" field="description"></has-error>
                                 </div>
                                 <div class="form-group">
-                            <vue-editor v-model="form.content">
-                            </vue-editor>
+                            <textarea id="content-post" v-model="form.content" name="description"
+                                      placeholder=""
+                                      class="form-control"
+                                      :class="{ 'is-invalid': form.errors.has('description') }">
+                            </textarea>
                                     <has-error :form="form" field="description"></has-error>
                                 </div>
+
                                 <!--<div class="form-group">-->
                                 <span>Kích hoạt</span>
                                 <input name="is_active" type="checkbox"
@@ -52,6 +56,7 @@
                                 <!--</div>-->
 
                             </div>
+
                             <div class="modal-footer">
                                 <button v-show="editMode" type="submit" class="btn btn-success">Cập Nhật</button>
                                 <button v-show="!editMode" type="submit" class="btn btn-primary">Tạo Mới</button>
@@ -74,9 +79,7 @@
 </template>
 
 <script>
-    import {VueEditor} from 'vue2-editor'
-    import { ImageDrop } from "quill-image-drop-module";
-    import ImageResize from "quill-image-resize-module"
+    var mylib = require('../../../ulti');
     export default {
         data() {
             return {
@@ -92,20 +95,10 @@
                     title: '',
                     slug: '',
                     description: '',
-                    content:'',
+                    content: '',
                     is_active: 0,
                     type: 0
                 }),
-                customModulesForEditor: [
-                    { alias: "imageDrop", module: ImageDrop },
-                    { alias: "imageResize", module: ImageResize }
-                ],
-                editorSettings: {
-                    modules: {
-                        imageDrop: true,
-                        imageResize: {}
-                    }
-                }
 
             }
         },
@@ -146,7 +139,7 @@
             },
         },
         mounted() {
-            console.log('Component mounted.')
+            mylib.integratedCKEDITOR('content-post',800);
         }
     }
 </script>

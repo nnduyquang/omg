@@ -6,6 +6,7 @@
  */
 
 require('./bootstrap');
+
 var globals = require('./config');
 
 window.Vue = require('vue');
