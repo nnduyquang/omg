@@ -5,12 +5,14 @@
                 <h1>Thêm Mới Bài Viết</h1>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-8">
-                <div class="card card-primary card-outline">
-                    <div class="card-body pad table-responsive">
-                        <form @submit.prevent=""
-                              @keydown="form.onKeydown($event)">
+        <form @submit.prevent=""
+              @keydown="form.onKeydown($event)">
+            <div class="row">
+
+                <div class="col-md-8">
+                    <div class="card card-primary card-outline">
+                        <div class="card-body pad table-responsive">
+
                             <div class="modal-body">
                                 <div class="form-group">
                                     <input @change="showSlug" v-model="form.title" type="text" name="title"
@@ -41,13 +43,16 @@
                                     <has-error :form="form" field="description"></has-error>
                                 </div>
                                 <div class="form-group">
-                            <textarea id="content-post" v-model="form.content" name="description"
-                                      placeholder=""
-                                      class="form-control"
-                                      :class="{ 'is-invalid': form.errors.has('description') }">
-                            </textarea>
+                                    <!--<textarea id="content-post" v-model="form.content" name="description"-->
+                                    <!--placeholder=""-->
+                                    <!--class="form-control"-->
+                                    <!--:class="{ 'is-invalid': form.errors.has('description') }">-->
+                                    <!--</textarea>-->
+                                    <text-area :form="form"></text-area>
                                     <has-error :form="form" field="description"></has-error>
+
                                 </div>
+
 
                                 <!--<div class="form-group">-->
                                 <span>Kích hoạt</span>
@@ -61,25 +66,26 @@
                                 <button v-show="editMode" type="submit" class="btn btn-success">Cập Nhật</button>
                                 <button v-show="!editMode" type="submit" class="btn btn-primary">Tạo Mới</button>
                             </div>
-                        </form>
-                    </div>
-                    <!-- /.card -->
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-primary card-outline">
-                    <div class="card-body pad table-responsive">
 
+                        </div>
+                        <!-- /.card -->
                     </div>
-                    <!-- /.card -->
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-primary card-outline">
+                        <div class="card-body pad table-responsive">
+                            <main-image></main-image>
+                        </div>
+                        <!-- /.card -->
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </template>
 
 <script>
-    var mylib = require('../../../ulti');
+    // var mylib = require('../../../ulti');
     export default {
         data() {
             return {
@@ -139,7 +145,13 @@
             },
         },
         mounted() {
-            mylib.integratedCKEDITOR('content-post',800);
+            // mylib.integratedCKEDITOR('content-post',800);
+            // CKEDITOR.instances['content-post'].on('change', function() {console.log('value changed!!:'+CKEDITOR.instances['content-post'].getData())});
+        },
+        created() {
+            Fire.$on('UpdateForm', ($content) => {
+                this.form.content = $content
+            });
         }
     }
 </script>

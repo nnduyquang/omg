@@ -46,6 +46,14 @@ Vue.component(
     require('./components/backend/post/post-index.vue')
 );
 Vue.component(
+    'text-area',
+    require('./components/backend/form/text-area.vue')
+);
+Vue.component(
+    'main-image',
+    require('./components/backend/form/main-image.vue')
+);
+Vue.component(
     'insert-post',
     require('./components/backend/post/insert-post.vue')
 );
