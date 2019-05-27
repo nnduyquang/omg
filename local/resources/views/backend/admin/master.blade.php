@@ -211,6 +211,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 {{--@endauth--}}
 {{ Html::script('js/ckeditor/ckeditor.js') }}
 <script src="{{URL::to("js/app.js")}}"></script>
+{{ Html::script('js/backend.js') }}
 
 </body>
 </html>
