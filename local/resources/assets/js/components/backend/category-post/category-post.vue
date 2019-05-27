@@ -134,7 +134,7 @@
                         <input type="hidden" id="custId" name="listSort" v-model="formSort.listSort">
                         <div class="modal-body">
                             <div class="dd" id="nestable">
-                                <ol class="dd-list">
+                                <ol ref="add_loop_li" class="dd-list">
                                     <!--vòng lặp-->
                                     <loop-li :key="index" v-for="(category,index) in categories" :level="0" :category="category"></loop-li>
                                     <!--kết thúc vòng lạp-->
@@ -156,7 +156,9 @@
 </template>
 
 <script>
+//    import LoopLi from "./loop-li";
     export default {
+//        components: {LoopLi},
         data() {
             return {
                 stateTitle: false,
@@ -179,14 +181,18 @@
         },
         methods: {
             applySort(){
+
                 this.$Progress.start();
                 this.formSort.post('api/category-post/sort').then(() => {
-                    $('#sortModal').modal('hide');
-                    toast.fire({
-                        type: 'success',
-                        title: 'Danh mục bài viết đã được sắp xếp'
-                    });
                     location.reload();
+//                    $('#sortModal').modal('hide');
+//                    toast.fire({
+//                        type: 'success',
+//                        title: 'Danh mục bài viết đã được sắp xếp'
+//                    });
+//
+//                    Fire.$emit('ReloadTable');
+//                    Fire.$emit('ReloadModelCategories');
                 }).catch(() => {
                     this.$Progress.fail();
                 });
