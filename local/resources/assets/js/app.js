@@ -6,12 +6,15 @@
  */
 
 require('./bootstrap');
+
 var globals = require('./config');
 
 window.Vue = require('vue');
 
+
 // IMPORT
 import VueProgressBar from 'vue-progressbar';
+import CKEditor from '@ckeditor/ckeditor5-vue';
 import {Form, HasError, AlertError} from 'vform';
 import swal from 'sweetalert2';
 import moment from 'moment';
@@ -38,6 +41,23 @@ Vue.component(
     'loop-li',
     require('./components/backend/category-post/loop-li.vue')
 );
+Vue.component(
+    'post-index',
+    require('./components/backend/post/post-index.vue')
+);
+Vue.component(
+    'text-area',
+    require('./components/backend/form/text-area.vue')
+);
+Vue.component(
+    'main-image',
+    require('./components/backend/form/main-image.vue')
+);
+Vue.component(
+    'insert-post',
+    require('./components/backend/post/insert-post.vue')
+);
+
 
 
 //USING
@@ -67,6 +87,7 @@ const options = {
     inverse: false
 }
 Vue.use(VueProgressBar, options);
+Vue.use( CKEditor );
 Vue.filter('upText', function (text) {
     return text.charAt(0).toUpperCase() + text.slice(1)
 });

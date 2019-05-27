@@ -18,7 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::apiResources([
     'user' => 'API\UserController',
-    'category-post' => 'API\CategoryPostController'
+    'category-post' => 'API\CategoryPostController',
+     'post' => 'API\PostController'
 ]);
 Route::post('category-post/sort','API\CategoryPostController@sort');
 

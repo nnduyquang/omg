@@ -113,6 +113,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a  href="{{route('post')}}" class="nav-link">
+                            <i class="nav-icon fas fa-newspaper"></i>
+                            <p>
+                                Bài Viết
+                            </p>
+                        </a>
+                    </li>
                     {{--<li class="nav-item">--}}
                     {{--<router-link to="{{get_base_url()}}/category-test" class="nav-link">--}}
                     {{--<i class="nav-icon fas fas fa-book"></i>--}}
@@ -201,6 +209,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         {{--window.user =@json(auth()->user())--}}
     {{--</script>--}}
 {{--@endauth--}}
+{{ Html::script('js/ckeditor/ckeditor.js') }}
 <script src="{{URL::to("js/app.js")}}"></script>
+
 </body>
 </html>
