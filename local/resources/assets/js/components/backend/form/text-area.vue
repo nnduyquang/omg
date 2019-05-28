@@ -10,18 +10,10 @@
     var mylib = require('../../../ulti');
     export default {
         props: ['form'],
-        data() {
-            return {
-
-            }
-        },
-        methods: {
-
-        },
         mounted() {
             mylib.integratedCKEDITOR('content-post', 800);
             CKEDITOR.instances['content-post'].on('change', function () {
-                Fire.$emit('UpdateForm',CKEDITOR.instances['content-post'].getData());
+                Fire.$emit('UpdateTextarea',CKEDITOR.instances['content-post'].getData());
             });
         },
         created(){

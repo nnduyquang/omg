@@ -57,6 +57,10 @@ Vue.component(
     'insert-post',
     require('./components/backend/post/insert-post.vue')
 );
+Vue.component(
+    'tree-view-category-post',
+    require('./components/backend/post/tree-view-category-post.vue')
+);
 
 
 

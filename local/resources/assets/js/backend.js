@@ -51,12 +51,12 @@ async function handle_one_image_responsive_file_manager(field_id){
         var obj = JSON.parse(list_url);
         $('#showHinh').show();
         $('#showHinh').fadeIn("fast").attr('src', obj[0]);
-        $('#pathImage').val(obj[0]);
+        $('#pathImage').val(obj[0]).trigger('change');
     }else{
         var path = list_url;
         $('#showHinh').show();
         $('#showHinh').fadeIn("fast").attr('src', path);
-        $('#pathImage').val(path);
+        $('#pathImage').val(path).trigger('change');
     }
 }
 async function handle_seo_image_responsive_file_manager(field_id){

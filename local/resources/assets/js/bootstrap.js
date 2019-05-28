@@ -14,6 +14,7 @@ try {
     require('admin-lte/plugins/bootstrap/js/bootstrap');
     require('bootstrap-toggle/js/bootstrap-toggle');
     require('nestable/jquery.nestable');
+    require('./library/hummingbird-treeview');
 } catch (e) {}
 
 /**

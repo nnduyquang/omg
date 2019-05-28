@@ -55,9 +55,7 @@
 
 
                                 <!--<div class="form-group">-->
-                                <span>Kích hoạt</span>
-                                <input name="is_active" type="checkbox"
-                                       data-toggle="toggle">
+
                                 <!--</div>-->
 
                             </div>
@@ -74,10 +72,32 @@
                 <div class="col-md-4">
                     <div class="card card-primary card-outline">
                         <div class="card-body pad table-responsive">
+                            <span>Kích hoạt</span>
+                            <input name="is_active" type="checkbox"
+                                   data-toggle="toggle">
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <div class="card card-primary card-outline">
+                        <div class="card-body pad table-responsive">
                             <main-image></main-image>
                         </div>
                         <!-- /.card -->
                     </div>
+                    <div class="card card-primary card-outline">
+                        <div class="card-body pad table-responsive">
+                            <tree-view-category-post></tree-view-category-post>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <div class="card card-primary card-outline">
+                        <div class="card-body pad table-responsive">
+                            <button v-show="editMode" type="submit" class="btn btn-success">Cập Nhật</button>
+                            <button v-show="!editMode" type="submit" class="btn btn-primary">Tạo Mới</button>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+
                 </div>
             </div>
         </form>
@@ -103,11 +123,13 @@
                     description: '',
                     content: '',
                     is_active: 0,
+                    img_primary: '',
                     type: 0
                 }),
 
             }
         },
+
         methods: {
             changeInputSlug(event) {
                 if (!this.hideSpanSlug) {
@@ -149,8 +171,11 @@
             // CKEDITOR.instances['content-post'].on('change', function() {console.log('value changed!!:'+CKEDITOR.instances['content-post'].getData())});
         },
         created() {
-            Fire.$on('UpdateForm', ($content) => {
+            Fire.$on('UpdateTextarea', ($content) => {
                 this.form.content = $content
+            });
+            Fire.$on('UpdateImgPrimary', ($content) => {
+                this.form.img_primary = $content
             });
         }
     }
