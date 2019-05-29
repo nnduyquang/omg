@@ -1919,7 +1919,7 @@
             try {
                 oldLocale = globalLocale._abbr;
                 var aliasedRequire = require;
-                __webpack_require__(179)("./" + name);
+                __webpack_require__(180)("./" + name);
                 getSetGlobalLocale(oldLocale);
             } catch (e) {}
         }
@@ -4680,7 +4680,7 @@
 
 
 var bind = __webpack_require__(8);
-var isBuffer = __webpack_require__(153);
+var isBuffer = __webpack_require__(154);
 
 /*global toString:true*/
 
@@ -5126,7 +5126,7 @@ module.exports = g;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(1);
-var normalizeHeaderName = __webpack_require__(155);
+var normalizeHeaderName = __webpack_require__(156);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -15855,7 +15855,7 @@ return jQuery;
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(152);
+module.exports = __webpack_require__(153);
 
 /***/ }),
 /* 8 */
@@ -16073,12 +16073,12 @@ process.umask = function() { return 0; };
 
 
 var utils = __webpack_require__(1);
-var settle = __webpack_require__(156);
-var buildURL = __webpack_require__(158);
-var parseHeaders = __webpack_require__(159);
-var isURLSameOrigin = __webpack_require__(160);
+var settle = __webpack_require__(157);
+var buildURL = __webpack_require__(159);
+var parseHeaders = __webpack_require__(160);
+var isURLSameOrigin = __webpack_require__(161);
 var createError = __webpack_require__(11);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(161);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(162);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -16175,7 +16175,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(162);
+      var cookies = __webpack_require__(163);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -16259,7 +16259,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(157);
+var enhanceError = __webpack_require__(158);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -28555,8 +28555,8 @@ module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(143);
-__webpack_require__(205);
-module.exports = __webpack_require__(206);
+__webpack_require__(209);
+module.exports = __webpack_require__(210);
 
 
 /***/ }),
@@ -28565,13 +28565,13 @@ module.exports = __webpack_require__(206);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_progressbar__ = __webpack_require__(175);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_progressbar__ = __webpack_require__(176);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_progressbar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_progressbar__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ckeditor_ckeditor5_vue__ = __webpack_require__(176);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ckeditor_ckeditor5_vue__ = __webpack_require__(177);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ckeditor_ckeditor5_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__ckeditor_ckeditor5_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vform__ = __webpack_require__(177);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vform__ = __webpack_require__(178);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vform___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vform__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_sweetalert2__ = __webpack_require__(178);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_sweetalert2__ = __webpack_require__(179);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_sweetalert2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_sweetalert2__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
@@ -28584,9 +28584,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 __webpack_require__(144);
 
-var globals = __webpack_require__(170);
+var globals = __webpack_require__(171);
 
-window.Vue = __webpack_require__(171);
+window.Vue = __webpack_require__(172);
 
 // IMPORT
 
@@ -28603,16 +28603,18 @@ window.Vue = __webpack_require__(171);
 //KHAI BÁO COMPONENT
 Vue.component(__WEBPACK_IMPORTED_MODULE_2_vform__["HasError"].name, __WEBPACK_IMPORTED_MODULE_2_vform__["HasError"]);
 Vue.component(__WEBPACK_IMPORTED_MODULE_2_vform__["AlertError"].name, __WEBPACK_IMPORTED_MODULE_2_vform__["AlertError"]);
-Vue.component('pagination', __webpack_require__(180));
-Vue.component('example-component', __webpack_require__(181));
-Vue.component('user-manager', __webpack_require__(184));
-Vue.component('category-post-manager', __webpack_require__(187));
-Vue.component('loop-li', __webpack_require__(190));
-Vue.component('post-index', __webpack_require__(193));
-Vue.component('text-area', __webpack_require__(196));
-Vue.component('main-image', __webpack_require__(199));
-Vue.component('insert-post', __webpack_require__(202));
-Vue.component('tree-view-category-post', __webpack_require__(216));
+Vue.component('pagination', __webpack_require__(181));
+Vue.component('example-component', __webpack_require__(182));
+Vue.component('user-manager', __webpack_require__(185));
+Vue.component('category-post-manager', __webpack_require__(188));
+Vue.component('loop-li', __webpack_require__(191));
+Vue.component('post-index', __webpack_require__(194));
+Vue.component('text-area', __webpack_require__(197));
+Vue.component('main-image', __webpack_require__(200));
+Vue.component('seos', __webpack_require__(227));
+Vue.component('insert-post', __webpack_require__(203));
+Vue.component('tree-view-category-post', __webpack_require__(206));
+Vue.component('loop-li-post', __webpack_require__(221));
 
 //USING
 window.GloabalUrl = globals.config.base_url;
@@ -28673,7 +28675,7 @@ try {
   __webpack_require__(148);
   __webpack_require__(150);
   __webpack_require__(151);
-  __webpack_require__(219);
+  __webpack_require__(152);
 } catch (e) {}
 
 /**
@@ -53551,6 +53553,1062 @@ Popper.Defaults = Defaults;
 
 /***/ }),
 /* 152 */
+/***/ (function(module, exports) {
+
+(function ($) {
+
+    //global variables
+
+    //this is needed to temporarily disable doubles, e.g. for uncheckAll
+    var uncheckAll_doubles = false;
+
+    //this is now default and not changable anymore
+    var checkDisabled = true;
+
+    //
+    var checkboxesGroups_grayed = false;
+    var checkboxesGroups = false;
+
+    //converter
+    $(document).ready(function () {
+        var all_converter = $(".hummingbird-treeview-converter");
+        //console.log(all_converter);
+        var converter_num = 1;
+        var converter_str = "";
+        $.each(all_converter, function (e) {
+            if (converter_num > 1) {
+                converter_str = converter_num.toString();
+            }
+            converter_num++;
+
+            var converter = $(this);
+            //console.log(converter)
+
+            //hide simple treeview structure
+            converter.hide();
+
+            var converter_height = converter.attr("data-height");
+            var converter_scroll = converter.attr("data-scroll");
+            if (converter_scroll == "true") {
+                converter_scroll = "scroll";
+            }
+
+            //create new treeview container
+            var tree_html = '<div id="treeview_container' + converter_str + '" class="hummingbird-treeview" style="height: ' + converter_height + '; overflow-y: ' + converter_scroll + ';">' + '<ul id="treeview' + converter_str + '" class="hummingbird-base">';
+
+            //get treeview elements
+            var tree = converter.children("li");
+
+            //loop through the elements and create tree
+            var id_num = 0;
+            var id_str = "";
+            var data_id = "";
+            var item = "";
+            var allowed = true;
+            var msg = "";
+            $.each(tree, function (i, e) {
+                var treeText = $(this).text();
+
+                //Regular Expression for all leading hyphens
+                var regExp = /^-+/;
+
+                //Get leading hyphens
+                var numHyphenMatch = treeText.match(regExp);
+                var numHyphen_nextMatch = $(this).next().text().match(regExp);
+
+                //Get count of leading hyphens
+                //Now supports using hyphens anywhere except for the first character of the label
+                var numHyphen = numHyphenMatch != null ? numHyphenMatch[0].length : 0;
+                var numHyphen_next = numHyphen_nextMatch != null ? numHyphen_nextMatch[0].length : 0;
+
+                //remove leading hyphens
+                treeText = treeText.replace(regExp, "");
+                //extract optional id and data-id
+                if ($(this).attr("id")) {
+                    id_str = $(this).attr("id");
+                } else {
+                    id_num++;
+                    id_str = "hum" + converter_str + "_" + id_num;
+                }
+                if ($(this).attr("data-id")) {
+                    data_id = $(this).attr("data-id");
+                } else {
+                    data_id = treeText;
+                }
+
+                //what is this, parent, children or sibling
+                //this is a parent
+                //open an ul
+                if (numHyphen < numHyphen_next) {
+                    //check format
+                    //down the tree it is not allowed to jump over a generation / instance
+                    //
+                    var check_diff = numHyphen_next - numHyphen;
+                    if (check_diff > 1) {
+                        msg = '<h4 style="color:red;">Error!</h4>The item after <span style="color:red;">' + treeText + ' </span>has too much hyphens, i.e. it is too far intended. Note that down the tree, the items are only allowed to be intended by one instance, i.e. one hyphen more than the item before. In contrast, up the tree arbitrarily large jumps are allowed.';
+                        //alert(msg);
+                        allowed = false;
+                    }
+                    //
+                    item = item + '<li>' + "\n";
+                    item = item + '<i class="fa fa-plus"></i>' + "\n";
+                    item = item + '<label>' + "\n";
+                    item = item + '<input id="' + id_str + '" data-id="' + data_id + '" type="checkbox" /> ' + treeText;
+                    item = item + '</label>' + "\n";
+                    item = item + '<ul>' + "\n";
+                    //console.log(item);
+                }
+                //hummingbird-end-node
+                if (numHyphen == numHyphen_next) {
+                    item = item + '<li>' + "\n";
+                    item = item + '<label>' + "\n";
+                    item = item + '<input class="hummingbird-end-node" id="' + id_str + '" data-id="' + data_id + '" type="checkbox" /> ' + treeText;
+                    item = item + '</label>' + "\n";
+                    item = item + '</li>' + "\n";
+                    //console.log(item);
+                }
+                //this is still a hummingbird-end-node
+                //after this it goes up
+                //thus close this ul
+                if (numHyphen > numHyphen_next) {
+                    item = item + '<li>' + "\n";
+                    item = item + '<label>' + "\n";
+                    item = item + '<input class="hummingbird-end-node" id="' + id_str + '" data-id="' + data_id + '" type="checkbox" /> ' + treeText;
+                    item = item + '</label>' + "\n";
+                    item = item + '</li>' + "\n";
+                    item = item + '</ul>' + "\n";
+                    //console.log(item);
+
+                    //if numHyphen - numHyphen_next > 1
+                    //it means that we have to close the group
+                    var hyphen_diff = numHyphen - numHyphen_next;
+                    for (var m = 2; m <= hyphen_diff; m++) {
+                        item = item + '</ul>' + "\n";
+                        item = item + '</li>' + "\n";
+                    }
+                    //
+                }
+            });
+            item = item + '</ul></div>';
+            //console.log(item)
+            tree_html = tree_html + item;
+            if (allowed == true) {
+                //$(".hummingbird-treeview-converter").after(tree_html);
+                converter.after(tree_html);
+            } else {
+                //$(".hummingbird-treeview-converter").after(msg);
+                converter.after(msg);
+            }
+        });
+        //end converter
+    });
+
+    $.fn.hummingbird = function (options) {
+
+        var methodName = options;
+        var args = arguments;
+        var options = $.extend({}, $.fn.hummingbird.defaults, options);
+        //initialisation
+        if (typeof methodName == "undefined") {
+            return this.each(function () {
+                //-------------------options-------------------------------------------------------//
+
+                //change symbol prefix
+                //font-awesome 4.7 uses fa
+                //font-awesome 5. uses fas
+                if (options.SymbolPrefix != "fa") {
+                    $(this).find("i").removeClass("fa").addClass(options.SymbolPrefix);
+                }
+
+                //change symbols
+                if (options.collapsedSymbol != "fa-plus") {
+                    $(this).find("i").removeClass("fa-plus").addClass(options.collapsedSymbol);
+                }
+
+                //hide checkboxes
+                if (options.checkboxes == "disabled") {
+                    $(this).find("input:checkbox").hide();
+                }
+
+                if (options.checkboxesGroups == "disabled") {
+                    checkboxesGroups = true;
+                    //find all checkboxes which have children and disable them
+                    //tri-state logic will still be applied
+                    //this_checkbox.prop("disabled",true).parent("label").css({'color':'#c8c8c8'});
+                    var groups = $(this).find('input:checkbox:not(".hummingbird-end-node")');
+                    groups.prop("disabled", true).parent("label").css({ "cursor": "not-allowed" });
+                }
+                if (options.checkboxesGroups == "disabled_grayed") {
+                    checkboxesGroups_grayed = true;
+                    //find all checkboxes which have children and disable them
+                    //tri-state logic will still be applied
+                    //this_checkbox.prop("disabled",true).parent("label").css({'color':'#c8c8c8'});
+                    var groups = $(this).find('input:checkbox:not(".hummingbird-end-node")');
+                    groups.prop("disabled", true).parent("label").css({ "cursor": "not-allowed", 'color': '#c8c8c8' });
+                }
+
+                //collapseAll
+                if (options.collapseAll === false) {
+                    $.fn.hummingbird.expandAll($(this), options.collapsedSymbol, options.expandedSymbol);
+                }
+                //-------------------options-------------------------------------------------------//
+
+
+                //initialise doubles logic
+                var doubleMode = false;
+                var allVariables = new Object();
+                if (options.checkDoubles) {
+                    $(this).find('input:checkbox.hummingbird-end-node').each(function () {
+                        if (allVariables[$(this).attr("data-id")]) {
+                            allVariables[$(this).attr("data-id")].push($(this).attr("id"));
+                            //console.log($(this))
+                        } else {
+                            allVariables[$(this).attr("data-id")] = [$(this).attr("id")];
+                        }
+                    });
+                    //console.log(JSON.stringify(allVariables));
+                }
+
+                //three state logic
+                //$.fn.hummingbird.ThreeStateLogic($(this),doubleMode,allVariables,options.checkDoubles,options.checkDisabled);
+                $.fn.hummingbird.ThreeStateLogic($(this), doubleMode, allVariables, options.checkDoubles, checkDisabled);
+
+                //expandSingle
+                $(this).on("click", 'li i.' + options.collapsedSymbol, function () {
+                    $.fn.hummingbird.expandSingle($(this), options.collapsedSymbol, options.expandedSymbol);
+                });
+                //collapseSingle
+                $(this).on("click", 'li i.' + options.expandedSymbol, function () {
+                    $.fn.hummingbird.collapseSingle($(this), options.collapsedSymbol, options.expandedSymbol);
+                });
+            });
+        }
+
+        //checkAll
+        if (methodName == "checkAll") {
+            return this.each(function () {
+                $.fn.hummingbird.checkAll($(this));
+            });
+        }
+
+        //ucheckAll
+        if (methodName == "uncheckAll") {
+            return this.each(function () {
+                $.fn.hummingbird.uncheckAll($(this));
+            });
+        }
+
+        //disableNode
+        if (methodName == "disableNode") {
+            return this.each(function () {
+                var name = args[1].name;
+                var attr = args[1].attr;
+                var state = args[1].state;
+                if (typeof args[1].disableChildren !== 'undefined') {
+                    var disableChildren = args[1].disableChildren;
+                } else {
+                    var disableChildren = true;
+                }
+                $.fn.hummingbird.disableNode($(this), attr, name, state, disableChildren);
+            });
+        }
+
+        //enableNode
+        if (methodName == "enableNode") {
+            return this.each(function () {
+                var name = args[1].name;
+                var attr = args[1].attr;
+                var state = args[1].state;
+                if (typeof args[1].enableChildren !== 'undefined') {
+                    var enableChildren = args[1].enableChildren;
+                } else {
+                    var enableChildren = true;
+                }
+                $.fn.hummingbird.enableNode($(this), attr, name, state, enableChildren);
+            });
+        }
+
+        //checkNode
+        if (methodName == "checkNode") {
+            return this.each(function () {
+                var name = args[1].name;
+                var attr = args[1].attr;
+                var expandParents = args[1].expandParents;
+                $.fn.hummingbird.checkNode($(this), attr, name);
+                if (expandParents == true) {
+                    $.fn.hummingbird.expandNode($(this), attr, name, expandParents, options.collapsedSymbol, options.expandedSymbol);
+                }
+            });
+        }
+
+        //uncheckNode
+        if (methodName == "uncheckNode") {
+            return this.each(function () {
+                var name = args[1].name;
+                var attr = args[1].attr;
+                var collapseChildren = args[1].collapseChildren;
+                $.fn.hummingbird.uncheckNode($(this), attr, name);
+                if (collapseChildren == true) {
+                    $.fn.hummingbird.collapseNode($(this), attr, name, collapseChildren, options.collapsedSymbol, options.expandedSymbol);
+                }
+            });
+        }
+
+        //setNodeColor
+        if (methodName == "setNodeColor") {
+            return this.each(function () {
+                var attr = args[1];
+                var ID = args[2];
+                var color = args[3];
+                $.fn.hummingbird.setNodeColor($(this), attr, ID, color);
+            });
+        }
+
+        //collapseAll
+        if (methodName == "collapseAll") {
+            return this.each(function () {
+                $.fn.hummingbird.collapseAll($(this), options.collapsedSymbol, options.expandedSymbol);
+            });
+        }
+
+        //expandAll
+        if (methodName == "expandAll") {
+            return this.each(function () {
+                $.fn.hummingbird.expandAll($(this), options.collapsedSymbol, options.expandedSymbol);
+            });
+        }
+
+        //expandNode
+        if (methodName == "expandNode") {
+            return this.each(function () {
+                var name = args[1].name;
+                var attr = args[1].attr;
+                var expandParents = args[1].expandParents;
+                $.fn.hummingbird.expandNode($(this), attr, name, expandParents, options.collapsedSymbol, options.expandedSymbol);
+            });
+        }
+
+        //collapseNode
+        if (methodName == "collapseNode") {
+            return this.each(function () {
+                var name = args[1].name;
+                var attr = args[1].attr;
+                var collapseChildren = args[1].collapseChildren;
+                $.fn.hummingbird.collapseNode($(this), attr, name, collapseChildren, options.collapsedSymbol, options.expandedSymbol);
+            });
+        }
+
+        //getChecked
+        if (methodName == "getChecked") {
+            return this.each(function () {
+                var list = args[1].list;
+                var onlyEndNodes = args[1].onlyEndNodes;
+                $.fn.hummingbird.getChecked($(this), list, onlyEndNodes);
+            });
+        }
+
+        //getUnchecked
+        if (methodName == "getUnchecked") {
+            return this.each(function () {
+                var list = args[1].list;
+                var onlyEndNodes = args[1].onlyEndNodes;
+                $.fn.hummingbird.getUnchecked($(this), list, onlyEndNodes);
+            });
+        }
+
+        //addNode
+        if (methodName == "addNode") {
+            return this.each(function () {
+                var pos = args[1].pos; //before or after
+                var anchor_attr = args[1].anchor_attr; //the anchor node
+                var anchor_name = args[1].anchor_name; //the anchor node
+                var text = args[1].text;
+                var the_id = args[1].the_id;
+                var data_id = args[1].data_id;
+                if (typeof args[1].end_node !== 'undefined') {
+                    var end_node = args[1].end_node;
+                } else {
+                    var end_node = true;
+                }
+                if (typeof args[1].children !== 'undefined') {
+                    var children = args[1].children;
+                } else {
+                    var children = false;
+                }
+                $.fn.hummingbird.addNode($(this), pos, anchor_attr, anchor_name, text, the_id, data_id, end_node, children, options.collapsedSymbol);
+            });
+        }
+
+        //removeNode
+        if (methodName == "removeNode") {
+            return this.each(function () {
+                var name = args[1].name;
+                var attr = args[1].attr;
+                $.fn.hummingbird.removeNode($(this), attr, name);
+            });
+        }
+
+        //filter
+        if (methodName == "filter") {
+            return this.each(function () {
+                var str = args[1].str;
+                if (typeof args[1].box_disable !== 'undefined') {
+                    var box_disable = args[1].box_disable;
+                } else {
+                    var box_disable = false;
+                }
+                if (typeof args[1].filterChildren !== 'undefined') {
+                    var filterChildren = args[1].filterChildren;
+                } else {
+                    var filterChildren = true;
+                }
+                var onlyEndNodes = args[1].onlyEndNodes;
+                $.fn.hummingbird.filter($(this), str, box_disable, onlyEndNodes, filterChildren);
+            });
+        }
+
+        //search
+        if (methodName == "search") {
+            return this.each(function () {
+                var treeview_container = args[1].treeview_container;
+                var search_input = args[1].search_input;
+                var search_output = args[1].search_output;
+                var search_button = args[1].search_button;
+                if (typeof args[1].dialog !== 'undefined') {
+                    var dialog = args[1].dialog;
+                } else {
+                    var dialog = "";
+                }
+                if (typeof args[1].enter_key_1 !== 'undefined') {
+                    var enter_key_1 = args[1].enter_key_1;
+                } else {
+                    var enter_key_1 = true;
+                }
+                if (typeof args[1].enter_key_2 !== 'undefined') {
+                    var enter_key_2 = args[1].enter_key_2;
+                } else {
+                    var enter_key_2 = true;
+                }
+                if (typeof args[1].scrollOffset !== 'undefined') {
+                    var scrollOffset = args[1].scrollOffset;
+                } else {
+                    var scrollOffset = false;
+                }
+                if (typeof args[1].onlyEndNodes !== 'undefined') {
+                    var onlyEndNodes = args[1].onlyEndNodes;
+                } else {
+                    var onlyEndNodes = false;
+                }
+                if (typeof args[1].EnterKey !== 'undefined') {
+                    var EnterKey = args[1].EnterKey;
+                } else {
+                    var EnterKey = true;
+                }
+                $.fn.hummingbird.search($(this), treeview_container, search_input, search_output, search_button, dialog, enter_key_1, enter_key_2, options.collapsedSymbol, options.expandedSymbol, scrollOffset, onlyEndNodes, EnterKey);
+            });
+        }
+    };
+
+    //options defaults
+    $.fn.hummingbird.defaults = {
+        SymbolPrefix: "fa",
+        expandedSymbol: "fa-minus",
+        collapsedSymbol: "fa-plus",
+        collapseAll: true,
+        checkboxes: "enabled",
+        checkboxesGroups: "enabled",
+        checkDoubles: false
+        //checkDisabled: false,   //this is now not changeable and true always
+    };
+
+    //global vars
+    var nodeDisabled = false;
+    var nodeEnabled = false;
+
+    //-------------------methods--------------------------------------------------------------------------//
+
+    //-------------------checkAll---------------//
+    $.fn.hummingbird.checkAll = function (tree) {
+        tree.children("li").children("label").children("input:checkbox").prop('indeterminate', false).prop('checked', false).trigger("click");
+    };
+
+    //-------------------uncheckAll---------------//
+    $.fn.hummingbird.uncheckAll = function (tree) {
+        //console.log(tree.children("li").children("label").children("input:checkbox"))
+        //find disabled groups
+        var disabled_groups = tree.find('input:checkbox:disabled:not(.hummingbird-end-node)');
+        //console.log(disabled_groups)
+        //enable these
+        disabled_groups.prop('disabled', false);
+        //disable checking for doubles temporarily
+        uncheckAll_doubles = true;
+        tree.children("li").children("label").children("input:checkbox").prop('indeterminate', false).prop('checked', true).trigger("click");
+        uncheckAll_doubles = false;
+        //disable disabled groups again
+        disabled_groups.prop('disabled', true);
+        //console.log(tree.children("li").children("label").children("input:checkbox"));
+    };
+
+    //-------------------collapseAll---------------//
+    $.fn.hummingbird.collapseAll = function (tree, collapsedSymbol, expandedSymbol) {
+        tree.find("ul").hide();
+        tree.find('.' + expandedSymbol).removeClass(expandedSymbol).addClass(collapsedSymbol);
+    };
+
+    //------------------expandAll------------------//
+    $.fn.hummingbird.expandAll = function (tree, collapsedSymbol, expandedSymbol) {
+        tree.find("ul").show();
+        tree.find('.' + collapsedSymbol).removeClass(collapsedSymbol).addClass(expandedSymbol);
+    };
+
+    //-------------------collapseSingle---------------//
+    $.fn.hummingbird.collapseSingle = function (node, collapsedSymbol, expandedSymbol) {
+        node.parent("li").children("ul").hide();
+        node.removeClass(expandedSymbol).addClass(collapsedSymbol);
+    };
+
+    //-------------------expandSingle---------------//
+    $.fn.hummingbird.expandSingle = function (node, collapsedSymbol, expandedSymbol) {
+        node.parent("li").children("ul").show();
+        node.removeClass(collapsedSymbol).addClass(expandedSymbol);
+    };
+
+    //-------------------expandNode---------------//
+    $.fn.hummingbird.expandNode = function (tree, attr, name, expandParents, collapsedSymbol, expandedSymbol) {
+        var that_node = tree.find('input[' + attr + '=' + name + ']');
+        var that_ul = that_node.parent("label").siblings("ul");
+        that_ul.show().siblings("i").removeClass(collapsedSymbol).addClass(expandedSymbol);
+        //expand all parents and change symbol
+        if (expandParents === true) {
+            that_node.parents("ul").show().siblings("i").removeClass(collapsedSymbol).addClass(expandedSymbol);
+        }
+    };
+
+    //-------------------collapseNode---------------//
+    $.fn.hummingbird.collapseNode = function (tree, attr, name, collapseChildren, collapsedSymbol, expandedSymbol) {
+        var that_node = tree.find('input[' + attr + '=' + name + ']');
+        var that_ul = that_node.parent("label").siblings("ul");
+        //collapse children and change symbol
+        if (collapseChildren === true) {
+            that_node.parent("label").parent("li").find("ul").hide().siblings("i").removeClass(expandedSymbol).addClass(collapsedSymbol);
+        } else {
+            that_ul.hide().siblings("i").removeClass(expandedSymbol).addClass(collapsedSymbol);
+        }
+    };
+
+    //-------------------checkNode---------------//
+    $.fn.hummingbird.checkNode = function (tree, attr, name) {
+        if (attr == "text") {
+            name = name.trim();
+            var that_nodes = tree.find('input:checkbox:not(:checked)').prop("indeterminate", false).parent('label:contains(' + name + ')');
+            //console.log(that_nodes)
+            that_nodes.children('input:checkbox').trigger("click");
+        } else {
+            tree.find('input:checkbox:not(:checked)[' + attr + '=' + name + ']').prop("indeterminate", false).trigger("click");
+        }
+    };
+
+    //-------------------uncheckNode---------------//
+    $.fn.hummingbird.uncheckNode = function (tree, attr, name) {
+        if (attr == "text") {
+            name = name.trim();
+            var that_nodes = tree.find('input:checkbox:checked').prop("indeterminate", false).parent('label:contains(' + name + ')');
+            //console.log(that_nodes)
+            that_nodes.children('input:checkbox').trigger("click");
+        } else {
+            tree.find('input:checkbox:checked[' + attr + '=' + name + ']').prop("indeterminate", false).trigger("click");
+        }
+    };
+
+    //-------------------removeNode---------------//
+    $.fn.hummingbird.removeNode = function (tree, attr, name) {
+        if (attr == "text") {
+            name = name.trim();
+            tree.find('input:checkbox').parent('label:contains(' + name + ')').parent('li').remove();
+        } else {
+            tree.find('input:checkbox[' + attr + '=' + name + ']').parent("label").parent('li').remove();
+        }
+    };
+
+    //-------------------addNode---------------//
+    $.fn.hummingbird.addNode = function (tree, pos, anchor_attr, anchor_name, text, the_id, data_id, end_node, children, collapsedSymbol) {
+        //find the node
+        if (anchor_attr == "text") {
+            anchor_name = anchor_name.trim();
+            var that_node = tree.find('input:checkbox').parent('label:contains(' + anchor_name + ')').parent("li");
+        } else {
+            var that_node = tree.find('input:checkbox[' + anchor_attr + '=' + anchor_name + ']').parent("label").parent("li");
+        }
+        //
+        //console.log(that_node)
+        //
+        if (end_node) {
+            var Xclass = "hummingbird-end-node";
+            if (pos == "before") {
+                that_node.before('<li><label><input class="' + Xclass + '" id="' + the_id + '" data-id="' + data_id + '" type="checkbox"> ' + text + '</label></li>');
+            }
+            if (pos == "after") {
+                that_node.after('<li><label><input class="' + Xclass + '" id="' + the_id + '" data-id="' + data_id + '" type="checkbox"> ' + text + '</label></li>');
+            }
+        } else {
+            var Xclass = "";
+            //create subtree
+            var subtree = "";
+            $.each(children, function (i, e) {
+                console.log(e);
+                subtree = subtree + '<li><label><input class="' + 'hummingbird-end-node' + '" id="' + e.id + '" data-id="' + e.data_id + '" type="checkbox"> ' + e.text + '</label></li>';
+            });
+            if (pos == "before") {
+                that_node.before('<li>' + "\n" + '<i class="fa ' + collapsedSymbol + '"></i>' + "\n" + '<label>' + "\n" + '<input class="' + Xclass + '" id="' + the_id + '" data-id="' + data_id + '" type="checkbox"> ' + text + '</label>' + "\n" + '<ul>' + "\n" + subtree + '</ul>' + "\n" + '</li>');
+            }
+            if (pos == "after") {
+                that_node.after('<li>' + "\n" + '<i class="fa ' + collapsedSymbol + '"></i>' + "\n" + '<label>' + "\n" + '<input class="' + Xclass + '" id="' + the_id + '" data-id="' + data_id + '" type="checkbox"> ' + text + '</label>' + "\n" + '<ul>' + "\n" + subtree + '</ul>' + "\n" + '</li>');
+            }
+        }
+        //
+    };
+
+    //-------------------filter--------------------//
+    $.fn.hummingbird.filter = function (tree, str, box_disable, onlyEndNodes, filterChildren) {
+        if (onlyEndNodes) {
+            var entries = tree.find('input:checkbox.hummingbird-end-node');
+        } else {
+            var entries = tree.find('input:checkbox');
+        }
+        var re = new RegExp(str, 'g');
+        $.each(entries, function () {
+            var entry = $(this).parent("label").text();
+            //if we have a match we add class to all parent li's
+            if (entry.match(re)) {
+                $(this).parents("li").addClass("noFilter");
+                if (filterChildren == false) {
+                    $(this).parent("label").parent("li").find("li").addClass("noFilter");
+                    //console.log($(this).parent("label").parent("li").find("li"))
+                }
+            }
+        });
+        //now remove or disable all, which do not match
+        if (box_disable) {
+            tree.find("li").not('.noFilter').prop("disabled", true);
+        } else {
+            tree.find("li").not('.noFilter').remove();
+        }
+    };
+
+    //-------------------disableNode---------------//
+    $.fn.hummingbird.disableNode = function (tree, attr, name, state, disableChildren) {
+        if (attr == "text") {
+            name = name.trim();
+            var that_nodes = tree.find('input:checkbox:not(:disabled)').parent('label:contains(' + name + ')');
+            //console.log(that_nodes)
+            var this_checkbox = that_nodes.children('input:checkbox');
+        } else {
+            var this_checkbox = tree.find('input:checkbox:not(:disabled)[' + attr + '=' + name + ']');
+        }
+        //for a disabled unchecked node, set node checked and then trigger a click to uncheck
+        //for a disabled checked node, set node unchecked and then trigger a click to check
+        this_checkbox.prop("checked", state === false);
+        nodeDisabled = true;
+        this_checkbox.trigger("click");
+        //disable this node and all children
+        if (disableChildren === true) {
+            this_checkbox.parent("label").parent("li").find('input:checkbox').prop("disabled", true).parent("label").parent("li").css({ 'color': '#c8c8c8', "cursor": "not-allowed" });
+        } else {
+            //console.log(this_checkbox.prop("disabled",true).parent("label").parent("li"))
+            this_checkbox.prop("disabled", true).parent("label").parent("li").css({ 'color': '#c8c8c8', "cursor": "not-allowed" });
+        }
+    };
+
+    //-------------------enableNode---------------//
+    $.fn.hummingbird.enableNode = function (tree, attr, name, state, enableChildren) {
+        var this_checkbox = {};
+        if (attr == "text") {
+            name = name.trim();
+            var that_nodes = tree.find('input:checkbox:disabled').parent('label:contains(' + name + ')');
+            //console.log(that_nodes)
+            var this_checkbox = that_nodes.children('input:checkbox');
+        } else {
+            this_checkbox = tree.find('input:checkbox:disabled[' + attr + '=' + name + ']');
+        }
+        //console.log(this_checkbox)
+        //a checkbox cannot be enabled if all children are disabled AND enableChildren is false
+        //get children checkboxes which are not disabled
+        var children_not_disabled_sum = this_checkbox.parent("label").next("ul").children("li").children("label").children("input:checkbox:not(:disabled)").length;
+        if (children_not_disabled_sum == 0 && enableChildren == false) {
+            //console.log("NOW!!!!!!!!!!!!!!!!!!!!!")
+            return;
+        }
+        //the state where a parent is enabled and all children are disabled must be forbidden
+
+        //for a disabled unchecked node, set node checked and then trigger a click to uncheck
+        //for a disabled checked node, set node unchecked and then trigger a click to check
+        this_checkbox.prop("disabled", false).parent("label").parent("li").css({ 'color': '#636b6f', "cursor": "default" });
+        //all parents enabled
+        //no action on parents
+        //this_checkbox.parent("label").parent("li").parents("li").children("label").children("input[type='checkbox']").prop("disabled",false).parents("label").parent("li").css({'color':'#636b6f',"cursor":"default"});
+        //all children enabled
+        if (enableChildren === true) {
+            this_checkbox.parent("label").parent("li").find('input:checkbox').prop("disabled", false).parent("label").parent("li").css({ 'color': '#636b6f', "cursor": "default" });
+        }
+        this_checkbox.prop("checked", state === false);
+        nodeEnabled = true;
+        this_checkbox.trigger("click");
+    };
+
+    //--------------get all checked items------------------//
+    $.fn.hummingbird.getChecked = function (tree, list, onlyEndNodes) {
+        if (onlyEndNodes == true) {
+            tree.find('input:checkbox.hummingbird-end-node:checked').each(function () {
+                list.text.push($(this).parent("label").parent("li").text());
+                list.id.push($(this).attr("id"));
+                list.dataid.push($(this).attr("data-id"));
+            });
+        } else {
+            tree.find('input:checkbox:checked').each(function () {
+                list.text.push($(this).parent("label").parent("li").text());
+                list.id.push($(this).attr("id"));
+                list.dataid.push($(this).attr("data-id"));
+            });
+        }
+    };
+    //--------------get all checked items------------------//
+
+    //--------------get all unchecked items------------------//
+    $.fn.hummingbird.getUnchecked = function (tree, list, onlyEndNodes) {
+        if (onlyEndNodes == true) {
+            tree.find('input:checkbox.hummingbird-end-node:not(:checked)').each(function () {
+                list.text.push($(this).parent("label").parent("li").text());
+                list.id.push($(this).attr("id"));
+                list.dataid.push($(this).attr("data-id"));
+            });
+        } else {
+            tree.find('input:checkbox:not(:checked)').each(function () {
+                list.text.push($(this).parent("label").parent("li").text());
+                list.id.push($(this).attr("id"));
+                list.dataid.push($(this).attr("data-id"));
+            });
+        }
+    };
+    //--------------get all unchecked items------------------//
+
+
+    //-------------------setNodeColor---------------//
+    $.fn.hummingbird.setNodeColor = function (tree, attr, ID, color) {
+        tree.find('input:checkbox[' + attr + '=' + ID + ']').parent("li").css({ 'color': color });
+    };
+
+    //--------------three-state-logic----------------------//
+    $.fn.hummingbird.ThreeStateLogic = function (tree, doubleMode, allVariables, checkDoubles, checkDisabled) {
+        tree.find('input:checkbox').on('click', function (e) {
+            //console.log($(this))
+            //check / uncheck all checkboxes below that node, if they have children weather they are disabled or not
+            //do nothing with end-node-checkboxes which are disabled
+            //thus three state logic is applyed to groups although they are disabled and if they have children
+
+            //all not disabled
+            var nodes_below_not_disabled = $(this).parent("label").parent("li").find("input:checkbox:not(:disabled)");
+
+            //all disabled without hummingbird-end-node
+            var nodes_below_disabled_groups = $(this).parent("label").parent("li").find('input:checkbox:disabled:not(.hummingbird-end-node)');
+
+            //add them together
+            var nodes_below = nodes_below_not_disabled.add(nodes_below_disabled_groups);
+
+            //merge
+            //var nodes_below = ;
+
+
+            var ids = [];
+            nodes_below.each(function () {
+                ids.push($(this).attr("id"));
+            });
+            //console.log("this");
+            //console.log($(this));
+            if ($(this).prop("checked")) {
+                var state = true;
+                var checkSiblings = "input:checkbox:not(:checked)";
+                //fire event
+                tree.trigger("nodeChecked", ids.join());
+            } else {
+                var state = false;
+                var checkSiblings = "input:checkbox:checked";
+                //fire event
+                tree.trigger("nodeUnchecked", ids.join());
+            }
+            //check / uncheck all checkboxes below that node
+            nodes_below.prop("indeterminate", false).prop("checked", state);
+            //set all parents indeterminate and unchecked
+            //if checkDisabled===false treat all disabled as if they were not there
+            //do it for all if checkDisabled===true
+            //if checkDisabled===false do it if it was not a disabled node, i.e. nodeDisabled===false
+            //if (checkDisabled || nodeDisabled === false) {
+            $(this).parent("label").parent().parents("li").children("label").children("input:checkbox").prop("indeterminate", true);
+            $(this).parent("label").parent().parents("li").children("label").children("input:checkbox").prop("checked", false);
+
+            //travel down the dom through all ul's, but not the ul directly under that, because that will be changed
+            //console.log($(this).parent("label").parent("li").find("ul"))
+            $(this).parent("label").siblings("ul").find("ul").map(function () {
+                //console.log($(this))
+
+
+                //check if children are disabled
+                //console.log($(this).parent("label").next("ul").children("li").children("label").children("input:checkbox"))
+                //var not_disabled_sum_children = $(this).parent("label").next("ul").children("li").children("label").children("input:checkbox:not(:disabled)").length;
+                var disabled_sum_children = $(this).children("li").children("label").children("input:checkbox:disabled").length;
+                //console.log("disabled_sum_children= " + disabled_sum_children)
+                //if a check has happened count how many are checked
+                //if an uncheck has happened count how many are unchecked
+                //var checked_unchecked_sum_children = $(this).parent("label").next("ul").children("li").children("label").children(checkSiblings).length;
+                //a check has happened
+                var checked_sum_children = $(this).children("li").children("label").children("input:checkbox:checked").length;
+                var unchecked_sum_children = $(this).children("li").children("label").children("input:checkbox:not(:checked)").length;
+                //console.log("checked_sum_children= " + checked_sum_children)
+                //console.log("unchecked_sum_children= " + unchecked_sum_children)
+                //if all children disabled set appropriate state of this checkbox
+                //This happens e.g. if all children of this box are disabled and checked, so this box is actually also checked and disabled, but because it is
+                //not an end-node it can be checked, unchecked. Now a parent of this has been unchecked, thus this box is also unchecked, although all children are checked
+                //thus the appropriate state has to be set again
+
+                //there are children disabled:
+                //if a check happened, all children are checked
+                //if an uncheck happened all children are unchecked
+                if (disabled_sum_children > 0) {
+                    if (checked_sum_children == 0) {
+                        $(this).siblings("label").children("input:checkbox").prop("checked", false);
+                    }
+                    if (unchecked_sum_children == 0) {
+                        $(this).siblings("label").children("input:checkbox").prop("checked", true);
+                    }
+                    if (checked_sum_children > 0 && unchecked_sum_children > 0) {
+                        $(this).siblings("label").children("input:checkbox").prop("checked", false).prop("indeterminate", true);
+                    }
+                }
+            });
+
+            //}
+            //travel up the DOM
+            //test if siblings are all checked / unchecked / indeterminate
+            //check / uncheck parents if all siblings are checked /unchecked
+            //thus, set parents checked / unchecked, if children are all checked or all unchecked with no indeterminates
+            //do this for all
+            //if (checkDisabled) {
+            $(this).parent("label").parents("li").map(function () {
+                //console.log($(this))
+                var indeterminate_sum = 0;
+                //number of checked if an uncheck happened or number of unchecked if a check happened
+                var checked_unchecked_sum = $(this).siblings().addBack().children("label").children(checkSiblings).length;
+                //check how many not disabled are here (below that parent)
+                if (checkDisabled) {
+                    var not_disabled_sum = $(this).siblings().addBack().children("label").children("input:checkbox:not(:disabled)").length;
+                    //console.log("not_disabled_sum= " + not_disabled_sum)
+                }
+
+                //console.log("checkDisabled= " + checkDisabled)
+                //checkDisabled means that disabled boxes are considered by the tri-state logic
+                //these are the not disabled siblings together with node itself
+                //var not_disabled_sum = $(this).siblings().addBack().children("label").children("input:checkbox:not(:disabled)").length;
+                //console.log("not_disabled_sum= " + not_disabled_sum);
+                $(this).siblings().addBack().children("label").children("input:checkbox").map(function () {
+                    indeterminate_sum = indeterminate_sum + $(this).prop("indeterminate");
+                });
+                //this is 0 if there are no checked, thus an uncheck has happened
+                if (indeterminate_sum + checked_unchecked_sum == 0) {
+                    $(this).parent().parent().children("label").children("input:checkbox").prop("indeterminate", false);
+                    $(this).parent().parent().children("label").children("input:checkbox").prop("checked", state);
+                }
+
+                //if this click was together width a disableNode then, there is one more disabled child, thus not_disabled_sum--
+                if (checkDisabled) {
+                    if (nodeDisabled == true) {
+                        not_disabled_sum--;
+                    }
+                    //if all children are disabled, disable also parent
+                    if (not_disabled_sum == 0) {
+                        //console.log("here")
+                        //console.log($(this).parent().parent().children("label").children("input[type='checkbox']"))
+                        //only disable parents if they are not already disabled by the checkboxesGroups options
+                        if (checkboxesGroups_grayed == false && checkboxesGroups == false) {
+                            $(this).parent().parent().children("label").children("input[type='checkbox']").prop("disabled", true).parent("label").parent("li").css({ 'color': '#c8c8c8' });
+                        }
+                    }
+                }
+            });
+            //}
+
+            //------------------check if this variable has doubles-----------------------//
+            //------------------and click doubles if needed------------------------------//
+            //------------------only if this is not a double check-----------------------//
+            if (checkDoubles == true && uncheckAll_doubles == false) {
+                if (doubleMode == false) {
+                    //do this for all checked / unchecked checkboxes below that node
+                    $(this).parent("label").parent("li").find("input.hummingbird-end-node[type='checkbox']").each(function () {
+                        //check if this node has doubles
+                        var L = allVariables[$(this).attr("data-id")].length;
+                        if (L > 1) {
+                            doubleMode = true;
+                            //if state of these checkboxes is not similar to state
+                            //-> trigger click
+                            var Zvar = allVariables[$(this).attr("data-id")];
+                            for (var i = 0; i < L; i++) {
+                                if ($("#" + Zvar[i]).prop("checked") != state) {
+                                    $("#" + Zvar[i]).trigger("click");
+                                }
+                            }
+                        }
+                    });
+                    doubleMode = false;
+                }
+            }
+            //------------------check if this variable has doubles------------------------//
+
+
+            //--------------------------disabled-----------------------------------------//
+            //check if this box has hummingbird-end-node children
+            if (checkDisabled) {
+                if ($(this).hasClass("hummingbird-end-node") === false) {
+                    //if this box has been checked, check if "not checked disabled" exist
+                    if (state === true) {
+                        var disabledCheckboxes = $(this).parent("label").parent("li").find("input:checkbox:not(:checked):disabled");
+                        var num_state_inverse_Checkboxes = $(this).parent("label").parent("li").find("input:checkbox:checked");
+                    }
+                    //if this box has been unchecked, check if "checked disabled" exist
+                    if (state === false) {
+                        var disabledCheckboxes = $(this).parent("label").parent("li").find("input:checkbox:checked:disabled");
+                        var num_state_inverse_Checkboxes = $(this).parent("label").parent("li").find("input:checkbox:not(:checked)");
+                    }
+                    //if this box has been checked and unchecked disabled exist
+                    //set this and all parents indeterminate and checked false. Setting checked false is important to make this box ready for a check
+                    //not if all checked or unchecked
+                    if (disabledCheckboxes.length > 0 && num_state_inverse_Checkboxes.length > 0) {
+                        //only if the boxes are enabled
+                        disabledCheckboxes.parent("label").parent("li").parents("li").children("label").children("input:checkbox:not(:disabled)").prop("indeterminate", true).prop("checked", state);
+                    }
+                }
+            }
+            //--------------------------disabled-----------------------------------------//
+
+
+            //set nodeDisabled and nodeEnabled back to false
+            //so that the next clicked node can be a normal node or again a disbaled node
+            nodeDisabled = false;
+            nodeEnabled = false;
+
+            //fire event
+            tree.trigger("CheckUncheckDone");
+        });
+    };
+    //--------------three-state-logic----------------------//
+
+
+    //----------------------------search--------------------------------------//
+    $.fn.hummingbird.search = function (tree, treeview_container, search_input, search_output, search_button, dialog, enter_key_1, enter_key_2, collapsedSymbol, expandedSymbol, scrollOffset, onlyEndNodes, EnterKey) {
+
+        //trigger search on enter key
+        if (EnterKey == true) {
+            $(document).keyup(function (e) {
+                if (e.which == 13) {
+                    //console.log("current_page= " + enter_key_2)
+                    if (enter_key_1 == enter_key_2) {
+                        $(dialog + " #" + search_button).trigger("click");
+                    }
+                }
+            });
+        }
+        var first_search = true;
+        var this_var_checkbox = {};
+        //hide dropdown search list
+        $(dialog + " #" + search_input).on("click", function (e) {
+            $(dialog + " #" + search_output).hide();
+        });
+
+        $(dialog + " #" + search_button).on("click", function (e) {
+            //show dropdown search list
+            $(dialog + " #" + search_output).show();
+            var search_str = $(dialog + " #" + search_input).val().trim();
+            //empty dropdown
+            $(dialog + " #" + search_output).empty();
+            //loop through treeview
+            var num_search_results = 0;
+            if (onlyEndNodes == true) {
+                var onlyEndNodes_Class = ".hummingbird-end-node";
+            } else {
+                var onlyEndNodes_Class = "";
+            }
+            tree.find('input:checkbox' + onlyEndNodes_Class).each(function () {
+                if ($(this).parent().text().toUpperCase().includes(search_str.toUpperCase())) {
+                    //add items to dropdown
+                    $(dialog + " #" + search_output).append('<li id="drop_' + $(this).attr("id") + '"><a href="#">' + $(this).parent().text() + '</a></li>');
+                    num_search_results++;
+                }
+            });
+            if (num_search_results == 0) {
+                $(dialog + " #" + search_output).append("&nbsp; &nbsp; Nothing found");
+            }
+            //click on search dropdown
+            $(dialog + " #" + search_output + " li").on("click", function (e) {
+                //no focus on the input field to trigger the search scrolling
+                e.preventDefault();
+                //hide dropdown
+                $(dialog + " #" + search_output).hide();
+                //set value of input field
+                $(dialog + " #" + search_input).val($(this).text());
+                //reset color of last selection
+                if (first_search == false) {
+                    if (this_var_checkbox.prop("disabled")) {
+                        this_var_checkbox.parent("label").parent("li").css({ 'color': '#c8c8c8', "cursor": "not-allowed" });
+                    } else {
+                        this_var_checkbox.parent("label").parent("li").css({ 'color': '#636b6f', "cursor": "default" });
+                    }
+                }
+                //before jumping to the hummingbird-end-node a collapse all is needed
+                tree.hummingbird("collapseAll");
+                //get this checkbox
+                this_var_checkbox = tree.find('input[id="' + $(this).attr("id").substring(5) + '"]');
+                //parent uls
+                var prev_uls = this_var_checkbox.parents("ul");
+                //change plus to minus
+                prev_uls.closest("li").children("i").removeClass(collapsedSymbol).addClass(expandedSymbol);
+                //highlight hummingbird-end-node
+                this_var_checkbox.parent("label").parent("li").css({ 'color': '#f0ad4e' });
+                first_search = false;
+                //expand parent uls
+                prev_uls.show();
+                //---------------------------scrolling-----------------------------------//
+                //set scroll position to zero
+                if (treeview_container == "body") {
+                    //Chrome
+                    document.body.scrollTop = 0;
+                    //Firefox
+                    document.documentElement.scrollTop = 0;
+                } else {
+                    $(dialog + " #" + treeview_container)[0].scrollTop = 0;
+                }
+                //get position and offset of element
+                var this_var_checkbox_position = this_var_checkbox.position().top;
+                this_var_checkbox_position = this_var_checkbox_position + scrollOffset;
+
+                if (treeview_container == "body") {
+                    //Chrome
+                    document.body.scrollTop += this_var_checkbox_position;
+                    //Firefox
+                    document.documentElement.scrollTop += this_var_checkbox_position;
+                } else {
+                    $(dialog + " #" + treeview_container)[0].scrollTop = this_var_checkbox_position;
+                }
+                //---------------------------scrolling-----------------------------------//
+            });
+            //if there is only one search result -> go to this without showing the dropdown
+            if (num_search_results == 1) {
+                var one_search_id = $("#" + search_output + " li").attr("id");
+                $("#" + one_search_id).trigger("click");
+            }
+        });
+    };
+    //----------------------------search--------------------------------------//
+})(jQuery);
+
+/***/ }),
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53558,7 +54616,7 @@ Popper.Defaults = Defaults;
 
 var utils = __webpack_require__(1);
 var bind = __webpack_require__(8);
-var Axios = __webpack_require__(154);
+var Axios = __webpack_require__(155);
 var defaults = __webpack_require__(4);
 
 /**
@@ -53593,14 +54651,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(13);
-axios.CancelToken = __webpack_require__(168);
+axios.CancelToken = __webpack_require__(169);
 axios.isCancel = __webpack_require__(12);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(169);
+axios.spread = __webpack_require__(170);
 
 module.exports = axios;
 
@@ -53609,7 +54667,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 153 */
+/* 154 */
 /***/ (function(module, exports) {
 
 /*!
@@ -53636,7 +54694,7 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 154 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53644,8 +54702,8 @@ function isSlowBuffer (obj) {
 
 var defaults = __webpack_require__(4);
 var utils = __webpack_require__(1);
-var InterceptorManager = __webpack_require__(163);
-var dispatchRequest = __webpack_require__(164);
+var InterceptorManager = __webpack_require__(164);
+var dispatchRequest = __webpack_require__(165);
 
 /**
  * Create a new instance of Axios
@@ -53722,7 +54780,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 155 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53741,7 +54799,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 156 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53774,7 +54832,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 157 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53802,7 +54860,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 158 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53877,7 +54935,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 159 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53937,7 +54995,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 160 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54012,7 +55070,7 @@ module.exports = (
 
 
 /***/ }),
-/* 161 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54055,7 +55113,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 162 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54115,7 +55173,7 @@ module.exports = (
 
 
 /***/ }),
-/* 163 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54174,18 +55232,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 164 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(1);
-var transformData = __webpack_require__(165);
+var transformData = __webpack_require__(166);
 var isCancel = __webpack_require__(12);
 var defaults = __webpack_require__(4);
-var isAbsoluteURL = __webpack_require__(166);
-var combineURLs = __webpack_require__(167);
+var isAbsoluteURL = __webpack_require__(167);
+var combineURLs = __webpack_require__(168);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -54267,7 +55325,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 165 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54294,7 +55352,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 166 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54315,7 +55373,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 167 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54336,7 +55394,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 168 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54400,7 +55458,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 169 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54434,7 +55492,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 170 */
+/* 171 */
 /***/ (function(module, exports) {
 
 
@@ -54477,18 +55535,18 @@ window.ChangeToSlug = function (title) {
 };
 
 /***/ }),
-/* 171 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 if (false) {
   module.exports = require('./vue.common.prod.js')
 } else {
-  module.exports = __webpack_require__(172)
+  module.exports = __webpack_require__(173)
 }
 
 
 /***/ }),
-/* 172 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -66431,10 +67489,10 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(173).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(174).setImmediate))
 
 /***/ }),
-/* 173 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -66490,7 +67548,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(174);
+__webpack_require__(175);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -66504,7 +67562,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 174 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -66697,14 +67755,14 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(9)))
 
 /***/ }),
-/* 175 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 !function(t,o){ true?module.exports=o():"function"==typeof define&&define.amd?define(o):t.VueProgressBar=o()}(this,function(){"use strict";!function(){if("undefined"!=typeof document){var t=document.head||document.getElementsByTagName("head")[0],o=document.createElement("style"),i=" .__cov-progress { opacity: 1; z-index: 999999; } ";o.type="text/css",o.styleSheet?o.styleSheet.cssText=i:o.appendChild(document.createTextNode(i)),t.appendChild(o)}}();var t="undefined"!=typeof window,r={render:function(){var t=this,o=t.$createElement;return(t._self._c||o)("div",{staticClass:"__cov-progress",style:t.style})},staticRenderFns:[],name:"VueProgress",serverCacheKey:function(){return"Progress"},computed:{style:function(){var t=this.progress,o=t.options,i=!!o.show,e=o.location,s={"background-color":o.canSuccess?o.color:o.failedColor,opacity:o.show?1:0,position:o.position};return"top"===e||"bottom"===e?("top"===e?s.top="0px":s.bottom="0px",o.inverse?s.right="0px":s.left="0px",s.width=t.percent+"%",s.height=o.thickness,s.transition=(i?"width "+o.transition.speed+", ":"")+"opacity "+o.transition.opacity):"left"!==e&&"right"!==e||("left"===e?s.left="0px":s.right="0px",o.inverse?s.top="0px":s.bottom="0px",s.height=t.percent+"%",s.width=o.thickness,s.transition=(i?"height "+o.transition.speed+", ":"")+"opacity "+o.transition.opacity),s},progress:function(){return t?window.VueProgressBarEventBus.RADON_LOADING_BAR:{percent:0,options:{canSuccess:!0,show:!1,color:"rgb(19, 91, 55)",failedColor:"red",thickness:"2px",transition:{speed:"0.2s",opacity:"0.6s",termination:300},location:"top",autoRevert:!0,inverse:!1}}}}};return{install:function(o){var t=1<arguments.length&&void 0!==arguments[1]?arguments[1]:{},i=(o.version.split(".")[0],"undefined"!=typeof window),e={$vm:null,state:{tFailColor:"",tColor:"",timer:null,cut:0},init:function(t){this.$vm=t},start:function(t){var o=this;this.$vm&&(t||(t=3e3),this.$vm.RADON_LOADING_BAR.percent=0,this.$vm.RADON_LOADING_BAR.options.show=!0,this.$vm.RADON_LOADING_BAR.options.canSuccess=!0,this.state.cut=1e4/Math.floor(t),clearInterval(this.state.timer),this.state.timer=setInterval(function(){o.increase(o.state.cut*Math.random()),95<o.$vm.RADON_LOADING_BAR.percent&&o.$vm.RADON_LOADING_BAR.options.autoFinish&&o.finish()},100))},set:function(t){this.$vm.RADON_LOADING_BAR.options.show=!0,this.$vm.RADON_LOADING_BAR.options.canSuccess=!0,this.$vm.RADON_LOADING_BAR.percent=Math.floor(t)},get:function(){return Math.floor(this.$vm.RADON_LOADING_BAR.percent)},increase:function(t){this.$vm.RADON_LOADING_BAR.percent=Math.min(99,this.$vm.RADON_LOADING_BAR.percent+Math.floor(t))},decrease:function(t){this.$vm.RADON_LOADING_BAR.percent=this.$vm.RADON_LOADING_BAR.percent-Math.floor(t)},hide:function(){var t=this;clearInterval(this.state.timer),this.state.timer=null,setTimeout(function(){t.$vm.RADON_LOADING_BAR.options.show=!1,o.nextTick(function(){setTimeout(function(){t.$vm.RADON_LOADING_BAR.percent=0},100),t.$vm.RADON_LOADING_BAR.options.autoRevert&&setTimeout(function(){t.revert()},300)})},this.$vm.RADON_LOADING_BAR.options.transition.termination)},pause:function(){clearInterval(this.state.timer)},finish:function(){this.$vm&&(this.$vm.RADON_LOADING_BAR.percent=100,this.hide())},fail:function(){this.$vm.RADON_LOADING_BAR.options.canSuccess=!1,this.$vm.RADON_LOADING_BAR.percent=100,this.hide()},setFailColor:function(t){this.$vm.RADON_LOADING_BAR.options.failedColor=t},setColor:function(t){this.$vm.RADON_LOADING_BAR.options.color=t},setLocation:function(t){this.$vm.RADON_LOADING_BAR.options.location=t},setTransition:function(t){this.$vm.RADON_LOADING_BAR.options.transition=t},tempFailColor:function(t){this.state.tFailColor=this.$vm.RADON_LOADING_BAR.options.failedColor,this.$vm.RADON_LOADING_BAR.options.failedColor=t},tempColor:function(t){this.state.tColor=this.$vm.RADON_LOADING_BAR.options.color,this.$vm.RADON_LOADING_BAR.options.color=t},tempLocation:function(t){this.state.tLocation=this.$vm.RADON_LOADING_BAR.options.location,this.$vm.RADON_LOADING_BAR.options.location=t},tempTransition:function(t){this.state.tTransition=this.$vm.RADON_LOADING_BAR.options.transition,this.$vm.RADON_LOADING_BAR.options.transition=t},revertColor:function(){this.$vm.RADON_LOADING_BAR.options.color=this.state.tColor,this.state.tColor=""},revertFailColor:function(){this.$vm.RADON_LOADING_BAR.options.failedColor=this.state.tFailColor,this.state.tFailColor=""},revertLocation:function(){this.$vm.RADON_LOADING_BAR.options.location=this.state.tLocation,this.state.tLocation=""},revertTransition:function(){this.$vm.RADON_LOADING_BAR.options.transition=this.state.tTransition,this.state.tTransition={}},revert:function(){this.$vm.RADON_LOADING_BAR.options.autoRevert&&(this.state.tColor&&this.revertColor(),this.state.tFailColor&&this.revertFailColor(),this.state.tLocation&&this.revertLocation(),!this.state.tTransition||void 0===this.state.tTransition.speed&&void 0===this.state.tTransition.opacity||this.revertTransition())},parseMeta:function(t){for(var o in t.func){var i=t.func[o];switch(i.call){case"color":switch(i.modifier){case"set":this.setColor(i.argument);break;case"temp":this.tempColor(i.argument)}break;case"fail":switch(i.modifier){case"set":this.setFailColor(i.argument);break;case"temp":this.tempFailColor(i.argument)}break;case"location":switch(i.modifier){case"set":this.setLocation(i.argument);break;case"temp":this.tempLocation(i.argument)}break;case"transition":switch(i.modifier){case"set":this.setTransition(i.argument);break;case"temp":this.tempTransition(i.argument)}}}}},s=function(t,o){for(var i,e,s=1;s<arguments.length;++s)for(i in e=arguments[s])Object.prototype.hasOwnProperty.call(e,i)&&(t[i]=e[i]);return t}({canSuccess:!0,show:!1,color:"#73ccec",position:"fixed",failedColor:"red",thickness:"2px",transition:{speed:"0.2s",opacity:"0.6s",termination:300},autoRevert:!0,location:"top",inverse:!1,autoFinish:!0},t),n=new o({data:{RADON_LOADING_BAR:{percent:0,options:s}}});i&&(window.VueProgressBarEventBus=n,e.init(n)),o.component("vue-progress-bar",r),o.prototype.$Progress=e}}});
 
 
 /***/ }),
-/* 176 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -66715,7 +67773,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 //# sourceMappingURL=ckeditor.js.map
 
 /***/ }),
-/* 177 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports =
@@ -67698,7 +68756,7 @@ var AlertSuccess_Component = normalizeComponent(
 /******/ });
 
 /***/ }),
-/* 178 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -70470,7 +71528,7 @@ if (typeof window !== 'undefined' && window.Sweetalert2){  window.swal = window.
 "undefined"!=typeof document&&function(e,t){var n=e.createElement("style");if(e.getElementsByTagName("head")[0].appendChild(n),n.styleSheet)n.styleSheet.disabled||(n.styleSheet.cssText=t);else try{n.innerHTML=t}catch(e){n.innerText=t}}(document,"@charset \"UTF-8\";@-webkit-keyframes swal2-show{0%{-webkit-transform:scale(.7);transform:scale(.7)}45%{-webkit-transform:scale(1.05);transform:scale(1.05)}80%{-webkit-transform:scale(.95);transform:scale(.95)}100%{-webkit-transform:scale(1);transform:scale(1)}}@keyframes swal2-show{0%{-webkit-transform:scale(.7);transform:scale(.7)}45%{-webkit-transform:scale(1.05);transform:scale(1.05)}80%{-webkit-transform:scale(.95);transform:scale(.95)}100%{-webkit-transform:scale(1);transform:scale(1)}}@-webkit-keyframes swal2-hide{0%{-webkit-transform:scale(1);transform:scale(1);opacity:1}100%{-webkit-transform:scale(.5);transform:scale(.5);opacity:0}}@keyframes swal2-hide{0%{-webkit-transform:scale(1);transform:scale(1);opacity:1}100%{-webkit-transform:scale(.5);transform:scale(.5);opacity:0}}@-webkit-keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.875em;width:1.5625em}}@keyframes swal2-animate-success-line-tip{0%{top:1.1875em;left:.0625em;width:0}54%{top:1.0625em;left:.125em;width:0}70%{top:2.1875em;left:-.375em;width:3.125em}84%{top:3em;left:1.3125em;width:1.0625em}100%{top:2.8125em;left:.875em;width:1.5625em}}@-webkit-keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@keyframes swal2-animate-success-line-long{0%{top:3.375em;right:2.875em;width:0}65%{top:3.375em;right:2.875em;width:0}84%{top:2.1875em;right:0;width:3.4375em}100%{top:2.375em;right:.5em;width:2.9375em}}@-webkit-keyframes swal2-rotate-success-circular-line{0%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}5%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}12%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}100%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}}@keyframes swal2-rotate-success-circular-line{0%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}5%{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}12%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}100%{-webkit-transform:rotate(-405deg);transform:rotate(-405deg)}}@-webkit-keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;-webkit-transform:scale(.4);transform:scale(.4);opacity:0}50%{margin-top:1.625em;-webkit-transform:scale(.4);transform:scale(.4);opacity:0}80%{margin-top:-.375em;-webkit-transform:scale(1.15);transform:scale(1.15)}100%{margin-top:0;-webkit-transform:scale(1);transform:scale(1);opacity:1}}@keyframes swal2-animate-error-x-mark{0%{margin-top:1.625em;-webkit-transform:scale(.4);transform:scale(.4);opacity:0}50%{margin-top:1.625em;-webkit-transform:scale(.4);transform:scale(.4);opacity:0}80%{margin-top:-.375em;-webkit-transform:scale(1.15);transform:scale(1.15)}100%{margin-top:0;-webkit-transform:scale(1);transform:scale(1);opacity:1}}@-webkit-keyframes swal2-animate-error-icon{0%{-webkit-transform:rotateX(100deg);transform:rotateX(100deg);opacity:0}100%{-webkit-transform:rotateX(0);transform:rotateX(0);opacity:1}}@keyframes swal2-animate-error-icon{0%{-webkit-transform:rotateX(100deg);transform:rotateX(100deg);opacity:0}100%{-webkit-transform:rotateX(0);transform:rotateX(0);opacity:1}}body.swal2-toast-shown .swal2-container{background-color:transparent}body.swal2-toast-shown .swal2-container.swal2-shown{background-color:transparent}body.swal2-toast-shown .swal2-container.swal2-top{top:0;right:auto;bottom:auto;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-top-end,body.swal2-toast-shown .swal2-container.swal2-top-right{top:0;right:0;bottom:auto;left:auto}body.swal2-toast-shown .swal2-container.swal2-top-left,body.swal2-toast-shown .swal2-container.swal2-top-start{top:0;right:auto;bottom:auto;left:0}body.swal2-toast-shown .swal2-container.swal2-center-left,body.swal2-toast-shown .swal2-container.swal2-center-start{top:50%;right:auto;bottom:auto;left:0;-webkit-transform:translateY(-50%);transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-center{top:50%;right:auto;bottom:auto;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}body.swal2-toast-shown .swal2-container.swal2-center-end,body.swal2-toast-shown .swal2-container.swal2-center-right{top:50%;right:0;bottom:auto;left:auto;-webkit-transform:translateY(-50%);transform:translateY(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-left,body.swal2-toast-shown .swal2-container.swal2-bottom-start{top:auto;right:auto;bottom:0;left:0}body.swal2-toast-shown .swal2-container.swal2-bottom{top:auto;right:auto;bottom:0;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}body.swal2-toast-shown .swal2-container.swal2-bottom-end,body.swal2-toast-shown .swal2-container.swal2-bottom-right{top:auto;right:0;bottom:0;left:auto}body.swal2-toast-column .swal2-toast{flex-direction:column;align-items:stretch}body.swal2-toast-column .swal2-toast .swal2-actions{flex:1;align-self:stretch;height:2.2em;margin-top:.3125em}body.swal2-toast-column .swal2-toast .swal2-loading{justify-content:center}body.swal2-toast-column .swal2-toast .swal2-input{height:2em;margin:.3125em auto;font-size:1em}body.swal2-toast-column .swal2-toast .swal2-validation-message{font-size:1em}.swal2-popup.swal2-toast{flex-direction:row;align-items:center;width:auto;padding:.625em;overflow-y:hidden;box-shadow:0 0 .625em #d9d9d9}.swal2-popup.swal2-toast .swal2-header{flex-direction:row}.swal2-popup.swal2-toast .swal2-title{flex-grow:1;justify-content:flex-start;margin:0 .6em;font-size:1em}.swal2-popup.swal2-toast .swal2-footer{margin:.5em 0 0;padding:.5em 0 0;font-size:.8em}.swal2-popup.swal2-toast .swal2-close{position:initial;width:.8em;height:.8em;line-height:.8}.swal2-popup.swal2-toast .swal2-content{justify-content:flex-start;font-size:1em}.swal2-popup.swal2-toast .swal2-icon{width:2em;min-width:2em;height:2em;margin:0}.swal2-popup.swal2-toast .swal2-icon::before{display:flex;align-items:center;font-size:2em;font-weight:700}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-popup.swal2-toast .swal2-icon::before{font-size:.25em}}.swal2-popup.swal2-toast .swal2-icon.swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line]{top:.875em;width:1.375em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:.3125em}.swal2-popup.swal2-toast .swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:.3125em}.swal2-popup.swal2-toast .swal2-actions{height:auto;margin:0 .3125em}.swal2-popup.swal2-toast .swal2-styled{margin:0 .3125em;padding:.3125em .625em;font-size:1em}.swal2-popup.swal2-toast .swal2-styled:focus{box-shadow:0 0 0 .0625em #fff,0 0 0 .125em rgba(50,100,150,.4)}.swal2-popup.swal2-toast .swal2-success{border-color:#a5dc86}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line]{position:absolute;width:1.6em;height:3em;-webkit-transform:rotate(45deg);transform:rotate(45deg);border-radius:50%}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.8em;left:-.5em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transform-origin:2em 2em;transform-origin:2em 2em;border-radius:4em 0 0 4em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.25em;left:.9375em;-webkit-transform-origin:0 1.5em;transform-origin:0 1.5em;border-radius:0 4em 4em 0}.swal2-popup.swal2-toast .swal2-success .swal2-success-ring{width:2em;height:2em}.swal2-popup.swal2-toast .swal2-success .swal2-success-fix{top:0;left:.4375em;width:.4375em;height:2.6875em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line]{height:.3125em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=tip]{top:1.125em;left:.1875em;width:.75em}.swal2-popup.swal2-toast .swal2-success [class^=swal2-success-line][class$=long]{top:.9375em;right:.1875em;width:1.375em}.swal2-popup.swal2-toast.swal2-show{-webkit-animation:swal2-toast-show .5s;animation:swal2-toast-show .5s}.swal2-popup.swal2-toast.swal2-hide{-webkit-animation:swal2-toast-hide .1s forwards;animation:swal2-toast-hide .1s forwards}.swal2-popup.swal2-toast .swal2-animate-success-icon .swal2-success-line-tip{-webkit-animation:swal2-toast-animate-success-line-tip .75s;animation:swal2-toast-animate-success-line-tip .75s}.swal2-popup.swal2-toast .swal2-animate-success-icon .swal2-success-line-long{-webkit-animation:swal2-toast-animate-success-line-long .75s;animation:swal2-toast-animate-success-line-long .75s}@-webkit-keyframes swal2-toast-show{0%{-webkit-transform:translateY(-.625em) rotateZ(2deg);transform:translateY(-.625em) rotateZ(2deg)}33%{-webkit-transform:translateY(0) rotateZ(-2deg);transform:translateY(0) rotateZ(-2deg)}66%{-webkit-transform:translateY(.3125em) rotateZ(2deg);transform:translateY(.3125em) rotateZ(2deg)}100%{-webkit-transform:translateY(0) rotateZ(0);transform:translateY(0) rotateZ(0)}}@keyframes swal2-toast-show{0%{-webkit-transform:translateY(-.625em) rotateZ(2deg);transform:translateY(-.625em) rotateZ(2deg)}33%{-webkit-transform:translateY(0) rotateZ(-2deg);transform:translateY(0) rotateZ(-2deg)}66%{-webkit-transform:translateY(.3125em) rotateZ(2deg);transform:translateY(.3125em) rotateZ(2deg)}100%{-webkit-transform:translateY(0) rotateZ(0);transform:translateY(0) rotateZ(0)}}@-webkit-keyframes swal2-toast-hide{100%{-webkit-transform:rotateZ(1deg);transform:rotateZ(1deg);opacity:0}}@keyframes swal2-toast-hide{100%{-webkit-transform:rotateZ(1deg);transform:rotateZ(1deg);opacity:0}}@-webkit-keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@keyframes swal2-toast-animate-success-line-tip{0%{top:.5625em;left:.0625em;width:0}54%{top:.125em;left:.125em;width:0}70%{top:.625em;left:-.25em;width:1.625em}84%{top:1.0625em;left:.75em;width:.5em}100%{top:1.125em;left:.1875em;width:.75em}}@-webkit-keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}@keyframes swal2-toast-animate-success-line-long{0%{top:1.625em;right:1.375em;width:0}65%{top:1.25em;right:.9375em;width:0}84%{top:.9375em;right:0;width:1.125em}100%{top:.9375em;right:.1875em;width:1.375em}}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow:hidden}body.swal2-height-auto{height:auto!important}body.swal2-no-backdrop .swal2-shown{top:auto;right:auto;bottom:auto;left:auto;max-width:calc(100% - .625em * 2);background-color:transparent}body.swal2-no-backdrop .swal2-shown>.swal2-modal{box-shadow:0 0 10px rgba(0,0,0,.4)}body.swal2-no-backdrop .swal2-shown.swal2-top{top:0;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-top-left,body.swal2-no-backdrop .swal2-shown.swal2-top-start{top:0;left:0}body.swal2-no-backdrop .swal2-shown.swal2-top-end,body.swal2-no-backdrop .swal2-shown.swal2-top-right{top:0;right:0}body.swal2-no-backdrop .swal2-shown.swal2-center{top:50%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}body.swal2-no-backdrop .swal2-shown.swal2-center-left,body.swal2-no-backdrop .swal2-shown.swal2-center-start{top:50%;left:0;-webkit-transform:translateY(-50%);transform:translateY(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-center-end,body.swal2-no-backdrop .swal2-shown.swal2-center-right{top:50%;right:0;-webkit-transform:translateY(-50%);transform:translateY(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-bottom{bottom:0;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}body.swal2-no-backdrop .swal2-shown.swal2-bottom-left,body.swal2-no-backdrop .swal2-shown.swal2-bottom-start{bottom:0;left:0}body.swal2-no-backdrop .swal2-shown.swal2-bottom-end,body.swal2-no-backdrop .swal2-shown.swal2-bottom-right{right:0;bottom:0}.swal2-container{display:flex;position:fixed;z-index:1060;top:0;right:0;bottom:0;left:0;flex-direction:row;align-items:center;justify-content:center;padding:.625em;overflow-x:hidden;background-color:transparent;-webkit-overflow-scrolling:touch}.swal2-container.swal2-top{align-items:flex-start}.swal2-container.swal2-top-left,.swal2-container.swal2-top-start{align-items:flex-start;justify-content:flex-start}.swal2-container.swal2-top-end,.swal2-container.swal2-top-right{align-items:flex-start;justify-content:flex-end}.swal2-container.swal2-center{align-items:center}.swal2-container.swal2-center-left,.swal2-container.swal2-center-start{align-items:center;justify-content:flex-start}.swal2-container.swal2-center-end,.swal2-container.swal2-center-right{align-items:center;justify-content:flex-end}.swal2-container.swal2-bottom{align-items:flex-end}.swal2-container.swal2-bottom-left,.swal2-container.swal2-bottom-start{align-items:flex-end;justify-content:flex-start}.swal2-container.swal2-bottom-end,.swal2-container.swal2-bottom-right{align-items:flex-end;justify-content:flex-end}.swal2-container.swal2-bottom-end>:first-child,.swal2-container.swal2-bottom-left>:first-child,.swal2-container.swal2-bottom-right>:first-child,.swal2-container.swal2-bottom-start>:first-child,.swal2-container.swal2-bottom>:first-child{margin-top:auto}.swal2-container.swal2-grow-fullscreen>.swal2-modal{display:flex!important;flex:1;align-self:stretch;justify-content:center}.swal2-container.swal2-grow-row>.swal2-modal{display:flex!important;flex:1;align-content:center;justify-content:center}.swal2-container.swal2-grow-column{flex:1;flex-direction:column}.swal2-container.swal2-grow-column.swal2-bottom,.swal2-container.swal2-grow-column.swal2-center,.swal2-container.swal2-grow-column.swal2-top{align-items:center}.swal2-container.swal2-grow-column.swal2-bottom-left,.swal2-container.swal2-grow-column.swal2-bottom-start,.swal2-container.swal2-grow-column.swal2-center-left,.swal2-container.swal2-grow-column.swal2-center-start,.swal2-container.swal2-grow-column.swal2-top-left,.swal2-container.swal2-grow-column.swal2-top-start{align-items:flex-start}.swal2-container.swal2-grow-column.swal2-bottom-end,.swal2-container.swal2-grow-column.swal2-bottom-right,.swal2-container.swal2-grow-column.swal2-center-end,.swal2-container.swal2-grow-column.swal2-center-right,.swal2-container.swal2-grow-column.swal2-top-end,.swal2-container.swal2-grow-column.swal2-top-right{align-items:flex-end}.swal2-container.swal2-grow-column>.swal2-modal{display:flex!important;flex:1;align-content:center;justify-content:center}.swal2-container:not(.swal2-top):not(.swal2-top-start):not(.swal2-top-end):not(.swal2-top-left):not(.swal2-top-right):not(.swal2-center-start):not(.swal2-center-end):not(.swal2-center-left):not(.swal2-center-right):not(.swal2-bottom):not(.swal2-bottom-start):not(.swal2-bottom-end):not(.swal2-bottom-left):not(.swal2-bottom-right):not(.swal2-grow-fullscreen)>.swal2-modal{margin:auto}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-container .swal2-modal{margin:0!important}}.swal2-container.swal2-fade{transition:background-color .1s}.swal2-container.swal2-shown{background-color:rgba(0,0,0,.4)}.swal2-popup{display:none;position:relative;box-sizing:border-box;flex-direction:column;justify-content:center;width:32em;max-width:100%;padding:1.25em;border:none;border-radius:.3125em;background:#fff;font-family:inherit;font-size:1rem}.swal2-popup:focus{outline:0}.swal2-popup.swal2-loading{overflow-y:hidden}.swal2-header{display:flex;flex-direction:column;align-items:center}.swal2-title{position:relative;max-width:100%;margin:0 0 .4em;padding:0;color:#595959;font-size:1.875em;font-weight:600;text-align:center;text-transform:none;word-wrap:break-word}.swal2-actions{z-index:1;flex-wrap:wrap;align-items:center;justify-content:center;margin:1.25em auto 0}.swal2-actions:not(.swal2-loading) .swal2-styled[disabled]{opacity:.4}.swal2-actions:not(.swal2-loading) .swal2-styled:hover{background-image:linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.1))}.swal2-actions:not(.swal2-loading) .swal2-styled:active{background-image:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2))}.swal2-actions.swal2-loading .swal2-styled.swal2-confirm{box-sizing:border-box;width:2.5em;height:2.5em;margin:.46875em;padding:0;-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border:.25em solid transparent;border-radius:100%;border-color:transparent;background-color:transparent!important;color:transparent;cursor:default;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-actions.swal2-loading .swal2-styled.swal2-cancel{margin-right:30px;margin-left:30px}.swal2-actions.swal2-loading :not(.swal2-styled).swal2-confirm::after{content:\"\";display:inline-block;width:15px;height:15px;margin-left:5px;-webkit-animation:swal2-rotate-loading 1.5s linear 0s infinite normal;animation:swal2-rotate-loading 1.5s linear 0s infinite normal;border:3px solid #999;border-radius:50%;border-right-color:transparent;box-shadow:1px 1px 1px #fff}.swal2-styled{margin:.3125em;padding:.625em 2em;box-shadow:none;font-weight:500}.swal2-styled:not([disabled]){cursor:pointer}.swal2-styled.swal2-confirm{border:0;border-radius:.25em;background:initial;background-color:#3085d6;color:#fff;font-size:1.0625em}.swal2-styled.swal2-cancel{border:0;border-radius:.25em;background:initial;background-color:#aaa;color:#fff;font-size:1.0625em}.swal2-styled:focus{outline:0;box-shadow:0 0 0 2px #fff,0 0 0 4px rgba(50,100,150,.4)}.swal2-styled::-moz-focus-inner{border:0}.swal2-footer{justify-content:center;margin:1.25em 0 0;padding:1em 0 0;border-top:1px solid #eee;color:#545454;font-size:1em}.swal2-image{max-width:100%;margin:1.25em auto}.swal2-close{position:absolute;top:0;right:0;justify-content:center;width:1.2em;height:1.2em;padding:0;overflow:hidden;transition:color .1s ease-out;border:none;border-radius:0;outline:initial;background:0 0;color:#ccc;font-family:serif;font-size:2.5em;line-height:1.2;cursor:pointer}.swal2-close:hover{-webkit-transform:none;transform:none;background:0 0;color:#f27474}.swal2-content{z-index:1;justify-content:center;margin:0;padding:0;color:#545454;font-size:1.125em;font-weight:300;line-height:normal;word-wrap:break-word}#swal2-content{text-align:center}.swal2-checkbox,.swal2-file,.swal2-input,.swal2-radio,.swal2-select,.swal2-textarea{margin:1em auto}.swal2-file,.swal2-input,.swal2-textarea{box-sizing:border-box;width:100%;transition:border-color .3s,box-shadow .3s;border:1px solid #d9d9d9;border-radius:.1875em;background:inherit;box-shadow:inset 0 1px 1px rgba(0,0,0,.06);color:inherit;font-size:1.125em}.swal2-file.swal2-inputerror,.swal2-input.swal2-inputerror,.swal2-textarea.swal2-inputerror{border-color:#f27474!important;box-shadow:0 0 2px #f27474!important}.swal2-file:focus,.swal2-input:focus,.swal2-textarea:focus{border:1px solid #b4dbed;outline:0;box-shadow:0 0 3px #c4e6f5}.swal2-file::-webkit-input-placeholder,.swal2-input::-webkit-input-placeholder,.swal2-textarea::-webkit-input-placeholder{color:#ccc}.swal2-file::-moz-placeholder,.swal2-input::-moz-placeholder,.swal2-textarea::-moz-placeholder{color:#ccc}.swal2-file:-ms-input-placeholder,.swal2-input:-ms-input-placeholder,.swal2-textarea:-ms-input-placeholder{color:#ccc}.swal2-file::-ms-input-placeholder,.swal2-input::-ms-input-placeholder,.swal2-textarea::-ms-input-placeholder{color:#ccc}.swal2-file::placeholder,.swal2-input::placeholder,.swal2-textarea::placeholder{color:#ccc}.swal2-range{margin:1em auto;background:inherit}.swal2-range input{width:80%}.swal2-range output{width:20%;color:inherit;font-weight:600;text-align:center}.swal2-range input,.swal2-range output{height:2.625em;padding:0;font-size:1.125em;line-height:2.625em}.swal2-input{height:2.625em;padding:0 .75em}.swal2-input[type=number]{max-width:10em}.swal2-file{background:inherit;font-size:1.125em}.swal2-textarea{height:6.75em;padding:.75em}.swal2-select{min-width:50%;max-width:100%;padding:.375em .625em;background:inherit;color:inherit;font-size:1.125em}.swal2-checkbox,.swal2-radio{align-items:center;justify-content:center;background:inherit;color:inherit}.swal2-checkbox label,.swal2-radio label{margin:0 .6em;font-size:1.125em}.swal2-checkbox input,.swal2-radio input{margin:0 .4em}.swal2-validation-message{display:none;align-items:center;justify-content:center;padding:.625em;overflow:hidden;background:#f0f0f0;color:#666;font-size:1em;font-weight:300}.swal2-validation-message::before{content:\"!\";display:inline-block;width:1.5em;min-width:1.5em;height:1.5em;margin:0 .625em;zoom:normal;border-radius:50%;background-color:#f27474;color:#fff;font-weight:600;line-height:1.5em;text-align:center}@supports (-ms-accelerator:true){.swal2-range input{width:100%!important}.swal2-range output{display:none}}@media all and (-ms-high-contrast:none),(-ms-high-contrast:active){.swal2-range input{width:100%!important}.swal2-range output{display:none}}@-moz-document url-prefix(){.swal2-close:focus{outline:2px solid rgba(50,100,150,.4)}}.swal2-icon{position:relative;box-sizing:content-box;justify-content:center;width:5em;height:5em;margin:1.25em auto 1.875em;zoom:normal;border:.25em solid transparent;border-radius:50%;line-height:5em;cursor:default;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.swal2-icon::before{display:flex;align-items:center;height:92%;font-size:3.75em}.swal2-icon.swal2-error{border-color:#f27474}.swal2-icon.swal2-error .swal2-x-mark{position:relative;flex-grow:1}.swal2-icon.swal2-error [class^=swal2-x-mark-line]{display:block;position:absolute;top:2.3125em;width:2.9375em;height:.3125em;border-radius:.125em;background-color:#f27474}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=left]{left:1.0625em;-webkit-transform:rotate(45deg);transform:rotate(45deg)}.swal2-icon.swal2-error [class^=swal2-x-mark-line][class$=right]{right:1em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.swal2-icon.swal2-warning{border-color:#facea8;color:#f8bb86}.swal2-icon.swal2-warning::before{content:\"!\"}.swal2-icon.swal2-info{border-color:#9de0f6;color:#3fc3ee}.swal2-icon.swal2-info::before{content:\"i\"}.swal2-icon.swal2-question{border-color:#c9dae1;color:#87adbd}.swal2-icon.swal2-question::before{content:\"?\"}.swal2-icon.swal2-question.swal2-arabic-question-mark::before{content:\"؟\"}.swal2-icon.swal2-success{border-color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-circular-line]{position:absolute;width:3.75em;height:7.5em;-webkit-transform:rotate(45deg);transform:rotate(45deg);border-radius:50%}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=left]{top:-.4375em;left:-2.0635em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transform-origin:3.75em 3.75em;transform-origin:3.75em 3.75em;border-radius:7.5em 0 0 7.5em}.swal2-icon.swal2-success [class^=swal2-success-circular-line][class$=right]{top:-.6875em;left:1.875em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg);-webkit-transform-origin:0 3.75em;transform-origin:0 3.75em;border-radius:0 7.5em 7.5em 0}.swal2-icon.swal2-success .swal2-success-ring{position:absolute;z-index:2;top:-.25em;left:-.25em;box-sizing:content-box;width:100%;height:100%;border:.25em solid rgba(165,220,134,.3);border-radius:50%}.swal2-icon.swal2-success .swal2-success-fix{position:absolute;z-index:1;top:.5em;left:1.625em;width:.4375em;height:5.625em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.swal2-icon.swal2-success [class^=swal2-success-line]{display:block;position:absolute;z-index:2;height:.3125em;border-radius:.125em;background-color:#a5dc86}.swal2-icon.swal2-success [class^=swal2-success-line][class$=tip]{top:2.875em;left:.875em;width:1.5625em;-webkit-transform:rotate(45deg);transform:rotate(45deg)}.swal2-icon.swal2-success [class^=swal2-success-line][class$=long]{top:2.375em;right:.5em;width:2.9375em;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.swal2-progress-steps{align-items:center;margin:0 0 1.25em;padding:0;background:inherit;font-weight:600}.swal2-progress-steps li{display:inline-block;position:relative}.swal2-progress-steps .swal2-progress-step{z-index:20;width:2em;height:2em;border-radius:2em;background:#3085d6;color:#fff;line-height:2em;text-align:center}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step{background:#3085d6}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step{background:#add8e6;color:#fff}.swal2-progress-steps .swal2-progress-step.swal2-active-progress-step~.swal2-progress-step-line{background:#add8e6}.swal2-progress-steps .swal2-progress-step-line{z-index:10;width:2.5em;height:.4em;margin:0 -1px;background:#3085d6}[class^=swal2]{-webkit-tap-highlight-color:transparent}.swal2-show{-webkit-animation:swal2-show .3s;animation:swal2-show .3s}.swal2-show.swal2-noanimation{-webkit-animation:none;animation:none}.swal2-hide{-webkit-animation:swal2-hide .15s forwards;animation:swal2-hide .15s forwards}.swal2-hide.swal2-noanimation{-webkit-animation:none;animation:none}.swal2-rtl .swal2-close{right:auto;left:0}.swal2-animate-success-icon .swal2-success-line-tip{-webkit-animation:swal2-animate-success-line-tip .75s;animation:swal2-animate-success-line-tip .75s}.swal2-animate-success-icon .swal2-success-line-long{-webkit-animation:swal2-animate-success-line-long .75s;animation:swal2-animate-success-line-long .75s}.swal2-animate-success-icon .swal2-success-circular-line-right{-webkit-animation:swal2-rotate-success-circular-line 4.25s ease-in;animation:swal2-rotate-success-circular-line 4.25s ease-in}.swal2-animate-error-icon{-webkit-animation:swal2-animate-error-icon .5s;animation:swal2-animate-error-icon .5s}.swal2-animate-error-icon .swal2-x-mark{-webkit-animation:swal2-animate-error-x-mark .5s;animation:swal2-animate-error-x-mark .5s}@-webkit-keyframes swal2-rotate-loading{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes swal2-rotate-loading{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@media print{body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown){overflow-y:scroll!important}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown)>[aria-hidden=true]{display:none}body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) .swal2-container{position:initial!important}}");
 
 /***/ }),
-/* 179 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -70743,10 +71801,10 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 179;
+webpackContext.id = 180;
 
 /***/ }),
-/* 180 */
+/* 181 */
 /***/ (function(module, exports) {
 
 module.exports =
@@ -72115,15 +73173,15 @@ module.exports = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u20
 //# sourceMappingURL=laravel-vue-pagination.common.js.map
 
 /***/ }),
-/* 181 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(182)
+var __vue_script__ = __webpack_require__(183)
 /* template */
-var __vue_template__ = __webpack_require__(183)
+var __vue_template__ = __webpack_require__(184)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -72162,7 +73220,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 182 */
+/* 183 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -72191,7 +73249,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 183 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -72234,15 +73292,15 @@ if (false) {
 }
 
 /***/ }),
-/* 184 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(185)
+var __vue_script__ = __webpack_require__(186)
 /* template */
-var __vue_template__ = __webpack_require__(186)
+var __vue_template__ = __webpack_require__(187)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -72281,7 +73339,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 185 */
+/* 186 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -72521,7 +73579,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 186 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -73030,15 +74088,15 @@ if (false) {
 }
 
 /***/ }),
-/* 187 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(188)
+var __vue_script__ = __webpack_require__(189)
 /* template */
-var __vue_template__ = __webpack_require__(189)
+var __vue_template__ = __webpack_require__(190)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -73077,7 +74135,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 188 */
+/* 189 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73473,7 +74531,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 189 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -74133,15 +75191,15 @@ if (false) {
 }
 
 /***/ }),
-/* 190 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(191)
+var __vue_script__ = __webpack_require__(192)
 /* template */
-var __vue_template__ = __webpack_require__(192)
+var __vue_template__ = __webpack_require__(193)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -74180,7 +75238,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 191 */
+/* 192 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74207,13 +75265,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     created: function created() {
         console.log('user data from parent component:');
-        //            console.log('haha'+this.listChild) //prints out an empty string
     },
     methods: {}
 });
 
 /***/ }),
-/* 192 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -74257,15 +75314,15 @@ if (false) {
 }
 
 /***/ }),
-/* 193 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(194)
+var __vue_script__ = __webpack_require__(195)
 /* template */
-var __vue_template__ = __webpack_require__(195)
+var __vue_template__ = __webpack_require__(196)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -74304,7 +75361,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 194 */
+/* 195 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74412,7 +75469,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 195 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -74582,15 +75639,15 @@ if (false) {
 }
 
 /***/ }),
-/* 196 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(197)
+var __vue_script__ = __webpack_require__(198)
 /* template */
-var __vue_template__ = __webpack_require__(198)
+var __vue_template__ = __webpack_require__(199)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -74629,7 +75686,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 197 */
+/* 198 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74656,7 +75713,7 @@ var mylib = __webpack_require__(141);
 });
 
 /***/ }),
-/* 198 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -74697,15 +75754,15 @@ if (false) {
 }
 
 /***/ }),
-/* 199 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(200)
+var __vue_script__ = __webpack_require__(201)
 /* template */
-var __vue_template__ = __webpack_require__(201)
+var __vue_template__ = __webpack_require__(202)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -74744,7 +75801,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 200 */
+/* 201 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74762,26 +75819,45 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 var mylib = __webpack_require__(141);
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['idInputHidden', 'idInputPath', 'idShow', 'pathImage'],
+    // data(){
+    //     return{
+    //         idDefine:idInputHidden,
+    //     }
+    // },
     methods: {
         openPopup: function openPopup(url) {
             var w = 880;
             var h = 570;
             var l = Math.floor((screen.width - w) / 2);
             var t = Math.floor((screen.height - h) / 2);
-            var win = window.open(url, 'ResponsiveFilemanager', "scrollbars=1,width=" + w + ",height=" + h + ",top=" + t + ",left=" + l);
+            var win = window.open(url + this.idInputHidden, 'ResponsiveFilemanager', "scrollbars=1,width=" + w + ",height=" + h + ",top=" + t + ",left=" + l);
+        },
+        changeImageSeo: function changeImageSeo(event) {
+            Fire.$emit('UpdateImageSeo', event.target.value);
         }
     },
     mounted: function mounted() {
-        $("#pathImage").change(function () {
-            var img = $(this).val().toString();
-            console.log(img);
-            Fire.$emit('UpdateImgPrimary', img);
-        });
+        if (this.idInputHidden == 'one_image_id') {
+            $("#" + this.idInputPath).change(function () {
+                var img = $(this).val().toString();
+                Fire.$emit('UpdateImgPrimary', img);
+                Fire.$emit('UpdateImageSeo', img);
+            });
+        }
+    },
+    updated: function updated() {
+        if (this.idInputHidden == 'seo_image_id') {
+            $("#" + this.idInputPath).change(function () {
+                var img = $(this).val().toString();
+                Fire.$emit('UpdateImageSeo', img);
+            });
+        }
     }
 });
 
 /***/ }),
-/* 201 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -74791,11 +75867,12 @@ var render = function() {
   return _c("div", { staticClass: "form-group" }, [
     _c("input", {
       staticClass: "form-control",
-      attrs: { id: "pathImage", type: "text", name: "image" }
+      attrs: { id: _vm.idInputPath, type: "text", name: "image" },
+      domProps: { value: _vm.pathImage }
     }),
     _vm._v(" "),
     _c("input", {
-      attrs: { id: "one_image_id", type: "hidden", name: "image" }
+      attrs: { id: _vm.idInputHidden, type: "hidden", name: "image" }
     }),
     _vm._v(" "),
     _c(
@@ -74806,7 +75883,7 @@ var render = function() {
         on: {
           click: function($event) {
             return _vm.openPopup(
-              "js/filemanager/dialog.php?type=1&popup=1&field_id=one_image_id"
+              "js/filemanager/dialog.php?type=1&popup=1&field_id="
             )
           }
         }
@@ -74816,7 +75893,7 @@ var render = function() {
     _vm._v(" "),
     _c("img", {
       staticClass: "show-image",
-      attrs: { src: "", id: "showHinh", alt: "" }
+      attrs: { src: _vm.pathImage, id: _vm.idShow, alt: "" }
     })
   ])
 }
@@ -74831,15 +75908,15 @@ if (false) {
 }
 
 /***/ }),
-/* 202 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(203)
+var __vue_script__ = __webpack_require__(204)
 /* template */
-var __vue_template__ = __webpack_require__(204)
+var __vue_template__ = __webpack_require__(205)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -74878,11 +75955,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 203 */
+/* 204 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -74990,9 +76069,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-// var mylib = require('../../../ulti');
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
+        var _ref;
+
         return {
             stateTitle: false,
             hideSpanSlug: false,
@@ -75001,7 +76081,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             formSort: new Form({
                 listSort: ''
             }),
-            form: new Form({
+            form: new Form((_ref = {
                 id: '',
                 title: '',
                 slug: '',
@@ -75009,14 +76089,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 content: '',
                 is_active: 0,
                 img_primary: '',
-                type: 0
-            })
-
+                type: 0,
+                list_id_category: ''
+            }, _defineProperty(_ref, 'is_active', 0), _defineProperty(_ref, 'seo_title', ''), _defineProperty(_ref, 'seo_description', ''), _defineProperty(_ref, 'seo_image', ''), _ref))
         };
     },
 
 
     methods: {
+        createPost: function createPost() {
+            var _this = this;
+
+            this.$Progress.start();
+            this.form.post('api/post').then(function () {
+                toast.fire({
+                    type: 'success',
+                    title: 'Post created in successfully'
+                });
+            }).catch(function () {
+                _this.$Progress.fail();
+            });
+            this.$Progress.finish();
+        },
         changeInputSlug: function changeInputSlug(event) {
             if (!this.hideSpanSlug) {
                 this.slug = ChangeToSlug(event.target.value);
@@ -75039,7 +76133,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         showSlug: function showSlug(event) {
             if (event.target.value) {
                 this.stateTitle = true;
-                //
                 this.slug = ChangeToSlug(event.target.value);
                 this.form.slug = ChangeToSlug(event.target.value);
             } else {
@@ -75050,23 +76143,44 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     mounted: function mounted() {
-        // mylib.integratedCKEDITOR('content-post',800);
-        // CKEDITOR.instances['content-post'].on('change', function() {console.log('value changed!!:'+CKEDITOR.instances['content-post'].getData())});
+        $('input[name=is_active]').bootstrapToggle({
+            on: 'Đăng',
+            off: 'Không Đăng',
+            width: '50%'
+        });
+        $('input[name=is_active]').change(function () {
+            if ($(this).prop('checked')) Fire.$emit('UpdateActive', 1);else Fire.$emit('UpdateActive', 0);
+        });
     },
     created: function created() {
-        var _this = this;
+        var _this2 = this;
 
         Fire.$on('UpdateTextarea', function ($content) {
-            _this.form.content = $content;
+            _this2.form.content = $content;
         });
         Fire.$on('UpdateImgPrimary', function ($content) {
-            _this.form.img_primary = $content;
+            _this2.form.img_primary = $content;
+        });
+        Fire.$on('UpdateListIdCategory', function ($content) {
+            _this2.form.list_id_category = $content;
+        });
+        Fire.$on('UpdateActive', function ($content) {
+            _this2.form.is_active = $content;
+        });
+        Fire.$on('UpdateTitleSeo', function ($content) {
+            _this2.form.seo_title = $content;
+        });
+        Fire.$on('UpdateDescriptionSeo', function ($content) {
+            _this2.form.seo_description = $content;
+        });
+        Fire.$on('UpdateImageSeo', function ($content) {
+            _this2.form.seo_image = $content;
         });
     }
 });
 
 /***/ }),
-/* 204 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -75082,6 +76196,7 @@ var render = function() {
         on: {
           submit: function($event) {
             $event.preventDefault()
+            return _vm.createPost($event)
           },
           keydown: function($event) {
             return _vm.form.onKeydown($event)
@@ -75193,6 +76308,7 @@ var render = function() {
                             }
                           }
                         }),
+                        _vm._v(" "),
                         _c(
                           "a",
                           {
@@ -75225,6 +76341,7 @@ var render = function() {
                           },
                           [_vm._v("Hủy")]
                         ),
+                        _vm._v(" "),
                         _c(
                           "a",
                           {
@@ -75307,42 +76424,6 @@ var render = function() {
                     ],
                     1
                   )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "modal-footer" }, [
-                  _c(
-                    "button",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.editMode,
-                          expression: "editMode"
-                        }
-                      ],
-                      staticClass: "btn btn-success",
-                      attrs: { type: "submit" }
-                    },
-                    [_vm._v("Cập Nhật")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: !_vm.editMode,
-                          expression: "!editMode"
-                        }
-                      ],
-                      staticClass: "btn btn-primary",
-                      attrs: { type: "submit" }
-                    },
-                    [_vm._v("Tạo Mới")]
-                  )
                 ])
               ])
             ])
@@ -75352,15 +76433,27 @@ var render = function() {
             _vm._m(1),
             _vm._v(" "),
             _c("div", { staticClass: "card card-primary card-outline" }, [
+              _vm._m(2),
+              _vm._v(" "),
               _c(
                 "div",
                 { staticClass: "card-body pad table-responsive" },
-                [_c("main-image")],
+                [
+                  _c("main-image", {
+                    attrs: {
+                      idShow: "showHinh",
+                      idInputPath: "pathImage",
+                      idInputHidden: "one_image_id"
+                    }
+                  })
+                ],
                 1
               )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "card card-primary card-outline" }, [
+              _vm._m(3),
+              _vm._v(" "),
               _c(
                 "div",
                 { staticClass: "card-body pad table-responsive" },
@@ -75407,6 +76500,23 @@ var render = function() {
               ])
             ])
           ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            { staticClass: "col-md-12" },
+            [
+              _c("seos", {
+                attrs: {
+                  pathImage: _vm.form.img_primary,
+                  title: _vm.form.title,
+                  description: _vm.form.description
+                }
+              })
+            ],
+            1
+          )
         ])
       ]
     )
@@ -75440,6 +76550,22 @@ var staticRenderFns = [
         })
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [_vm._v("Hình Ảnh Đại Diện")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [_vm._v("Danh Mục Bài Viết")])
+    ])
   }
 ]
 render._withStripped = true
@@ -75452,36 +76578,15 @@ if (false) {
 }
 
 /***/ }),
-/* 205 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
 /* 206 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 207 */,
-/* 208 */,
-/* 209 */,
-/* 210 */,
-/* 211 */,
-/* 212 */,
-/* 213 */,
-/* 214 */,
-/* 215 */,
-/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(217)
+var __vue_script__ = __webpack_require__(207)
 /* template */
-var __vue_template__ = __webpack_require__(218)
+var __vue_template__ = __webpack_require__(208)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -75520,7 +76625,304 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 217 */
+/* 207 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            categories: {}
+        };
+    },
+
+    methods: {
+        loadCategories: function loadCategories() {
+            var _this = this;
+
+            axios.get('api/category-post').then(function (_ref) {
+                var data = _ref.data;
+                return _this.categories = data;
+            });
+        }
+    },
+    created: function created() {
+        this.loadCategories();
+    },
+    mounted: function mounted() {},
+    updated: function updated() {
+        $("#treeview").hummingbird();
+        $("#treeview").hummingbird("expandAll");
+        $("#treeview").on("CheckUncheckDone", function () {
+            var List = { "id": [], "dataid": [], "text": [] };
+            $("#treeview").hummingbird("getChecked", { list: List, onlyEndNodes: true });
+            Fire.$emit('UpdateListIdCategory', List.id.join(","));
+        });
+    }
+});
+
+/***/ }),
+/* 208 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "hummingbird-treeview",
+      staticStyle: { height: "230px", "overflow-y": "scroll" },
+      attrs: { id: "treeview_container" }
+    },
+    [
+      _c(
+        "ul",
+        { staticClass: "hummingbird-base", attrs: { id: "treeview" } },
+        _vm._l(_vm.categories, function(category, index) {
+          return category.level == 0
+            ? _c("loop-li-post", {
+                key: index,
+                attrs: { level: 0, category: category }
+              })
+            : _vm._e()
+        }),
+        1
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-16c3138e", module.exports)
+  }
+}
+
+/***/ }),
+/* 209 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 210 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 211 */,
+/* 212 */,
+/* 213 */,
+/* 214 */,
+/* 215 */,
+/* 216 */,
+/* 217 */,
+/* 218 */,
+/* 219 */,
+/* 220 */,
+/* 221 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(222)
+/* template */
+var __vue_template__ = __webpack_require__(223)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/backend/post/loop-li-post.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3f262b94", Component.options)
+  } else {
+    hotAPI.reload("data-v-3f262b94", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 222 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['category', 'level'],
+    data: function data() {
+        return {
+            categories: {}
+        };
+    },
+
+    created: function created() {
+        console.log('user data from parent component:');
+    },
+    methods: {}
+});
+
+/***/ }),
+/* 223 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("li", [
+    _c("i", { staticClass: "fa fa-plus" }),
+    _vm._v(" "),
+    _c("label", [
+      _vm.category.children.length == 0
+        ? _c("input", {
+            staticClass: "hummingbird-end-node",
+            attrs: {
+              id: _vm.category.id,
+              "data-id": _vm.category.id,
+              type: "checkbox"
+            }
+          })
+        : _c("input", {
+            attrs: {
+              id: _vm.category.id,
+              "data-id": _vm.category.id,
+              type: "checkbox"
+            }
+          }),
+      _vm._v("\n        " + _vm._s(_vm.category.title) + "\n    ")
+    ]),
+    _vm._v(" "),
+    _c(
+      "ul",
+      _vm._l(_vm.category.children, function(children, index) {
+        return _c("loop-li-post", {
+          key: index,
+          attrs: { category: children, level: children.level }
+        })
+      }),
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3f262b94", module.exports)
+  }
+}
+
+/***/ }),
+/* 224 */,
+/* 225 */,
+/* 226 */,
+/* 227 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(228)
+/* template */
+var __vue_template__ = __webpack_require__(229)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/backend/form/seo.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-f8918578", Component.options)
+  } else {
+    hotAPI.reload("data-v-f8918578", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 228 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75552,174 +76954,106 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['title', 'description', 'pathImage'],
+    methods: {
+        changeTitleSeo: function changeTitleSeo(event) {
+            Fire.$emit('UpdateTitleSeo', event.target.value);
+        },
+        changeDescriptionSeo: function changeDescriptionSeo(event) {
+            Fire.$emit('UpdateDescriptionSeo', event.target.value);
+        }
+    },
     mounted: function mounted() {
-        $("#treeview").hummingbird();
+        console.log('Component mounted.');
     }
 });
 
 /***/ }),
-/* 218 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    { staticClass: "col-md-12 p-0", attrs: { id: "seo-part" } },
+    [
+      _c("div", { staticClass: "card card-primary card-outline" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body pad table-responsive" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                name: "title",
+                placeholder: "Tiêu đề SEO"
+              },
+              domProps: { value: _vm.title },
+              on: { change: _vm.changeTitleSeo }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("textarea", {
+              staticClass: "form-control",
+              attrs: {
+                id: "description",
+                name: "description",
+                placeholder: "Mô tả ngắn về bài viết"
+              },
+              domProps: { value: _vm.description },
+              on: { change: _vm.changeDescriptionSeo }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c("main-image", {
+                attrs: {
+                  pathImage: _vm.pathImage,
+                  idShow: "showHinhMXH",
+                  idInputPath: "pathImageMXH",
+                  idInputHidden: "seo_image_id"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm._m(1)
+        ])
+      ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "hummingbird-treeview",
-        staticStyle: { height: "230px", "overflow-y": "scroll" },
-        attrs: { id: "treeview_container" }
-      },
-      [
-        _c(
-          "ul",
-          { staticClass: "hummingbird-base", attrs: { id: "treeview" } },
-          [
-            _c("li", [
-              _c("i", { staticClass: "fa fa-plus" }),
-              _vm._v(" "),
-              _c("label", [
-                _c("input", {
-                  attrs: {
-                    id: "xnode-0",
-                    "data-id": "custom-0",
-                    type: "checkbox"
-                  }
-                }),
-                _vm._v(" node-0\n            ")
-              ]),
-              _vm._v(" "),
-              _c("ul", [
-                _c("li", [
-                  _c("i", { staticClass: "fa fa-plus" }),
-                  _vm._v(" "),
-                  _c("label", [
-                    _c("input", {
-                      attrs: {
-                        id: "xnode-0-1",
-                        "data-id": "custom-0-1",
-                        type: "checkbox"
-                      }
-                    }),
-                    _vm._v(" node-0-1\n                    ")
-                  ]),
-                  _vm._v(" "),
-                  _c("ul", [
-                    _c("li", [
-                      _c("label", [
-                        _c("input", {
-                          staticClass: "hummingbird-end-node",
-                          attrs: {
-                            id: "xnode-0-1-1",
-                            "data-id": "custom-0-1-1",
-                            type: "checkbox"
-                          }
-                        }),
-                        _vm._v(" node-0-1-1\n                            ")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("label", [
-                        _c("input", {
-                          staticClass: "hummingbird-end-node",
-                          attrs: {
-                            id: "xnode-0-1-2",
-                            "data-id": "custom-0-1-2",
-                            type: "checkbox"
-                          }
-                        }),
-                        _vm._v(" node-0-1-2\n                            ")
-                      ])
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _c("i", { staticClass: "fa fa-plus" }),
-                  _vm._v(" "),
-                  _c("label", [
-                    _c("input", {
-                      attrs: {
-                        id: "xnode-0-2",
-                        "data-id": "custom-0-2",
-                        type: "checkbox"
-                      }
-                    }),
-                    _vm._v(" node-0-2\n                    ")
-                  ]),
-                  _vm._v(" "),
-                  _c("ul", [
-                    _c("li", [
-                      _c("label", [
-                        _c("input", {
-                          staticClass: "hummingbird-end-node",
-                          attrs: {
-                            id: "xnode-0-2-1",
-                            "data-id": "custom-0-2-1",
-                            type: "checkbox"
-                          }
-                        }),
-                        _vm._v(" node-0-2-1\n                            ")
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("li", [
-                      _c("label", [
-                        _c("input", {
-                          staticClass: "hummingbird-end-node",
-                          attrs: {
-                            id: "xnode-0-2-2",
-                            "data-id": "custom-0-2-2",
-                            type: "checkbox"
-                          }
-                        }),
-                        _vm._v(" node-0-2-2\n                            ")
-                      ])
-                    ])
-                  ])
-                ])
-              ])
-            ])
-          ]
-        )
-      ]
-    )
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [_vm._v("SEO")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-success", attrs: { type: "submit" } },
+        [_vm._v("Kiểm Tra SEO")]
+      )
+    ])
   }
 ]
 render._withStripped = true
@@ -75727,1065 +77061,9 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-16c3138e", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-f8918578", module.exports)
   }
 }
-
-/***/ }),
-/* 219 */
-/***/ (function(module, exports) {
-
-(function ($) {
-
-    //global variables
-
-    //this is needed to temporarily disable doubles, e.g. for uncheckAll
-    var uncheckAll_doubles = false;
-
-    //this is now default and not changable anymore
-    var checkDisabled = true;
-
-    //
-    var checkboxesGroups_grayed = false;
-    var checkboxesGroups = false;
-
-    //converter
-    $(document).ready(function () {
-        var all_converter = $(".hummingbird-treeview-converter");
-        //console.log(all_converter);
-        var converter_num = 1;
-        var converter_str = "";
-        $.each(all_converter, function (e) {
-            if (converter_num > 1) {
-                converter_str = converter_num.toString();
-            }
-            converter_num++;
-
-            var converter = $(this);
-            //console.log(converter)
-
-            //hide simple treeview structure
-            converter.hide();
-
-            var converter_height = converter.attr("data-height");
-            var converter_scroll = converter.attr("data-scroll");
-            if (converter_scroll == "true") {
-                converter_scroll = "scroll";
-            }
-
-            //create new treeview container
-            var tree_html = '<div id="treeview_container' + converter_str + '" class="hummingbird-treeview" style="height: ' + converter_height + '; overflow-y: ' + converter_scroll + ';">' + '<ul id="treeview' + converter_str + '" class="hummingbird-base">';
-
-            //get treeview elements
-            var tree = converter.children("li");
-
-            //loop through the elements and create tree
-            var id_num = 0;
-            var id_str = "";
-            var data_id = "";
-            var item = "";
-            var allowed = true;
-            var msg = "";
-            $.each(tree, function (i, e) {
-                var treeText = $(this).text();
-
-                //Regular Expression for all leading hyphens
-                var regExp = /^-+/;
-
-                //Get leading hyphens
-                var numHyphenMatch = treeText.match(regExp);
-                var numHyphen_nextMatch = $(this).next().text().match(regExp);
-
-                //Get count of leading hyphens
-                //Now supports using hyphens anywhere except for the first character of the label
-                var numHyphen = numHyphenMatch != null ? numHyphenMatch[0].length : 0;
-                var numHyphen_next = numHyphen_nextMatch != null ? numHyphen_nextMatch[0].length : 0;
-
-                //remove leading hyphens
-                treeText = treeText.replace(regExp, "");
-                //extract optional id and data-id
-                if ($(this).attr("id")) {
-                    id_str = $(this).attr("id");
-                } else {
-                    id_num++;
-                    id_str = "hum" + converter_str + "_" + id_num;
-                }
-                if ($(this).attr("data-id")) {
-                    data_id = $(this).attr("data-id");
-                } else {
-                    data_id = treeText;
-                }
-
-                //what is this, parent, children or sibling
-                //this is a parent
-                //open an ul
-                if (numHyphen < numHyphen_next) {
-                    //check format
-                    //down the tree it is not allowed to jump over a generation / instance
-                    //
-                    var check_diff = numHyphen_next - numHyphen;
-                    if (check_diff > 1) {
-                        msg = '<h4 style="color:red;">Error!</h4>The item after <span style="color:red;">' + treeText + ' </span>has too much hyphens, i.e. it is too far intended. Note that down the tree, the items are only allowed to be intended by one instance, i.e. one hyphen more than the item before. In contrast, up the tree arbitrarily large jumps are allowed.';
-                        //alert(msg);
-                        allowed = false;
-                    }
-                    //
-                    item = item + '<li>' + "\n";
-                    item = item + '<i class="fa fa-plus"></i>' + "\n";
-                    item = item + '<label>' + "\n";
-                    item = item + '<input id="' + id_str + '" data-id="' + data_id + '" type="checkbox" /> ' + treeText;
-                    item = item + '</label>' + "\n";
-                    item = item + '<ul>' + "\n";
-                    //console.log(item);
-                }
-                //hummingbird-end-node
-                if (numHyphen == numHyphen_next) {
-                    item = item + '<li>' + "\n";
-                    item = item + '<label>' + "\n";
-                    item = item + '<input class="hummingbird-end-node" id="' + id_str + '" data-id="' + data_id + '" type="checkbox" /> ' + treeText;
-                    item = item + '</label>' + "\n";
-                    item = item + '</li>' + "\n";
-                    //console.log(item);
-                }
-                //this is still a hummingbird-end-node
-                //after this it goes up
-                //thus close this ul
-                if (numHyphen > numHyphen_next) {
-                    item = item + '<li>' + "\n";
-                    item = item + '<label>' + "\n";
-                    item = item + '<input class="hummingbird-end-node" id="' + id_str + '" data-id="' + data_id + '" type="checkbox" /> ' + treeText;
-                    item = item + '</label>' + "\n";
-                    item = item + '</li>' + "\n";
-                    item = item + '</ul>' + "\n";
-                    //console.log(item);
-
-                    //if numHyphen - numHyphen_next > 1
-                    //it means that we have to close the group
-                    var hyphen_diff = numHyphen - numHyphen_next;
-                    for (var m = 2; m <= hyphen_diff; m++) {
-                        item = item + '</ul>' + "\n";
-                        item = item + '</li>' + "\n";
-                    }
-                    //
-                }
-            });
-            item = item + '</ul></div>';
-            //console.log(item)
-            tree_html = tree_html + item;
-            if (allowed == true) {
-                //$(".hummingbird-treeview-converter").after(tree_html);
-                converter.after(tree_html);
-            } else {
-                //$(".hummingbird-treeview-converter").after(msg);
-                converter.after(msg);
-            }
-        });
-        //end converter
-    });
-
-    $.fn.hummingbird = function (options) {
-
-        var methodName = options;
-        var args = arguments;
-        var options = $.extend({}, $.fn.hummingbird.defaults, options);
-        //initialisation
-        if (typeof methodName == "undefined") {
-            return this.each(function () {
-                //-------------------options-------------------------------------------------------//
-
-                //change symbol prefix
-                //font-awesome 4.7 uses fa
-                //font-awesome 5. uses fas
-                if (options.SymbolPrefix != "fa") {
-                    $(this).find("i").removeClass("fa").addClass(options.SymbolPrefix);
-                }
-
-                //change symbols
-                if (options.collapsedSymbol != "fa-plus") {
-                    $(this).find("i").removeClass("fa-plus").addClass(options.collapsedSymbol);
-                }
-
-                //hide checkboxes
-                if (options.checkboxes == "disabled") {
-                    $(this).find("input:checkbox").hide();
-                }
-
-                if (options.checkboxesGroups == "disabled") {
-                    checkboxesGroups = true;
-                    //find all checkboxes which have children and disable them
-                    //tri-state logic will still be applied
-                    //this_checkbox.prop("disabled",true).parent("label").css({'color':'#c8c8c8'});
-                    var groups = $(this).find('input:checkbox:not(".hummingbird-end-node")');
-                    groups.prop("disabled", true).parent("label").css({ "cursor": "not-allowed" });
-                }
-                if (options.checkboxesGroups == "disabled_grayed") {
-                    checkboxesGroups_grayed = true;
-                    //find all checkboxes which have children and disable them
-                    //tri-state logic will still be applied
-                    //this_checkbox.prop("disabled",true).parent("label").css({'color':'#c8c8c8'});
-                    var groups = $(this).find('input:checkbox:not(".hummingbird-end-node")');
-                    groups.prop("disabled", true).parent("label").css({ "cursor": "not-allowed", 'color': '#c8c8c8' });
-                }
-
-                //collapseAll
-                if (options.collapseAll === false) {
-                    $.fn.hummingbird.expandAll($(this), options.collapsedSymbol, options.expandedSymbol);
-                }
-                //-------------------options-------------------------------------------------------//
-
-
-                //initialise doubles logic
-                var doubleMode = false;
-                var allVariables = new Object();
-                if (options.checkDoubles) {
-                    $(this).find('input:checkbox.hummingbird-end-node').each(function () {
-                        if (allVariables[$(this).attr("data-id")]) {
-                            allVariables[$(this).attr("data-id")].push($(this).attr("id"));
-                            //console.log($(this))
-                        } else {
-                            allVariables[$(this).attr("data-id")] = [$(this).attr("id")];
-                        }
-                    });
-                    //console.log(JSON.stringify(allVariables));
-                }
-
-                //three state logic
-                //$.fn.hummingbird.ThreeStateLogic($(this),doubleMode,allVariables,options.checkDoubles,options.checkDisabled);
-                $.fn.hummingbird.ThreeStateLogic($(this), doubleMode, allVariables, options.checkDoubles, checkDisabled);
-
-                //expandSingle
-                $(this).on("click", 'li i.' + options.collapsedSymbol, function () {
-                    $.fn.hummingbird.expandSingle($(this), options.collapsedSymbol, options.expandedSymbol);
-                });
-                //collapseSingle
-                $(this).on("click", 'li i.' + options.expandedSymbol, function () {
-                    $.fn.hummingbird.collapseSingle($(this), options.collapsedSymbol, options.expandedSymbol);
-                });
-            });
-        }
-
-        //checkAll
-        if (methodName == "checkAll") {
-            return this.each(function () {
-                $.fn.hummingbird.checkAll($(this));
-            });
-        }
-
-        //ucheckAll
-        if (methodName == "uncheckAll") {
-            return this.each(function () {
-                $.fn.hummingbird.uncheckAll($(this));
-            });
-        }
-
-        //disableNode
-        if (methodName == "disableNode") {
-            return this.each(function () {
-                var name = args[1].name;
-                var attr = args[1].attr;
-                var state = args[1].state;
-                if (typeof args[1].disableChildren !== 'undefined') {
-                    var disableChildren = args[1].disableChildren;
-                } else {
-                    var disableChildren = true;
-                }
-                $.fn.hummingbird.disableNode($(this), attr, name, state, disableChildren);
-            });
-        }
-
-        //enableNode
-        if (methodName == "enableNode") {
-            return this.each(function () {
-                var name = args[1].name;
-                var attr = args[1].attr;
-                var state = args[1].state;
-                if (typeof args[1].enableChildren !== 'undefined') {
-                    var enableChildren = args[1].enableChildren;
-                } else {
-                    var enableChildren = true;
-                }
-                $.fn.hummingbird.enableNode($(this), attr, name, state, enableChildren);
-            });
-        }
-
-        //checkNode
-        if (methodName == "checkNode") {
-            return this.each(function () {
-                var name = args[1].name;
-                var attr = args[1].attr;
-                var expandParents = args[1].expandParents;
-                $.fn.hummingbird.checkNode($(this), attr, name);
-                if (expandParents == true) {
-                    $.fn.hummingbird.expandNode($(this), attr, name, expandParents, options.collapsedSymbol, options.expandedSymbol);
-                }
-            });
-        }
-
-        //uncheckNode
-        if (methodName == "uncheckNode") {
-            return this.each(function () {
-                var name = args[1].name;
-                var attr = args[1].attr;
-                var collapseChildren = args[1].collapseChildren;
-                $.fn.hummingbird.uncheckNode($(this), attr, name);
-                if (collapseChildren == true) {
-                    $.fn.hummingbird.collapseNode($(this), attr, name, collapseChildren, options.collapsedSymbol, options.expandedSymbol);
-                }
-            });
-        }
-
-        //setNodeColor
-        if (methodName == "setNodeColor") {
-            return this.each(function () {
-                var attr = args[1];
-                var ID = args[2];
-                var color = args[3];
-                $.fn.hummingbird.setNodeColor($(this), attr, ID, color);
-            });
-        }
-
-        //collapseAll
-        if (methodName == "collapseAll") {
-            return this.each(function () {
-                $.fn.hummingbird.collapseAll($(this), options.collapsedSymbol, options.expandedSymbol);
-            });
-        }
-
-        //expandAll
-        if (methodName == "expandAll") {
-            return this.each(function () {
-                $.fn.hummingbird.expandAll($(this), options.collapsedSymbol, options.expandedSymbol);
-            });
-        }
-
-        //expandNode
-        if (methodName == "expandNode") {
-            return this.each(function () {
-                var name = args[1].name;
-                var attr = args[1].attr;
-                var expandParents = args[1].expandParents;
-                $.fn.hummingbird.expandNode($(this), attr, name, expandParents, options.collapsedSymbol, options.expandedSymbol);
-            });
-        }
-
-        //collapseNode
-        if (methodName == "collapseNode") {
-            return this.each(function () {
-                var name = args[1].name;
-                var attr = args[1].attr;
-                var collapseChildren = args[1].collapseChildren;
-                $.fn.hummingbird.collapseNode($(this), attr, name, collapseChildren, options.collapsedSymbol, options.expandedSymbol);
-            });
-        }
-
-        //getChecked
-        if (methodName == "getChecked") {
-            return this.each(function () {
-                var list = args[1].list;
-                var onlyEndNodes = args[1].onlyEndNodes;
-                $.fn.hummingbird.getChecked($(this), list, onlyEndNodes);
-            });
-        }
-
-        //getUnchecked
-        if (methodName == "getUnchecked") {
-            return this.each(function () {
-                var list = args[1].list;
-                var onlyEndNodes = args[1].onlyEndNodes;
-                $.fn.hummingbird.getUnchecked($(this), list, onlyEndNodes);
-            });
-        }
-
-        //addNode
-        if (methodName == "addNode") {
-            return this.each(function () {
-                var pos = args[1].pos; //before or after
-                var anchor_attr = args[1].anchor_attr; //the anchor node
-                var anchor_name = args[1].anchor_name; //the anchor node
-                var text = args[1].text;
-                var the_id = args[1].the_id;
-                var data_id = args[1].data_id;
-                if (typeof args[1].end_node !== 'undefined') {
-                    var end_node = args[1].end_node;
-                } else {
-                    var end_node = true;
-                }
-                if (typeof args[1].children !== 'undefined') {
-                    var children = args[1].children;
-                } else {
-                    var children = false;
-                }
-                $.fn.hummingbird.addNode($(this), pos, anchor_attr, anchor_name, text, the_id, data_id, end_node, children, options.collapsedSymbol);
-            });
-        }
-
-        //removeNode
-        if (methodName == "removeNode") {
-            return this.each(function () {
-                var name = args[1].name;
-                var attr = args[1].attr;
-                $.fn.hummingbird.removeNode($(this), attr, name);
-            });
-        }
-
-        //filter
-        if (methodName == "filter") {
-            return this.each(function () {
-                var str = args[1].str;
-                if (typeof args[1].box_disable !== 'undefined') {
-                    var box_disable = args[1].box_disable;
-                } else {
-                    var box_disable = false;
-                }
-                if (typeof args[1].filterChildren !== 'undefined') {
-                    var filterChildren = args[1].filterChildren;
-                } else {
-                    var filterChildren = true;
-                }
-                var onlyEndNodes = args[1].onlyEndNodes;
-                $.fn.hummingbird.filter($(this), str, box_disable, onlyEndNodes, filterChildren);
-            });
-        }
-
-        //search
-        if (methodName == "search") {
-            return this.each(function () {
-                var treeview_container = args[1].treeview_container;
-                var search_input = args[1].search_input;
-                var search_output = args[1].search_output;
-                var search_button = args[1].search_button;
-                if (typeof args[1].dialog !== 'undefined') {
-                    var dialog = args[1].dialog;
-                } else {
-                    var dialog = "";
-                }
-                if (typeof args[1].enter_key_1 !== 'undefined') {
-                    var enter_key_1 = args[1].enter_key_1;
-                } else {
-                    var enter_key_1 = true;
-                }
-                if (typeof args[1].enter_key_2 !== 'undefined') {
-                    var enter_key_2 = args[1].enter_key_2;
-                } else {
-                    var enter_key_2 = true;
-                }
-                if (typeof args[1].scrollOffset !== 'undefined') {
-                    var scrollOffset = args[1].scrollOffset;
-                } else {
-                    var scrollOffset = false;
-                }
-                if (typeof args[1].onlyEndNodes !== 'undefined') {
-                    var onlyEndNodes = args[1].onlyEndNodes;
-                } else {
-                    var onlyEndNodes = false;
-                }
-                if (typeof args[1].EnterKey !== 'undefined') {
-                    var EnterKey = args[1].EnterKey;
-                } else {
-                    var EnterKey = true;
-                }
-                $.fn.hummingbird.search($(this), treeview_container, search_input, search_output, search_button, dialog, enter_key_1, enter_key_2, options.collapsedSymbol, options.expandedSymbol, scrollOffset, onlyEndNodes, EnterKey);
-            });
-        }
-    };
-
-    //options defaults
-    $.fn.hummingbird.defaults = {
-        SymbolPrefix: "fa",
-        expandedSymbol: "fa-minus",
-        collapsedSymbol: "fa-plus",
-        collapseAll: true,
-        checkboxes: "enabled",
-        checkboxesGroups: "enabled",
-        checkDoubles: false
-        //checkDisabled: false,   //this is now not changeable and true always
-    };
-
-    //global vars
-    var nodeDisabled = false;
-    var nodeEnabled = false;
-
-    //-------------------methods--------------------------------------------------------------------------//
-
-    //-------------------checkAll---------------//
-    $.fn.hummingbird.checkAll = function (tree) {
-        tree.children("li").children("label").children("input:checkbox").prop('indeterminate', false).prop('checked', false).trigger("click");
-    };
-
-    //-------------------uncheckAll---------------//
-    $.fn.hummingbird.uncheckAll = function (tree) {
-        //console.log(tree.children("li").children("label").children("input:checkbox"))
-        //find disabled groups
-        var disabled_groups = tree.find('input:checkbox:disabled:not(.hummingbird-end-node)');
-        //console.log(disabled_groups)
-        //enable these
-        disabled_groups.prop('disabled', false);
-        //disable checking for doubles temporarily
-        uncheckAll_doubles = true;
-        tree.children("li").children("label").children("input:checkbox").prop('indeterminate', false).prop('checked', true).trigger("click");
-        uncheckAll_doubles = false;
-        //disable disabled groups again
-        disabled_groups.prop('disabled', true);
-        //console.log(tree.children("li").children("label").children("input:checkbox"));
-    };
-
-    //-------------------collapseAll---------------//
-    $.fn.hummingbird.collapseAll = function (tree, collapsedSymbol, expandedSymbol) {
-        tree.find("ul").hide();
-        tree.find('.' + expandedSymbol).removeClass(expandedSymbol).addClass(collapsedSymbol);
-    };
-
-    //------------------expandAll------------------//
-    $.fn.hummingbird.expandAll = function (tree, collapsedSymbol, expandedSymbol) {
-        tree.find("ul").show();
-        tree.find('.' + collapsedSymbol).removeClass(collapsedSymbol).addClass(expandedSymbol);
-    };
-
-    //-------------------collapseSingle---------------//
-    $.fn.hummingbird.collapseSingle = function (node, collapsedSymbol, expandedSymbol) {
-        node.parent("li").children("ul").hide();
-        node.removeClass(expandedSymbol).addClass(collapsedSymbol);
-    };
-
-    //-------------------expandSingle---------------//
-    $.fn.hummingbird.expandSingle = function (node, collapsedSymbol, expandedSymbol) {
-        node.parent("li").children("ul").show();
-        node.removeClass(collapsedSymbol).addClass(expandedSymbol);
-    };
-
-    //-------------------expandNode---------------//
-    $.fn.hummingbird.expandNode = function (tree, attr, name, expandParents, collapsedSymbol, expandedSymbol) {
-        var that_node = tree.find('input[' + attr + '=' + name + ']');
-        var that_ul = that_node.parent("label").siblings("ul");
-        that_ul.show().siblings("i").removeClass(collapsedSymbol).addClass(expandedSymbol);
-        //expand all parents and change symbol
-        if (expandParents === true) {
-            that_node.parents("ul").show().siblings("i").removeClass(collapsedSymbol).addClass(expandedSymbol);
-        }
-    };
-
-    //-------------------collapseNode---------------//
-    $.fn.hummingbird.collapseNode = function (tree, attr, name, collapseChildren, collapsedSymbol, expandedSymbol) {
-        var that_node = tree.find('input[' + attr + '=' + name + ']');
-        var that_ul = that_node.parent("label").siblings("ul");
-        //collapse children and change symbol
-        if (collapseChildren === true) {
-            that_node.parent("label").parent("li").find("ul").hide().siblings("i").removeClass(expandedSymbol).addClass(collapsedSymbol);
-        } else {
-            that_ul.hide().siblings("i").removeClass(expandedSymbol).addClass(collapsedSymbol);
-        }
-    };
-
-    //-------------------checkNode---------------//
-    $.fn.hummingbird.checkNode = function (tree, attr, name) {
-        if (attr == "text") {
-            name = name.trim();
-            var that_nodes = tree.find('input:checkbox:not(:checked)').prop("indeterminate", false).parent('label:contains(' + name + ')');
-            //console.log(that_nodes)
-            that_nodes.children('input:checkbox').trigger("click");
-        } else {
-            tree.find('input:checkbox:not(:checked)[' + attr + '=' + name + ']').prop("indeterminate", false).trigger("click");
-        }
-    };
-
-    //-------------------uncheckNode---------------//
-    $.fn.hummingbird.uncheckNode = function (tree, attr, name) {
-        if (attr == "text") {
-            name = name.trim();
-            var that_nodes = tree.find('input:checkbox:checked').prop("indeterminate", false).parent('label:contains(' + name + ')');
-            //console.log(that_nodes)
-            that_nodes.children('input:checkbox').trigger("click");
-        } else {
-            tree.find('input:checkbox:checked[' + attr + '=' + name + ']').prop("indeterminate", false).trigger("click");
-        }
-    };
-
-    //-------------------removeNode---------------//
-    $.fn.hummingbird.removeNode = function (tree, attr, name) {
-        if (attr == "text") {
-            name = name.trim();
-            tree.find('input:checkbox').parent('label:contains(' + name + ')').parent('li').remove();
-        } else {
-            tree.find('input:checkbox[' + attr + '=' + name + ']').parent("label").parent('li').remove();
-        }
-    };
-
-    //-------------------addNode---------------//
-    $.fn.hummingbird.addNode = function (tree, pos, anchor_attr, anchor_name, text, the_id, data_id, end_node, children, collapsedSymbol) {
-        //find the node
-        if (anchor_attr == "text") {
-            anchor_name = anchor_name.trim();
-            var that_node = tree.find('input:checkbox').parent('label:contains(' + anchor_name + ')').parent("li");
-        } else {
-            var that_node = tree.find('input:checkbox[' + anchor_attr + '=' + anchor_name + ']').parent("label").parent("li");
-        }
-        //
-        //console.log(that_node)
-        //
-        if (end_node) {
-            var Xclass = "hummingbird-end-node";
-            if (pos == "before") {
-                that_node.before('<li><label><input class="' + Xclass + '" id="' + the_id + '" data-id="' + data_id + '" type="checkbox"> ' + text + '</label></li>');
-            }
-            if (pos == "after") {
-                that_node.after('<li><label><input class="' + Xclass + '" id="' + the_id + '" data-id="' + data_id + '" type="checkbox"> ' + text + '</label></li>');
-            }
-        } else {
-            var Xclass = "";
-            //create subtree
-            var subtree = "";
-            $.each(children, function (i, e) {
-                console.log(e);
-                subtree = subtree + '<li><label><input class="' + 'hummingbird-end-node' + '" id="' + e.id + '" data-id="' + e.data_id + '" type="checkbox"> ' + e.text + '</label></li>';
-            });
-            if (pos == "before") {
-                that_node.before('<li>' + "\n" + '<i class="fa ' + collapsedSymbol + '"></i>' + "\n" + '<label>' + "\n" + '<input class="' + Xclass + '" id="' + the_id + '" data-id="' + data_id + '" type="checkbox"> ' + text + '</label>' + "\n" + '<ul>' + "\n" + subtree + '</ul>' + "\n" + '</li>');
-            }
-            if (pos == "after") {
-                that_node.after('<li>' + "\n" + '<i class="fa ' + collapsedSymbol + '"></i>' + "\n" + '<label>' + "\n" + '<input class="' + Xclass + '" id="' + the_id + '" data-id="' + data_id + '" type="checkbox"> ' + text + '</label>' + "\n" + '<ul>' + "\n" + subtree + '</ul>' + "\n" + '</li>');
-            }
-        }
-        //
-    };
-
-    //-------------------filter--------------------//
-    $.fn.hummingbird.filter = function (tree, str, box_disable, onlyEndNodes, filterChildren) {
-        if (onlyEndNodes) {
-            var entries = tree.find('input:checkbox.hummingbird-end-node');
-        } else {
-            var entries = tree.find('input:checkbox');
-        }
-        var re = new RegExp(str, 'g');
-        $.each(entries, function () {
-            var entry = $(this).parent("label").text();
-            //if we have a match we add class to all parent li's
-            if (entry.match(re)) {
-                $(this).parents("li").addClass("noFilter");
-                if (filterChildren == false) {
-                    $(this).parent("label").parent("li").find("li").addClass("noFilter");
-                    //console.log($(this).parent("label").parent("li").find("li"))
-                }
-            }
-        });
-        //now remove or disable all, which do not match
-        if (box_disable) {
-            tree.find("li").not('.noFilter').prop("disabled", true);
-        } else {
-            tree.find("li").not('.noFilter').remove();
-        }
-    };
-
-    //-------------------disableNode---------------//
-    $.fn.hummingbird.disableNode = function (tree, attr, name, state, disableChildren) {
-        if (attr == "text") {
-            name = name.trim();
-            var that_nodes = tree.find('input:checkbox:not(:disabled)').parent('label:contains(' + name + ')');
-            //console.log(that_nodes)
-            var this_checkbox = that_nodes.children('input:checkbox');
-        } else {
-            var this_checkbox = tree.find('input:checkbox:not(:disabled)[' + attr + '=' + name + ']');
-        }
-        //for a disabled unchecked node, set node checked and then trigger a click to uncheck
-        //for a disabled checked node, set node unchecked and then trigger a click to check
-        this_checkbox.prop("checked", state === false);
-        nodeDisabled = true;
-        this_checkbox.trigger("click");
-        //disable this node and all children
-        if (disableChildren === true) {
-            this_checkbox.parent("label").parent("li").find('input:checkbox').prop("disabled", true).parent("label").parent("li").css({ 'color': '#c8c8c8', "cursor": "not-allowed" });
-        } else {
-            //console.log(this_checkbox.prop("disabled",true).parent("label").parent("li"))
-            this_checkbox.prop("disabled", true).parent("label").parent("li").css({ 'color': '#c8c8c8', "cursor": "not-allowed" });
-        }
-    };
-
-    //-------------------enableNode---------------//
-    $.fn.hummingbird.enableNode = function (tree, attr, name, state, enableChildren) {
-        var this_checkbox = {};
-        if (attr == "text") {
-            name = name.trim();
-            var that_nodes = tree.find('input:checkbox:disabled').parent('label:contains(' + name + ')');
-            //console.log(that_nodes)
-            var this_checkbox = that_nodes.children('input:checkbox');
-        } else {
-            this_checkbox = tree.find('input:checkbox:disabled[' + attr + '=' + name + ']');
-        }
-        //console.log(this_checkbox)
-        //a checkbox cannot be enabled if all children are disabled AND enableChildren is false
-        //get children checkboxes which are not disabled
-        var children_not_disabled_sum = this_checkbox.parent("label").next("ul").children("li").children("label").children("input:checkbox:not(:disabled)").length;
-        if (children_not_disabled_sum == 0 && enableChildren == false) {
-            //console.log("NOW!!!!!!!!!!!!!!!!!!!!!")
-            return;
-        }
-        //the state where a parent is enabled and all children are disabled must be forbidden
-
-        //for a disabled unchecked node, set node checked and then trigger a click to uncheck
-        //for a disabled checked node, set node unchecked and then trigger a click to check
-        this_checkbox.prop("disabled", false).parent("label").parent("li").css({ 'color': '#636b6f', "cursor": "default" });
-        //all parents enabled
-        //no action on parents
-        //this_checkbox.parent("label").parent("li").parents("li").children("label").children("input[type='checkbox']").prop("disabled",false).parents("label").parent("li").css({'color':'#636b6f',"cursor":"default"});
-        //all children enabled
-        if (enableChildren === true) {
-            this_checkbox.parent("label").parent("li").find('input:checkbox').prop("disabled", false).parent("label").parent("li").css({ 'color': '#636b6f', "cursor": "default" });
-        }
-        this_checkbox.prop("checked", state === false);
-        nodeEnabled = true;
-        this_checkbox.trigger("click");
-    };
-
-    //--------------get all checked items------------------//
-    $.fn.hummingbird.getChecked = function (tree, list, onlyEndNodes) {
-        if (onlyEndNodes == true) {
-            tree.find('input:checkbox.hummingbird-end-node:checked').each(function () {
-                list.text.push($(this).parent("label").parent("li").text());
-                list.id.push($(this).attr("id"));
-                list.dataid.push($(this).attr("data-id"));
-            });
-        } else {
-            tree.find('input:checkbox:checked').each(function () {
-                list.text.push($(this).parent("label").parent("li").text());
-                list.id.push($(this).attr("id"));
-                list.dataid.push($(this).attr("data-id"));
-            });
-        }
-    };
-    //--------------get all checked items------------------//
-
-    //--------------get all unchecked items------------------//
-    $.fn.hummingbird.getUnchecked = function (tree, list, onlyEndNodes) {
-        if (onlyEndNodes == true) {
-            tree.find('input:checkbox.hummingbird-end-node:not(:checked)').each(function () {
-                list.text.push($(this).parent("label").parent("li").text());
-                list.id.push($(this).attr("id"));
-                list.dataid.push($(this).attr("data-id"));
-            });
-        } else {
-            tree.find('input:checkbox:not(:checked)').each(function () {
-                list.text.push($(this).parent("label").parent("li").text());
-                list.id.push($(this).attr("id"));
-                list.dataid.push($(this).attr("data-id"));
-            });
-        }
-    };
-    //--------------get all unchecked items------------------//
-
-
-    //-------------------setNodeColor---------------//
-    $.fn.hummingbird.setNodeColor = function (tree, attr, ID, color) {
-        tree.find('input:checkbox[' + attr + '=' + ID + ']').parent("li").css({ 'color': color });
-    };
-
-    //--------------three-state-logic----------------------//
-    $.fn.hummingbird.ThreeStateLogic = function (tree, doubleMode, allVariables, checkDoubles, checkDisabled) {
-        tree.find('input:checkbox').on('click', function (e) {
-            //console.log($(this))
-            //check / uncheck all checkboxes below that node, if they have children weather they are disabled or not
-            //do nothing with end-node-checkboxes which are disabled
-            //thus three state logic is applyed to groups although they are disabled and if they have children
-
-            //all not disabled
-            var nodes_below_not_disabled = $(this).parent("label").parent("li").find("input:checkbox:not(:disabled)");
-
-            //all disabled without hummingbird-end-node
-            var nodes_below_disabled_groups = $(this).parent("label").parent("li").find('input:checkbox:disabled:not(.hummingbird-end-node)');
-
-            //add them together
-            var nodes_below = nodes_below_not_disabled.add(nodes_below_disabled_groups);
-
-            //merge
-            //var nodes_below = ;
-
-
-            var ids = [];
-            nodes_below.each(function () {
-                ids.push($(this).attr("id"));
-            });
-            //console.log("this");
-            //console.log($(this));
-            if ($(this).prop("checked")) {
-                var state = true;
-                var checkSiblings = "input:checkbox:not(:checked)";
-                //fire event
-                tree.trigger("nodeChecked", ids.join());
-            } else {
-                var state = false;
-                var checkSiblings = "input:checkbox:checked";
-                //fire event
-                tree.trigger("nodeUnchecked", ids.join());
-            }
-            //check / uncheck all checkboxes below that node
-            nodes_below.prop("indeterminate", false).prop("checked", state);
-            //set all parents indeterminate and unchecked
-            //if checkDisabled===false treat all disabled as if they were not there
-            //do it for all if checkDisabled===true
-            //if checkDisabled===false do it if it was not a disabled node, i.e. nodeDisabled===false
-            //if (checkDisabled || nodeDisabled === false) {
-            $(this).parent("label").parent().parents("li").children("label").children("input:checkbox").prop("indeterminate", true);
-            $(this).parent("label").parent().parents("li").children("label").children("input:checkbox").prop("checked", false);
-
-            //travel down the dom through all ul's, but not the ul directly under that, because that will be changed
-            //console.log($(this).parent("label").parent("li").find("ul"))
-            $(this).parent("label").siblings("ul").find("ul").map(function () {
-                //console.log($(this))
-
-
-                //check if children are disabled
-                //console.log($(this).parent("label").next("ul").children("li").children("label").children("input:checkbox"))
-                //var not_disabled_sum_children = $(this).parent("label").next("ul").children("li").children("label").children("input:checkbox:not(:disabled)").length;
-                var disabled_sum_children = $(this).children("li").children("label").children("input:checkbox:disabled").length;
-                //console.log("disabled_sum_children= " + disabled_sum_children)
-                //if a check has happened count how many are checked
-                //if an uncheck has happened count how many are unchecked
-                //var checked_unchecked_sum_children = $(this).parent("label").next("ul").children("li").children("label").children(checkSiblings).length;
-                //a check has happened
-                var checked_sum_children = $(this).children("li").children("label").children("input:checkbox:checked").length;
-                var unchecked_sum_children = $(this).children("li").children("label").children("input:checkbox:not(:checked)").length;
-                //console.log("checked_sum_children= " + checked_sum_children)
-                //console.log("unchecked_sum_children= " + unchecked_sum_children)
-                //if all children disabled set appropriate state of this checkbox
-                //This happens e.g. if all children of this box are disabled and checked, so this box is actually also checked and disabled, but because it is
-                //not an end-node it can be checked, unchecked. Now a parent of this has been unchecked, thus this box is also unchecked, although all children are checked
-                //thus the appropriate state has to be set again
-
-                //there are children disabled:
-                //if a check happened, all children are checked
-                //if an uncheck happened all children are unchecked
-                if (disabled_sum_children > 0) {
-                    if (checked_sum_children == 0) {
-                        $(this).siblings("label").children("input:checkbox").prop("checked", false);
-                    }
-                    if (unchecked_sum_children == 0) {
-                        $(this).siblings("label").children("input:checkbox").prop("checked", true);
-                    }
-                    if (checked_sum_children > 0 && unchecked_sum_children > 0) {
-                        $(this).siblings("label").children("input:checkbox").prop("checked", false).prop("indeterminate", true);
-                    }
-                }
-            });
-
-            //}
-            //travel up the DOM
-            //test if siblings are all checked / unchecked / indeterminate
-            //check / uncheck parents if all siblings are checked /unchecked
-            //thus, set parents checked / unchecked, if children are all checked or all unchecked with no indeterminates
-            //do this for all
-            //if (checkDisabled) {
-            $(this).parent("label").parents("li").map(function () {
-                //console.log($(this))
-                var indeterminate_sum = 0;
-                //number of checked if an uncheck happened or number of unchecked if a check happened
-                var checked_unchecked_sum = $(this).siblings().addBack().children("label").children(checkSiblings).length;
-                //check how many not disabled are here (below that parent)
-                if (checkDisabled) {
-                    var not_disabled_sum = $(this).siblings().addBack().children("label").children("input:checkbox:not(:disabled)").length;
-                    //console.log("not_disabled_sum= " + not_disabled_sum)
-                }
-
-                //console.log("checkDisabled= " + checkDisabled)
-                //checkDisabled means that disabled boxes are considered by the tri-state logic
-                //these are the not disabled siblings together with node itself
-                //var not_disabled_sum = $(this).siblings().addBack().children("label").children("input:checkbox:not(:disabled)").length;
-                //console.log("not_disabled_sum= " + not_disabled_sum);
-                $(this).siblings().addBack().children("label").children("input:checkbox").map(function () {
-                    indeterminate_sum = indeterminate_sum + $(this).prop("indeterminate");
-                });
-                //this is 0 if there are no checked, thus an uncheck has happened
-                if (indeterminate_sum + checked_unchecked_sum == 0) {
-                    $(this).parent().parent().children("label").children("input:checkbox").prop("indeterminate", false);
-                    $(this).parent().parent().children("label").children("input:checkbox").prop("checked", state);
-                }
-
-                //if this click was together width a disableNode then, there is one more disabled child, thus not_disabled_sum--
-                if (checkDisabled) {
-                    if (nodeDisabled == true) {
-                        not_disabled_sum--;
-                    }
-                    //if all children are disabled, disable also parent
-                    if (not_disabled_sum == 0) {
-                        //console.log("here")
-                        //console.log($(this).parent().parent().children("label").children("input[type='checkbox']"))
-                        //only disable parents if they are not already disabled by the checkboxesGroups options
-                        if (checkboxesGroups_grayed == false && checkboxesGroups == false) {
-                            $(this).parent().parent().children("label").children("input[type='checkbox']").prop("disabled", true).parent("label").parent("li").css({ 'color': '#c8c8c8' });
-                        }
-                    }
-                }
-            });
-            //}
-
-            //------------------check if this variable has doubles-----------------------//
-            //------------------and click doubles if needed------------------------------//
-            //------------------only if this is not a double check-----------------------//
-            if (checkDoubles == true && uncheckAll_doubles == false) {
-                if (doubleMode == false) {
-                    //do this for all checked / unchecked checkboxes below that node
-                    $(this).parent("label").parent("li").find("input.hummingbird-end-node[type='checkbox']").each(function () {
-                        //check if this node has doubles
-                        var L = allVariables[$(this).attr("data-id")].length;
-                        if (L > 1) {
-                            doubleMode = true;
-                            //if state of these checkboxes is not similar to state
-                            //-> trigger click
-                            var Zvar = allVariables[$(this).attr("data-id")];
-                            for (var i = 0; i < L; i++) {
-                                if ($("#" + Zvar[i]).prop("checked") != state) {
-                                    $("#" + Zvar[i]).trigger("click");
-                                }
-                            }
-                        }
-                    });
-                    doubleMode = false;
-                }
-            }
-            //------------------check if this variable has doubles------------------------//
-
-
-            //--------------------------disabled-----------------------------------------//
-            //check if this box has hummingbird-end-node children
-            if (checkDisabled) {
-                if ($(this).hasClass("hummingbird-end-node") === false) {
-                    //if this box has been checked, check if "not checked disabled" exist
-                    if (state === true) {
-                        var disabledCheckboxes = $(this).parent("label").parent("li").find("input:checkbox:not(:checked):disabled");
-                        var num_state_inverse_Checkboxes = $(this).parent("label").parent("li").find("input:checkbox:checked");
-                    }
-                    //if this box has been unchecked, check if "checked disabled" exist
-                    if (state === false) {
-                        var disabledCheckboxes = $(this).parent("label").parent("li").find("input:checkbox:checked:disabled");
-                        var num_state_inverse_Checkboxes = $(this).parent("label").parent("li").find("input:checkbox:not(:checked)");
-                    }
-                    //if this box has been checked and unchecked disabled exist
-                    //set this and all parents indeterminate and checked false. Setting checked false is important to make this box ready for a check
-                    //not if all checked or unchecked
-                    if (disabledCheckboxes.length > 0 && num_state_inverse_Checkboxes.length > 0) {
-                        //only if the boxes are enabled
-                        disabledCheckboxes.parent("label").parent("li").parents("li").children("label").children("input:checkbox:not(:disabled)").prop("indeterminate", true).prop("checked", state);
-                    }
-                }
-            }
-            //--------------------------disabled-----------------------------------------//
-
-
-            //set nodeDisabled and nodeEnabled back to false
-            //so that the next clicked node can be a normal node or again a disbaled node
-            nodeDisabled = false;
-            nodeEnabled = false;
-
-            //fire event
-            tree.trigger("CheckUncheckDone");
-        });
-    };
-    //--------------three-state-logic----------------------//
-
-
-    //----------------------------search--------------------------------------//
-    $.fn.hummingbird.search = function (tree, treeview_container, search_input, search_output, search_button, dialog, enter_key_1, enter_key_2, collapsedSymbol, expandedSymbol, scrollOffset, onlyEndNodes, EnterKey) {
-
-        //trigger search on enter key
-        if (EnterKey == true) {
-            $(document).keyup(function (e) {
-                if (e.which == 13) {
-                    //console.log("current_page= " + enter_key_2)
-                    if (enter_key_1 == enter_key_2) {
-                        $(dialog + " #" + search_button).trigger("click");
-                    }
-                }
-            });
-        }
-        var first_search = true;
-        var this_var_checkbox = {};
-        //hide dropdown search list
-        $(dialog + " #" + search_input).on("click", function (e) {
-            $(dialog + " #" + search_output).hide();
-        });
-
-        $(dialog + " #" + search_button).on("click", function (e) {
-            //show dropdown search list
-            $(dialog + " #" + search_output).show();
-            var search_str = $(dialog + " #" + search_input).val().trim();
-            //empty dropdown
-            $(dialog + " #" + search_output).empty();
-            //loop through treeview
-            var num_search_results = 0;
-            if (onlyEndNodes == true) {
-                var onlyEndNodes_Class = ".hummingbird-end-node";
-            } else {
-                var onlyEndNodes_Class = "";
-            }
-            tree.find('input:checkbox' + onlyEndNodes_Class).each(function () {
-                if ($(this).parent().text().toUpperCase().includes(search_str.toUpperCase())) {
-                    //add items to dropdown
-                    $(dialog + " #" + search_output).append('<li id="drop_' + $(this).attr("id") + '"><a href="#">' + $(this).parent().text() + '</a></li>');
-                    num_search_results++;
-                }
-            });
-            if (num_search_results == 0) {
-                $(dialog + " #" + search_output).append("&nbsp; &nbsp; Nothing found");
-            }
-            //click on search dropdown
-            $(dialog + " #" + search_output + " li").on("click", function (e) {
-                //no focus on the input field to trigger the search scrolling
-                e.preventDefault();
-                //hide dropdown
-                $(dialog + " #" + search_output).hide();
-                //set value of input field
-                $(dialog + " #" + search_input).val($(this).text());
-                //reset color of last selection
-                if (first_search == false) {
-                    if (this_var_checkbox.prop("disabled")) {
-                        this_var_checkbox.parent("label").parent("li").css({ 'color': '#c8c8c8', "cursor": "not-allowed" });
-                    } else {
-                        this_var_checkbox.parent("label").parent("li").css({ 'color': '#636b6f', "cursor": "default" });
-                    }
-                }
-                //before jumping to the hummingbird-end-node a collapse all is needed
-                tree.hummingbird("collapseAll");
-                //get this checkbox
-                this_var_checkbox = tree.find('input[id="' + $(this).attr("id").substring(5) + '"]');
-                //parent uls
-                var prev_uls = this_var_checkbox.parents("ul");
-                //change plus to minus
-                prev_uls.closest("li").children("i").removeClass(collapsedSymbol).addClass(expandedSymbol);
-                //highlight hummingbird-end-node
-                this_var_checkbox.parent("label").parent("li").css({ 'color': '#f0ad4e' });
-                first_search = false;
-                //expand parent uls
-                prev_uls.show();
-                //---------------------------scrolling-----------------------------------//
-                //set scroll position to zero
-                if (treeview_container == "body") {
-                    //Chrome
-                    document.body.scrollTop = 0;
-                    //Firefox
-                    document.documentElement.scrollTop = 0;
-                } else {
-                    $(dialog + " #" + treeview_container)[0].scrollTop = 0;
-                }
-                //get position and offset of element
-                var this_var_checkbox_position = this_var_checkbox.position().top;
-                this_var_checkbox_position = this_var_checkbox_position + scrollOffset;
-
-                if (treeview_container == "body") {
-                    //Chrome
-                    document.body.scrollTop += this_var_checkbox_position;
-                    //Firefox
-                    document.documentElement.scrollTop += this_var_checkbox_position;
-                } else {
-                    $(dialog + " #" + treeview_container)[0].scrollTop = this_var_checkbox_position;
-                }
-                //---------------------------scrolling-----------------------------------//
-            });
-            //if there is only one search result -> go to this without showing the dropdown
-            if (num_search_results == 1) {
-                var one_search_id = $("#" + search_output + " li").attr("id");
-                $("#" + one_search_id).trigger("click");
-            }
-        });
-    };
-    //----------------------------search--------------------------------------//
-})(jQuery);
 
 /***/ })
 /******/ ]);

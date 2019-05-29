@@ -19,7 +19,6 @@
         },
         created: function () {
             console.log('user data from parent component:')
-//            console.log('haha'+this.listChild) //prints out an empty string
         },
         methods: {}
     }

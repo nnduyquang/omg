@@ -65,12 +65,12 @@ async function handle_seo_image_responsive_file_manager(field_id){
         var obj = JSON.parse(list_url);
         $('#showHinhMXH').show();
         $('#showHinhMXH').fadeIn("fast").attr('src', obj[0]);
-        $('#pathImageMXH').val(obj[0]);
+        $('#pathImageMXH').val(obj[0]).trigger('change');
     }else{
         var path = list_url;
         $('#showHinhMXH').show();
         $('#showHinhMXH').fadeIn("fast").attr('src', path);
-        $('#pathImageMXH').val(path);
+        $('#pathImageMXH').val(path).trigger('change');
     }
 }
 async function handle_multi_image_responsive_file_manager(field_id){

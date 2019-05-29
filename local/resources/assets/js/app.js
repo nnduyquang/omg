@@ -54,12 +54,20 @@ Vue.component(
     require('./components/backend/form/main-image.vue')
 );
 Vue.component(
+    'seos',
+    require('./components/backend/form/seo.vue')
+);
+Vue.component(
     'insert-post',
     require('./components/backend/post/insert-post.vue')
 );
 Vue.component(
     'tree-view-category-post',
     require('./components/backend/post/tree-view-category-post.vue')
+);
+Vue.component(
+    'loop-li-post',
+    require('./components/backend/post/loop-li-post.vue')
 );
 
 

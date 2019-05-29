@@ -5,7 +5,7 @@
                 <h1>Thêm Mới Bài Viết</h1>
             </div>
         </div>
-        <form @submit.prevent=""
+        <form @submit.prevent="createPost"
               @keydown="form.onKeydown($event)">
             <div class="row">
 
@@ -27,11 +27,11 @@
                                                                                                       v-show="hideSpanSlug"
                                                                                                       type="text"
                                                                                                       v-model="form.slug"
-                                                                                                      class="form-control"><a
-                                        href="#" v-show="!hideSpanSlug"
-                                        @click="changeSlug">Đổi</a><a href="#" v-show="hideSpanSlug"
-                                                                      @click="cancelSlug">Hủy</a><a
-                                        href="#" v-show="hideSpanSlug" @click="applySlug">Đồng ý</a></span>
+                                                                                                      class="form-control">
+                                    <a href="#" v-show="!hideSpanSlug" @click="changeSlug">Đổi</a><a href="#"
+                                                                                                     v-show="hideSpanSlug"
+                                                                                                     @click="cancelSlug">Hủy</a>
+                                    <a href="#" v-show="hideSpanSlug" @click="applySlug">Đồng ý</a></span>
                                     <span style="color: red" v-if="form.errors.has('slug')">Đường dẫn đã tồn tại</span>
                                 </div>
                                 <div class="form-group">
@@ -43,27 +43,16 @@
                                     <has-error :form="form" field="description"></has-error>
                                 </div>
                                 <div class="form-group">
-                                    <!--<textarea id="content-post" v-model="form.content" name="description"-->
-                                    <!--placeholder=""-->
-                                    <!--class="form-control"-->
-                                    <!--:class="{ 'is-invalid': form.errors.has('description') }">-->
-                                    <!--</textarea>-->
                                     <text-area :form="form"></text-area>
                                     <has-error :form="form" field="description"></has-error>
 
                                 </div>
-
-
-                                <!--<div class="form-group">-->
-
-                                <!--</div>-->
-
                             </div>
 
-                            <div class="modal-footer">
-                                <button v-show="editMode" type="submit" class="btn btn-success">Cập Nhật</button>
-                                <button v-show="!editMode" type="submit" class="btn btn-primary">Tạo Mới</button>
-                            </div>
+                            <!--<div class="modal-footer">-->
+                                <!--<button v-show="editMode" type="submit" class="btn btn-success">Cập Nhật</button>-->
+                                <!--<button v-show="!editMode" type="submit" class="btn btn-primary">Tạo Mới</button>-->
+                            <!--</div>-->
 
                         </div>
                         <!-- /.card -->
@@ -79,25 +68,36 @@
                         <!-- /.card -->
                     </div>
                     <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">Hình Ảnh Đại Diện</h3>
+                        </div>
                         <div class="card-body pad table-responsive">
-                            <main-image></main-image>
+                            <main-image idShow="showHinh" idInputPath="pathImage" idInputHidden="one_image_id"></main-image>
                         </div>
                         <!-- /.card -->
                     </div>
                     <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">Danh Mục Bài Viết</h3>
+                        </div>
                         <div class="card-body pad table-responsive">
                             <tree-view-category-post></tree-view-category-post>
                         </div>
                         <!-- /.card -->
                     </div>
                     <div class="card card-primary card-outline">
-                        <div class="card-body pad table-responsive">
-                            <button v-show="editMode" type="submit" class="btn btn-success">Cập Nhật</button>
-                            <button v-show="!editMode" type="submit" class="btn btn-primary">Tạo Mới</button>
-                        </div>
-                        <!-- /.card -->
+                    <div class="card-body pad table-responsive">
+                    <button v-show="editMode" type="submit" class="btn btn-success">Cập Nhật</button>
+                    <button v-show="!editMode" type="submit" class="btn btn-primary">Tạo Mới</button>
+                    </div>
+                    <!-- /.card -->
                     </div>
 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <seos :pathImage="form.img_primary" :title="form.title" :description="form.description"></seos>
                 </div>
             </div>
         </form>
@@ -105,7 +105,6 @@
 </template>
 
 <script>
-    // var mylib = require('../../../ulti');
     export default {
         data() {
             return {
@@ -124,13 +123,30 @@
                     content: '',
                     is_active: 0,
                     img_primary: '',
-                    type: 0
+                    type: 0,
+                    list_id_category: '',
+                    is_active: 0,
+                    seo_title: '',
+                    seo_description: '',
+                    seo_image: ''
                 }),
-
             }
         },
 
         methods: {
+            createPost() {
+                this.$Progress.start();
+                this.form.post('api/post').then(() => {
+                    toast.fire({
+                        type: 'success',
+                        title: 'Post created in successfully'
+                    });
+
+                }).catch(() => {
+                    this.$Progress.fail();
+                });
+                this.$Progress.finish();
+            },
             changeInputSlug(event) {
                 if (!this.hideSpanSlug) {
                     this.slug = ChangeToSlug(event.target.value);
@@ -156,9 +172,9 @@
             showSlug(event) {
                 if (event.target.value) {
                     this.stateTitle = true;
-//
                     this.slug = ChangeToSlug(event.target.value);
                     this.form.slug = ChangeToSlug(event.target.value);
+
                 } else {
                     this.stateTitle = false;
                     this.slug = '';
@@ -167,8 +183,18 @@
             },
         },
         mounted() {
-            // mylib.integratedCKEDITOR('content-post',800);
-            // CKEDITOR.instances['content-post'].on('change', function() {console.log('value changed!!:'+CKEDITOR.instances['content-post'].getData())});
+            $('input[name=is_active]').bootstrapToggle({
+                on: 'Đăng',
+                off: 'Không Đăng',
+                width: '50%'
+            });
+            $('input[name=is_active]').change(function () {
+                if ($(this).prop('checked'))
+                    Fire.$emit('UpdateActive', 1);
+                else
+                    Fire.$emit('UpdateActive', 0);
+
+            })
         },
         created() {
             Fire.$on('UpdateTextarea', ($content) => {
@@ -177,6 +203,22 @@
             Fire.$on('UpdateImgPrimary', ($content) => {
                 this.form.img_primary = $content
             });
+            Fire.$on('UpdateListIdCategory', ($content) => {
+                this.form.list_id_category = $content
+            });
+            Fire.$on('UpdateActive', ($content) => {
+                this.form.is_active = $content
+            });
+            Fire.$on('UpdateTitleSeo', ($content) => {
+                this.form.seo_title = $content
+            });
+            Fire.$on('UpdateDescriptionSeo', ($content) => {
+                this.form.seo_description = $content
+            });
+            Fire.$on('UpdateImageSeo', ($content) => {
+                this.form.seo_image = $content
+            });
+
         }
     }
 </script>
