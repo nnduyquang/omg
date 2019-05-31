@@ -32,7 +32,8 @@
                                                                                                      v-show="hideSpanSlug"
                                                                                                      @click="cancelSlug">Hủy</a>
                                     <a href="#" v-show="hideSpanSlug" @click="applySlug">Đồng ý</a></span>
-                                    <span style="color: red" v-if="form.errors.has('slug')">Đường dẫn đã tồn tại</span>
+                                    <span style="color: #dc3545;font-size: 80%"
+                                          v-if="form.errors.has('slug')">{{form.errors.get('slug')}}</span>
                                 </div>
                                 <div class="form-group">
                             <textarea id="description" v-model="form.description" name="description"
@@ -50,8 +51,8 @@
                             </div>
 
                             <!--<div class="modal-footer">-->
-                                <!--<button v-show="editMode" type="submit" class="btn btn-success">Cập Nhật</button>-->
-                                <!--<button v-show="!editMode" type="submit" class="btn btn-primary">Tạo Mới</button>-->
+                            <!--<button v-show="editMode" type="submit" class="btn btn-success">Cập Nhật</button>-->
+                            <!--<button v-show="!editMode" type="submit" class="btn btn-primary">Tạo Mới</button>-->
                             <!--</div>-->
 
                         </div>
@@ -72,7 +73,8 @@
                             <h3 class="card-title">Hình Ảnh Đại Diện</h3>
                         </div>
                         <div class="card-body pad table-responsive">
-                            <main-image idShow="showHinh" idInputPath="pathImage" idInputHidden="one_image_id"></main-image>
+                            <main-image idShow="showHinh" idInputPath="pathImage"
+                                        idInputHidden="one_image_id"></main-image>
                         </div>
                         <!-- /.card -->
                     </div>
@@ -81,16 +83,19 @@
                             <h3 class="card-title">Danh Mục Bài Viết</h3>
                         </div>
                         <div class="card-body pad table-responsive">
-                            <tree-view-category-post></tree-view-category-post>
+                            <tree-view-category-post class="form-control"
+                                                     :class="{ 'is-invalid': form.errors.has('list_id_category') }"></tree-view-category-post>
+                            <has-error :form="form" field="list_id_category"></has-error>
                         </div>
+
                         <!-- /.card -->
                     </div>
                     <div class="card card-primary card-outline">
-                    <div class="card-body pad table-responsive">
-                    <button v-show="editMode" type="submit" class="btn btn-success">Cập Nhật</button>
-                    <button v-show="!editMode" type="submit" class="btn btn-primary">Tạo Mới</button>
-                    </div>
-                    <!-- /.card -->
+                        <div class="card-body pad table-responsive">
+                            <button v-show="editMode" type="submit" class="btn btn-success">Cập Nhật</button>
+                            <button v-show="!editMode" type="submit" class="btn btn-primary">Tạo Mới</button>
+                        </div>
+                        <!-- /.card -->
                     </div>
 
                 </div>
@@ -127,6 +132,7 @@
                     list_id_category: '',
                     is_active: 0,
                     seo_title: '',
+                    seo_keyword:'',
                     seo_description: '',
                     seo_image: ''
                 }),
@@ -217,6 +223,9 @@
             });
             Fire.$on('UpdateImageSeo', ($content) => {
                 this.form.seo_image = $content
+            });
+            Fire.$on('UpdateKeywordSeo', ($content) => {
+                this.form.seo_keyword = $content
             });
 
         }

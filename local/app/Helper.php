@@ -11,3 +11,6 @@ function get_base_url()
     else
         return '/';
 }
+function IsNullOrEmptyString($string){
+    return (!isset($string) || trim($string)==='');
+}

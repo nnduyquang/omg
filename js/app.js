@@ -28555,8 +28555,8 @@ module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(143);
-__webpack_require__(209);
-module.exports = __webpack_require__(210);
+__webpack_require__(215);
+module.exports = __webpack_require__(216);
 
 
 /***/ }),
@@ -28611,10 +28611,10 @@ Vue.component('loop-li', __webpack_require__(191));
 Vue.component('post-index', __webpack_require__(194));
 Vue.component('text-area', __webpack_require__(197));
 Vue.component('main-image', __webpack_require__(200));
-Vue.component('seos', __webpack_require__(227));
-Vue.component('insert-post', __webpack_require__(203));
-Vue.component('tree-view-category-post', __webpack_require__(206));
-Vue.component('loop-li-post', __webpack_require__(221));
+Vue.component('seos', __webpack_require__(203));
+Vue.component('insert-post', __webpack_require__(206));
+Vue.component('tree-view-category-post', __webpack_require__(209));
+Vue.component('loop-li-post', __webpack_require__(212));
 
 //USING
 window.GloabalUrl = globals.config.base_url;
@@ -75933,6 +75933,218 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
+Component.options.__file = "resources/assets/js/components/backend/form/seo.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-f8918578", Component.options)
+  } else {
+    hotAPI.reload("data-v-f8918578", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 204 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['title', 'description', 'pathImage'],
+    methods: {
+        changeTitleSeo: function changeTitleSeo(event) {
+            Fire.$emit('UpdateTitleSeo', event.target.value);
+        },
+        changeDescriptionSeo: function changeDescriptionSeo(event) {
+            Fire.$emit('UpdateDescriptionSeo', event.target.value);
+        },
+        changeKeywordSeo: function changeKeywordSeo(event) {
+            Fire.$emit('UpdateKeywordSeo', event.target.value);
+        }
+    },
+    mounted: function mounted() {
+        console.log('Component mounted.');
+    }
+});
+
+/***/ }),
+/* 205 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "col-md-12 p-0", attrs: { id: "seo-part" } },
+    [
+      _c("div", { staticClass: "card card-primary card-outline" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body pad table-responsive" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                name: "title",
+                placeholder:
+                  "Từ khóa cần SEO, tốt nhất là duy nhất 1 từ, nếu nhiều từ thì cách nhau dấu phẩy ','"
+              },
+              domProps: { value: _vm.title },
+              on: { change: _vm.changeKeywordSeo }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                name: "title",
+                placeholder: "Tiêu đề SEO"
+              },
+              domProps: { value: _vm.title },
+              on: { change: _vm.changeTitleSeo }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("textarea", {
+              staticClass: "form-control",
+              attrs: {
+                id: "description",
+                name: "description",
+                placeholder: "Mô tả ngắn về bài viết"
+              },
+              domProps: { value: _vm.description },
+              on: { change: _vm.changeDescriptionSeo }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c("main-image", {
+                attrs: {
+                  pathImage: _vm.pathImage,
+                  idShow: "showHinhMXH",
+                  idInputPath: "pathImageMXH",
+                  idInputHidden: "seo_image_id"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm._m(1)
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header" }, [
+      _c("h3", { staticClass: "card-title" }, [_vm._v("SEO")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-success", attrs: { type: "submit" } },
+        [_vm._v("Kiểm Tra SEO")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-f8918578", module.exports)
+  }
+}
+
+/***/ }),
+/* 206 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(207)
+/* template */
+var __vue_template__ = __webpack_require__(208)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
 Component.options.__file = "resources/assets/js/components/backend/post/insert-post.vue"
 
 /* hot reload */
@@ -75955,13 +76167,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 204 */
+/* 207 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
 //
 //
 //
@@ -76091,7 +76308,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 img_primary: '',
                 type: 0,
                 list_id_category: ''
-            }, _defineProperty(_ref, 'is_active', 0), _defineProperty(_ref, 'seo_title', ''), _defineProperty(_ref, 'seo_description', ''), _defineProperty(_ref, 'seo_image', ''), _ref))
+            }, _defineProperty(_ref, 'is_active', 0), _defineProperty(_ref, 'seo_title', ''), _defineProperty(_ref, 'seo_keyword', ''), _defineProperty(_ref, 'seo_description', ''), _defineProperty(_ref, 'seo_image', ''), _ref))
         };
     },
 
@@ -76176,11 +76393,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         Fire.$on('UpdateImageSeo', function ($content) {
             _this2.form.seo_image = $content;
         });
+        Fire.$on('UpdateKeywordSeo', function ($content) {
+            _this2.form.seo_keyword = $content;
+        });
     }
 });
 
 /***/ }),
-/* 205 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -76362,9 +76582,16 @@ var render = function() {
                     ),
                     _vm._v(" "),
                     _vm.form.errors.has("slug")
-                      ? _c("span", { staticStyle: { color: "red" } }, [
-                          _vm._v("Đường dẫn đã tồn tại")
-                        ])
+                      ? _c(
+                          "span",
+                          {
+                            staticStyle: {
+                              color: "#dc3545",
+                              "font-size": "80%"
+                            }
+                          },
+                          [_vm._v(_vm._s(_vm.form.errors.get("slug")))]
+                        )
                       : _vm._e()
                   ]),
                   _vm._v(" "),
@@ -76457,7 +76684,18 @@ var render = function() {
               _c(
                 "div",
                 { staticClass: "card-body pad table-responsive" },
-                [_c("tree-view-category-post")],
+                [
+                  _c("tree-view-category-post", {
+                    staticClass: "form-control",
+                    class: {
+                      "is-invalid": _vm.form.errors.has("list_id_category")
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("has-error", {
+                    attrs: { form: _vm.form, field: "list_id_category" }
+                  })
+                ],
                 1
               )
             ]),
@@ -76578,15 +76816,15 @@ if (false) {
 }
 
 /***/ }),
-/* 206 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(207)
+var __vue_script__ = __webpack_require__(210)
 /* template */
-var __vue_template__ = __webpack_require__(208)
+var __vue_template__ = __webpack_require__(211)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -76625,7 +76863,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 207 */
+/* 210 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76672,7 +76910,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 208 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -76714,37 +76952,15 @@ if (false) {
 }
 
 /***/ }),
-/* 209 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 210 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 211 */,
-/* 212 */,
-/* 213 */,
-/* 214 */,
-/* 215 */,
-/* 216 */,
-/* 217 */,
-/* 218 */,
-/* 219 */,
-/* 220 */,
-/* 221 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(222)
+var __vue_script__ = __webpack_require__(213)
 /* template */
-var __vue_template__ = __webpack_require__(223)
+var __vue_template__ = __webpack_require__(214)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -76783,7 +76999,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 222 */
+/* 213 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76819,7 +77035,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 223 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -76872,198 +77088,16 @@ if (false) {
 }
 
 /***/ }),
-/* 224 */,
-/* 225 */,
-/* 226 */,
-/* 227 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 215 */
+/***/ (function(module, exports) {
 
-var disposed = false
-var normalizeComponent = __webpack_require__(2)
-/* script */
-var __vue_script__ = __webpack_require__(228)
-/* template */
-var __vue_template__ = __webpack_require__(229)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/backend/form/seo.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-f8918578", Component.options)
-  } else {
-    hotAPI.reload("data-v-f8918578", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
+// removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 228 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/* 216 */
+/***/ (function(module, exports) {
 
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['title', 'description', 'pathImage'],
-    methods: {
-        changeTitleSeo: function changeTitleSeo(event) {
-            Fire.$emit('UpdateTitleSeo', event.target.value);
-        },
-        changeDescriptionSeo: function changeDescriptionSeo(event) {
-            Fire.$emit('UpdateDescriptionSeo', event.target.value);
-        }
-    },
-    mounted: function mounted() {
-        console.log('Component mounted.');
-    }
-});
-
-/***/ }),
-/* 229 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "col-md-12 p-0", attrs: { id: "seo-part" } },
-    [
-      _c("div", { staticClass: "card card-primary card-outline" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body pad table-responsive" }, [
-          _c("div", { staticClass: "form-group" }, [
-            _c("input", {
-              staticClass: "form-control",
-              attrs: {
-                type: "text",
-                name: "title",
-                placeholder: "Tiêu đề SEO"
-              },
-              domProps: { value: _vm.title },
-              on: { change: _vm.changeTitleSeo }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("textarea", {
-              staticClass: "form-control",
-              attrs: {
-                id: "description",
-                name: "description",
-                placeholder: "Mô tả ngắn về bài viết"
-              },
-              domProps: { value: _vm.description },
-              on: { change: _vm.changeDescriptionSeo }
-            })
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "form-group" },
-            [
-              _c("main-image", {
-                attrs: {
-                  pathImage: _vm.pathImage,
-                  idShow: "showHinhMXH",
-                  idInputPath: "pathImageMXH",
-                  idInputHidden: "seo_image_id"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _vm._m(1)
-        ])
-      ])
-    ]
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h3", { staticClass: "card-title" }, [_vm._v("SEO")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-success", attrs: { type: "submit" } },
-        [_vm._v("Kiểm Tra SEO")]
-      )
-    ])
-  }
-]
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-f8918578", module.exports)
-  }
-}
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

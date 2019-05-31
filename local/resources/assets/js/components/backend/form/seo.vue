@@ -6,6 +6,10 @@
             </div>
             <div class="card-body pad table-responsive">
                 <div class="form-group">
+                    <input @change="changeKeywordSeo" type="text" name="title"
+                           placeholder="Từ khóa cần SEO, tốt nhất là duy nhất 1 từ, nếu nhiều từ thì cách nhau dấu phẩy ','" class="form-control" :value="title">
+                </div>
+                <div class="form-group">
                     <input @change="changeTitleSeo" type="text" name="title"
                            placeholder="Tiêu đề SEO" class="form-control" :value="title">
                 </div>
@@ -35,6 +39,9 @@
             changeDescriptionSeo(event){
                 Fire.$emit('UpdateDescriptionSeo',event.target.value);
             },
+            changeKeywordSeo(event){
+                Fire.$emit('UpdateKeywordSeo',event.target.value);
+            }
 
         },
         mounted() {

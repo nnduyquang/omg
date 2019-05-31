@@ -37,7 +37,40 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+
+        $customMessages = [
+            'title.required' => 'Mời bạn nhập tiêu đề',
+            'slug.required'=>'Đường dẫn bị trùng hoặc bạn chưa nhập tiêu đề.',
+            'list_id_category.required'=>'Mời bạn chọn danh mục bài viết'
+        ];
+        $this->validate($request, [
+            'title' => 'required|string',
+            'slug' => 'required|string|unique:posts',
+            'list_id_category' => 'required',
+        ],$customMessages);
+        $post=new Post();
+        $parameters = $post->prepareParameters($request);
+        dd($parameters);
+        $seo = new Seo();
+        if (!$seo->isSeoParameterEmpty($request)) {
+            $seo = Seo::create($request->all());
+            $request->request->add(['seo_id' => $seo->id]);
+        } else {
+            $request->request->add(['seo_id' => null]);
+        }
+
+        $parameters = $post->prepareParameters($request);
+        $result = $this->_model->create($parameters->all());
+        if ($type == IS_POST) {
+            $attachData = array();
+            foreach ($parameters['list_category_id'] as $key => $item) {
+                $attachData[$item] = array('type' => CATEGORY_POST);
+            }
+            $result->categoryitems(CATEGORY_POST)->attach($attachData);
+            $result->products()->attach($request->input('list_id'));
+        }
+        return true;
+
     }
 
     /**
