@@ -156,9 +156,7 @@
 </template>
 
 <script>
-//    import LoopLi from "./loop-li";
     export default {
-//        components: {LoopLi},
         data() {
             return {
                 stateTitle: false,

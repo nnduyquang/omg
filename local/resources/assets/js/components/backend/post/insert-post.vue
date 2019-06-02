@@ -2,7 +2,8 @@
     <div>
         <div class="row mb-2">
             <div class="col-md-12">
-                <h1>Thêm Mới Bài Viết</h1>
+                <h1 v-show="!editMode">Thêm Mới Bài Viết</h1>
+                <h1 v-show="editMode">Cập Nhật Bài Viết</h1>
             </div>
         </div>
         <form @submit.prevent="createPost"
@@ -36,7 +37,7 @@
                                           v-if="form.errors.has('slug')">{{form.errors.get('slug')}}</span>
                                 </div>
                                 <div class="form-group">
-                            <textarea id="description" v-model="form.description" name="description"
+                            <textarea @change="changeDescription" id="description" v-model="form.description" name="description"
                                       placeholder="Mô tả ngắn về bài viết"
                                       class="form-control"
                                       :class="{ 'is-invalid': form.errors.has('description') }">
@@ -73,7 +74,7 @@
                             <h3 class="card-title">Hình Ảnh Đại Diện</h3>
                         </div>
                         <div class="card-body pad table-responsive">
-                            <main-image idShow="showHinh" idInputPath="pathImage"
+                            <main-image :pathImage="form.img_primary" idShow="showHinh" idInputPath="pathImage"
                                         idInputHidden="one_image_id"></main-image>
                         </div>
                         <!-- /.card -->
@@ -102,7 +103,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <seos :pathImage="form.img_primary" :title="form.title" :description="form.description"></seos>
+                    <seos :editMode="editMode" :pathImage="form.img_primary" :title="form.title" :description="form.description"></seos>
                 </div>
             </div>
         </form>
@@ -111,11 +112,15 @@
 
 <script>
     export default {
+        props: {
+            editMode: {
+                type: Boolean
+            }
+        },
         data() {
             return {
                 stateTitle: false,
                 hideSpanSlug: false,
-                editMode: false,
                 slug: '',
                 formSort: new Form({
                     listSort: '',
@@ -130,7 +135,6 @@
                     img_primary: '',
                     type: 0,
                     list_id_category: '',
-                    is_active: 0,
                     seo_title: '',
                     seo_keyword:'',
                     seo_description: '',
@@ -147,6 +151,14 @@
                         type: 'success',
                         title: 'Post created in successfully'
                     });
+                    this.form.reset();
+                    this.slug='';
+                    this.hideSpanSlug = false;
+                    this.stateTitle = false;
+                    $('input[name=is_active]').prop('checked', false);
+                    Fire.$emit('ResetTextarea');
+                    Fire.$emit('ResetMainImage');
+                    Fire.$emit('InsertSuccess');
 
                 }).catch(() => {
                     this.$Progress.fail();
@@ -177,6 +189,7 @@
             },
             showSlug(event) {
                 if (event.target.value) {
+                    Fire.$emit('UpdateTitleSeo',event.target.value);
                     this.stateTitle = true;
                     this.slug = ChangeToSlug(event.target.value);
                     this.form.slug = ChangeToSlug(event.target.value);
@@ -187,6 +200,9 @@
                     this.form.slug = '';
                 }
             },
+            changeDescription(event){
+                Fire.$emit('UpdateDescriptionSeo',event.target.value);
+            }
         },
         mounted() {
             $('input[name=is_active]').bootstrapToggle({
@@ -203,19 +219,20 @@
             })
         },
         created() {
-            Fire.$on('UpdateTextarea', ($content) => {
+            Fire.$on('InsertTextarea', ($content) => {
                 this.form.content = $content
             });
             Fire.$on('UpdateImgPrimary', ($content) => {
                 this.form.img_primary = $content
             });
             Fire.$on('UpdateListIdCategory', ($content) => {
-                this.form.list_id_category = $content
+                this.form.list_id_category = $content.split(",");
             });
             Fire.$on('UpdateActive', ($content) => {
                 this.form.is_active = $content
             });
             Fire.$on('UpdateTitleSeo', ($content) => {
+                console.log('Title_seo');
                 this.form.seo_title = $content
             });
             Fire.$on('UpdateDescriptionSeo', ($content) => {
@@ -226,6 +243,17 @@
             });
             Fire.$on('UpdateKeywordSeo', ($content) => {
                 this.form.seo_keyword = $content
+            });
+            Fire.$on('UpdatePost', ($content) => {
+                console.log($content);
+                this.form.fill($content);
+                if($content.is_active==1){
+                    $('input[name=is_active]').prop('checked', true).change();
+                }else{
+                    $('input[name=is_active]').prop('checked', false).change();
+                }
+                Fire.$emit('UpdateTextarea',$content.description);
+                Fire.$emit('UpdateSeo',$content.seos);
             });
 
         }

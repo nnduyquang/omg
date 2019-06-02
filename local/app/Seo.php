@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Seo extends Model
 {
     protected $fillable = [
-        'id','seo_title','seo_description','seo_keywords','seo_image','created_at','updated_at'
+        'id','seo_title','seo_description','seo_keyword','seo_image','created_at','updated_at'
     ];
     public function isSeoParameterEmpty($parameters)
     {
@@ -19,5 +19,18 @@ class Seo extends Model
             return true;
         else
             return false;
+    }
+    public function prepareParameters($parameters)
+    {
+        $pathImage=$parameters->input('seo_image');
+        if(!IsNullOrEmptyString($pathImage)){
+            if (hasHttpOrHttps($pathImage)){
+                $pathImage=substr($pathImage, strpos($pathImage, 'images'), strlen($pathImage) - 1);
+            }
+            $parameters->request->add(['seo_image' => $pathImage]);
+        }else {
+            $parameters->request->add(['seo_image' => null]);
+        }
+        return $parameters;
     }
 }

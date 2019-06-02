@@ -14,3 +14,7 @@ function get_base_url()
 function IsNullOrEmptyString($string){
     return (!isset($string) || trim($string)==='');
 }
+function hasHttpOrHttps($str){
+    $parsed = parse_url($str);
+    return (isset($parsed['scheme']))?true:false;
+}

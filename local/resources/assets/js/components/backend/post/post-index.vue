@@ -36,7 +36,7 @@
                                                                 class="fas fa-circle"></i>
                                 </td>
                                 <td>
-                                    <a href="#" @click=""><i class="fa fa-edit"></i></a>
+                                    <a href="#" @click="editPost(post)"><i class="fa fa-edit"></i></a>
                                     /
                                     <a href="#" @click=""><i style="color:red" class="fa fa-trash"></i></a>
                                 </td>
@@ -53,7 +53,7 @@
                 <!-- /.card -->
             </div>
         </div>
-        <insert-post v-show="showUpdate"></insert-post>
+        <insert-post v-show="showUpdate" :editMode="editMode"></insert-post>
     </div>
 </template>
 <script>
@@ -63,6 +63,7 @@
                 showUpdate:false,
                 showIndex:true,
                 posts: {},
+                editMode: false,
             }
         },
         methods: {
@@ -76,6 +77,13 @@
             insertPost(){
                 this.showUpdate=true;
                 this.showIndex=false;
+                this.editMode=false;
+            },
+            editPost(post){
+                this.showUpdate=true;
+                this.showIndex=false;
+                this.editMode=true;
+                Fire.$emit('UpdatePost',post);
             }
         },
         created() {
@@ -86,6 +94,11 @@
                 }).catch(() => {
 
                 })
+            });
+            Fire.$on('InsertSuccess', () => {
+                this.showUpdate=false;
+                this.showIndex=true;
+                this.loadPosts();
             });
             this.loadPosts();
         },

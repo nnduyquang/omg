@@ -12,11 +12,7 @@
     var mylib = require('../../../ulti');
     export default {
         props: ['idInputHidden', 'idInputPath', 'idShow', 'pathImage'],
-        // data(){
-        //     return{
-        //         idDefine:idInputHidden,
-        //     }
-        // },
+
         methods: {
             openPopup(url) {
                 var w = 880;
@@ -45,6 +41,11 @@
                     Fire.$emit('UpdateImageSeo', img);
                 });
             }
+        },
+        created(){
+            Fire.$on('ResetMainImage', () => {
+                CKEDITOR.instances['content-post'].setData('');
+            });
         }
 
     }

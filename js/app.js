@@ -74298,9 +74298,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-//    import LoopLi from "./loop-li";
 /* harmony default export */ __webpack_exports__["default"] = ({
-    //        components: {LoopLi},
     data: function data() {
         return {
             stateTitle: false,
@@ -75430,7 +75428,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return {
             showUpdate: false,
             showIndex: true,
-            posts: {}
+            posts: {},
+            editMode: false
         };
     },
 
@@ -75450,6 +75449,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         insertPost: function insertPost() {
             this.showUpdate = true;
             this.showIndex = false;
+            this.editMode = false;
+        },
+        editPost: function editPost(post) {
+            this.showUpdate = true;
+            this.showIndex = false;
+            this.editMode = true;
+            Fire.$emit('UpdatePost', post);
         }
     },
     created: function created() {
@@ -75460,6 +75466,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.get('api/findUser?q=' + query).then(function (data) {
                 _this2.users = data.data;
             }).catch(function () {});
+        });
+        Fire.$on('InsertSuccess', function () {
+            _this2.showUpdate = false;
+            _this2.showIndex = true;
+            _this2.loadPosts();
         });
         this.loadPosts();
     },
@@ -75562,7 +75573,11 @@ var render = function() {
                               "a",
                               {
                                 attrs: { href: "#" },
-                                on: { click: function($event) {} }
+                                on: {
+                                  click: function($event) {
+                                    return _vm.editPost(post)
+                                  }
+                                }
                               },
                               [_c("i", { staticClass: "fa fa-edit" })]
                             ),
@@ -75603,7 +75618,8 @@ var render = function() {
             value: _vm.showUpdate,
             expression: "showUpdate"
           }
-        ]
+        ],
+        attrs: { editMode: _vm.editMode }
       })
     ],
     1
@@ -75706,10 +75722,17 @@ var mylib = __webpack_require__(141);
     mounted: function mounted() {
         mylib.integratedCKEDITOR('content-post', 800);
         CKEDITOR.instances['content-post'].on('change', function () {
-            Fire.$emit('UpdateTextarea', CKEDITOR.instances['content-post'].getData());
+            Fire.$emit('InsertTextarea', CKEDITOR.instances['content-post'].getData());
         });
     },
-    created: function created() {}
+    created: function created() {
+        Fire.$on('ResetTextarea', function () {
+            CKEDITOR.instances['content-post'].setData('');
+        });
+        Fire.$on('UpdateTextarea', function ($content) {
+            CKEDITOR.instances['content-post'].setData($content);
+        });
+    }
 });
 
 /***/ }),
@@ -75820,11 +75843,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var mylib = __webpack_require__(141);
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['idInputHidden', 'idInputPath', 'idShow', 'pathImage'],
-    // data(){
-    //     return{
-    //         idDefine:idInputHidden,
-    //     }
-    // },
+
     methods: {
         openPopup: function openPopup(url) {
             var w = 880;
@@ -75853,6 +75872,11 @@ var mylib = __webpack_require__(141);
                 Fire.$emit('UpdateImageSeo', img);
             });
         }
+    },
+    created: function created() {
+        Fire.$on('ResetMainImage', function () {
+            CKEDITOR.instances['content-post'].setData('');
+        });
     }
 });
 
@@ -75991,9 +76015,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['title', 'description', 'pathImage'],
+    props: ['editMode', 'title', 'description', 'pathImage'],
+    //        props: {
+    //            title: {
+    //                type: Object
+    //            },
+    //            description: {
+    //                type: Object
+    //            },
+    //            pathImage: {
+    //                type: Object
+    //            }
+    //        },
+    data: function data() {
+        return {
+            //                title: this.title,
+            //                description:this.description,
+            //                keywordSeo:'',
+            pathImageSeo: ''
+        };
+    },
+
     methods: {
         changeTitleSeo: function changeTitleSeo(event) {
             Fire.$emit('UpdateTitleSeo', event.target.value);
@@ -76007,6 +76053,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     mounted: function mounted() {
         console.log('Component mounted.');
+    },
+    created: function created() {
+        var _this = this;
+
+        Fire.$on('UpdateSeo', function ($content) {
+            $('input[name=keywordSeo]').val($content.seo_keyword);
+            $('input[name=titleSeo]').val($content.seo_title);
+            $('textarea[name=descriptionSeo]').val($content.seo_description);
+            //                this.title = $content.seo_title;
+            //                this.description = $content.seo_description;
+            //                this.keywordSeo = $content.seo_keyword;
+            _this.pathImageSeo = $content.seo_image;
+        });
     }
 });
 
@@ -76031,11 +76090,10 @@ var render = function() {
               staticClass: "form-control",
               attrs: {
                 type: "text",
-                name: "title",
+                name: "keywordSeo",
                 placeholder:
                   "Từ khóa cần SEO, tốt nhất là duy nhất 1 từ, nếu nhiều từ thì cách nhau dấu phẩy ','"
               },
-              domProps: { value: _vm.title },
               on: { change: _vm.changeKeywordSeo }
             })
           ]),
@@ -76045,7 +76103,7 @@ var render = function() {
               staticClass: "form-control",
               attrs: {
                 type: "text",
-                name: "title",
+                name: "titleSeo",
                 placeholder: "Tiêu đề SEO"
               },
               domProps: { value: _vm.title },
@@ -76058,10 +76116,9 @@ var render = function() {
               staticClass: "form-control",
               attrs: {
                 id: "description",
-                name: "description",
+                name: "descriptionSeo",
                 placeholder: "Mô tả ngắn về bài viết"
               },
-              domProps: { value: _vm.description },
               on: { change: _vm.changeDescriptionSeo }
             })
           ]),
@@ -76071,8 +76128,33 @@ var render = function() {
             { staticClass: "form-group" },
             [
               _c("main-image", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: !_vm.editMode,
+                    expression: "!editMode"
+                  }
+                ],
                 attrs: {
                   pathImage: _vm.pathImage,
+                  idShow: "showHinhMXH",
+                  idInputPath: "pathImageMXH",
+                  idInputHidden: "seo_image_id"
+                }
+              }),
+              _vm._v(" "),
+              _c("main-image", {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.editMode,
+                    expression: "editMode"
+                  }
+                ],
+                attrs: {
+                  pathImage: _vm.pathImageSeo,
                   idShow: "showHinhMXH",
                   idInputPath: "pathImageMXH",
                   idInputHidden: "seo_image_id"
@@ -76172,8 +76254,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+//
 //
 //
 //
@@ -76287,18 +76368,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        editMode: {
+            type: Boolean
+        }
+    },
     data: function data() {
-        var _ref;
-
         return {
             stateTitle: false,
             hideSpanSlug: false,
-            editMode: false,
             slug: '',
             formSort: new Form({
                 listSort: ''
             }),
-            form: new Form((_ref = {
+            form: new Form({
                 id: '',
                 title: '',
                 slug: '',
@@ -76307,8 +76390,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 is_active: 0,
                 img_primary: '',
                 type: 0,
-                list_id_category: ''
-            }, _defineProperty(_ref, 'is_active', 0), _defineProperty(_ref, 'seo_title', ''), _defineProperty(_ref, 'seo_keyword', ''), _defineProperty(_ref, 'seo_description', ''), _defineProperty(_ref, 'seo_image', ''), _ref))
+                list_id_category: '',
+                seo_title: '',
+                seo_keyword: '',
+                seo_description: '',
+                seo_image: ''
+            })
         };
     },
 
@@ -76323,6 +76410,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                     type: 'success',
                     title: 'Post created in successfully'
                 });
+                _this.form.reset();
+                _this.slug = '';
+                _this.hideSpanSlug = false;
+                _this.stateTitle = false;
+                $('input[name=is_active]').prop('checked', false);
+                Fire.$emit('ResetTextarea');
+                Fire.$emit('ResetMainImage');
+                Fire.$emit('InsertSuccess');
             }).catch(function () {
                 _this.$Progress.fail();
             });
@@ -76349,6 +76444,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         },
         showSlug: function showSlug(event) {
             if (event.target.value) {
+                Fire.$emit('UpdateTitleSeo', event.target.value);
                 this.stateTitle = true;
                 this.slug = ChangeToSlug(event.target.value);
                 this.form.slug = ChangeToSlug(event.target.value);
@@ -76357,6 +76453,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 this.slug = '';
                 this.form.slug = '';
             }
+        },
+        changeDescription: function changeDescription(event) {
+            Fire.$emit('UpdateDescriptionSeo', event.target.value);
         }
     },
     mounted: function mounted() {
@@ -76372,19 +76471,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     created: function created() {
         var _this2 = this;
 
-        Fire.$on('UpdateTextarea', function ($content) {
+        Fire.$on('InsertTextarea', function ($content) {
             _this2.form.content = $content;
         });
         Fire.$on('UpdateImgPrimary', function ($content) {
             _this2.form.img_primary = $content;
         });
         Fire.$on('UpdateListIdCategory', function ($content) {
-            _this2.form.list_id_category = $content;
+            _this2.form.list_id_category = $content.split(",");
         });
         Fire.$on('UpdateActive', function ($content) {
             _this2.form.is_active = $content;
         });
         Fire.$on('UpdateTitleSeo', function ($content) {
+            console.log('Title_seo');
             _this2.form.seo_title = $content;
         });
         Fire.$on('UpdateDescriptionSeo', function ($content) {
@@ -76395,6 +76495,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
         Fire.$on('UpdateKeywordSeo', function ($content) {
             _this2.form.seo_keyword = $content;
+        });
+        Fire.$on('UpdatePost', function ($content) {
+            console.log($content);
+            _this2.form.fill($content);
+            if ($content.is_active == 1) {
+                $('input[name=is_active]').prop('checked', true).change();
+            } else {
+                $('input[name=is_active]').prop('checked', false).change();
+            }
+            Fire.$emit('UpdateTextarea', $content.description);
+            Fire.$emit('UpdateSeo', $content.seos);
         });
     }
 });
@@ -76408,7 +76519,39 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
+    _c("div", { staticClass: "row mb-2" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c(
+          "h1",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: !_vm.editMode,
+                expression: "!editMode"
+              }
+            ]
+          },
+          [_vm._v("Thêm Mới Bài Viết")]
+        ),
+        _vm._v(" "),
+        _c(
+          "h1",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.editMode,
+                expression: "editMode"
+              }
+            ]
+          },
+          [_vm._v("Cập Nhật Bài Viết")]
+        )
+      ])
+    ]),
     _vm._v(" "),
     _c(
       "form",
@@ -76619,6 +76762,7 @@ var render = function() {
                         },
                         domProps: { value: _vm.form.description },
                         on: {
+                          change: _vm.changeDescription,
                           input: function($event) {
                             if ($event.target.composing) {
                               return
@@ -76657,10 +76801,10 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-md-4" }, [
-            _vm._m(1),
+            _vm._m(0),
             _vm._v(" "),
             _c("div", { staticClass: "card card-primary card-outline" }, [
-              _vm._m(2),
+              _vm._m(1),
               _vm._v(" "),
               _c(
                 "div",
@@ -76668,6 +76812,7 @@ var render = function() {
                 [
                   _c("main-image", {
                     attrs: {
+                      pathImage: _vm.form.img_primary,
                       idShow: "showHinh",
                       idInputPath: "pathImage",
                       idInputHidden: "one_image_id"
@@ -76679,7 +76824,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "card card-primary card-outline" }, [
-              _vm._m(3),
+              _vm._m(2),
               _vm._v(" "),
               _c(
                 "div",
@@ -76747,6 +76892,7 @@ var render = function() {
             [
               _c("seos", {
                 attrs: {
+                  editMode: _vm.editMode,
                   pathImage: _vm.form.img_primary,
                   title: _vm.form.title,
                   description: _vm.form.description
@@ -76761,16 +76907,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row mb-2" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("h1", [_vm._v("Thêm Mới Bài Viết")])
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

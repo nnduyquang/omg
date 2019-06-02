@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Post;
+use App\Seo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -13,6 +15,11 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+
     public function index()
     {
         $post = new Post();
@@ -37,10 +44,10 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-
         $customMessages = [
             'title.required' => 'Mời bạn nhập tiêu đề',
-            'slug.required'=>'Đường dẫn bị trùng hoặc bạn chưa nhập tiêu đề.',
+            'slug.required'=>'Bạn chưa nhập tiêu đề.',
+            'slug.unique'=>'Đường dẫn đã tồn tại',
             'list_id_category.required'=>'Mời bạn chọn danh mục bài viết'
         ];
         $this->validate($request, [
@@ -50,26 +57,23 @@ class PostController extends Controller
         ],$customMessages);
         $post=new Post();
         $parameters = $post->prepareParameters($request);
-        dd($parameters);
         $seo = new Seo();
         if (!$seo->isSeoParameterEmpty($request)) {
-            $seo = Seo::create($request->all());
+            $paramSeo=$seo->prepareParameters($request);
+            $seo = Seo::create($paramSeo->all());
             $request->request->add(['seo_id' => $seo->id]);
         } else {
             $request->request->add(['seo_id' => null]);
         }
 
-        $parameters = $post->prepareParameters($request);
-        $result = $this->_model->create($parameters->all());
-        if ($type == IS_POST) {
+        $result = Post::create($parameters->all());
+        if ($parameters->type == IS_POST) {
             $attachData = array();
-            foreach ($parameters['list_category_id'] as $key => $item) {
+            foreach ($parameters['list_id_category'] as $key => $item) {
                 $attachData[$item] = array('type' => CATEGORY_POST);
             }
-            $result->categoryitems(CATEGORY_POST)->attach($attachData);
-            $result->products()->attach($request->input('list_id'));
+            $result->manaycategoryitems(CATEGORY_POST)->attach($attachData);
         }
-        return true;
 
     }
 

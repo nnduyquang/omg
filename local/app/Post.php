@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
 
 class Post extends Model
 {
@@ -23,10 +22,7 @@ class Post extends Model
     }
     public function prepareParameters($parameters)
     {
-        $parameters->request->add(['slug' => '']);
-        dd(Auth::user()->name);
-        $parameters->request->add(['user_id' => Auth::user()->id]);
-
+        $parameters->request->add(['user_id' => auth('api')->user()->id]);
         $pathImage=$parameters->input('img_primary');
         if(!IsNullOrEmptyString($pathImage)){
             if (hasHttpOrHttps($pathImage)){
@@ -39,6 +35,12 @@ class Post extends Model
         return $parameters;
     }
     public function getAllPost($post_type){
-        return $this->where('post_type', $post_type)->orderBy('created_at','DESC')->get();
+//        $datas=$this->where('post_type', $post_type)->orderBy('created_at','DESC')->with('seos')->get();
+//        foreach ($datas as $key=>$item){
+//            $listCategory=$item->manaycategoryitems(0)->withPivot('categoty_id')->get();
+//            dd($listCategory);
+//        }
+//        dd($datas);
+        return $this->where('post_type', $post_type)->orderBy('created_at','DESC')->with('seos')->get();
     }
 }

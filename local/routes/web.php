@@ -16,8 +16,10 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+//Route::get('/login', 'AuthController@checklogin');
 Route::get('/home', 'HomeController@index')->name('home');
+//Route::post('login', 'AuthController@login')->name('login');
+//Route::get('logout', 'AuthController@logout')->name('logout');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('dashboard', function () {
         return view('backend.admin.dashboard.index');
