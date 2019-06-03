@@ -6,7 +6,7 @@ use App\Post;
 use App\Seo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use App\Repositories\Backend\Post\PostRepositoryInterface;
 
 class PostController extends Controller
 {
@@ -15,15 +15,20 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
+//    public function __construct()
+//    {
+//        $this->middleware('auth:api');
+//    }
+    protected $postRepository;
+
+    public function __construct(PostRepositoryInterface $postRepository)
     {
-        $this->middleware('auth:api');
+        $this->postRepository = $postRepository;
     }
 
     public function index()
     {
-        $post = new Post();
-        return $post->getAllPost(IS_POST);
+        return $this->postRepository->index();
     }
 
     /**
@@ -55,26 +60,7 @@ class PostController extends Controller
             'slug' => 'required|string|unique:posts',
             'list_id_category' => 'required',
         ],$customMessages);
-        $post=new Post();
-        $parameters = $post->prepareParameters($request);
-        $seo = new Seo();
-        if (!$seo->isSeoParameterEmpty($request)) {
-            $paramSeo=$seo->prepareParameters($request);
-            $seo = Seo::create($paramSeo->all());
-            $request->request->add(['seo_id' => $seo->id]);
-        } else {
-            $request->request->add(['seo_id' => null]);
-        }
-
-        $result = Post::create($parameters->all());
-        if ($parameters->type == IS_POST) {
-            $attachData = array();
-            foreach ($parameters['list_id_category'] as $key => $item) {
-                $attachData[$item] = array('type' => CATEGORY_POST);
-            }
-            $result->manaycategoryitems(CATEGORY_POST)->attach($attachData);
-        }
-
+        $this->postRepository->storePost($request);
     }
 
     /**
@@ -120,31 +106,7 @@ class PostController extends Controller
             'slug' => 'required|string|unique:posts,slug,'.$post->id,
             'list_id_category' => 'required',
         ],$customMessages);
-        $parameters = $post->prepareParameters($request);
-        $result = Post::find($id)->update($parameters->all());
-        $seo = new Seo();
-        if (!$seo->isSeoParameterEmpty($request)) {
-            $paramSeo=$seo->prepareParameters($request);
-
-            if (is_null($post->seo_id)) {
-                $data = Seo::create($paramSeo->all());
-                Post::find($id)->update(['seo_id' => $data->id]);
-            } else {
-                Post::find($id)->seos->update($paramSeo->all());
-            }
-        } else {
-            if (!is_null($result->seo_id)) {
-                $result->seos->delete();
-            }
-        }
-
-        if ($parameters->type == IS_POST) {
-            $syncData = array();
-            foreach ($parameters['list_id_category'] as $key => $item) {
-                $attachData[$item] = array('type' => CATEGORY_POST);
-            }
-            Post::find($id)->manaycategoryitems(CATEGORY_POST)->sync($syncData);
-        }
+        $this->postRepository->updatePost($request, $id);
     }
 
     /**
@@ -155,6 +117,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->postRepository->deletePost($id);
     }
 }

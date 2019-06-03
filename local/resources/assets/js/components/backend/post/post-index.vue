@@ -38,7 +38,7 @@
                                 <td>
                                     <a href="#" @click="editPost(post)"><i class="fa fa-edit"></i></a>
                                     /
-                                    <a href="#" @click=""><i style="color:red" class="fa fa-trash"></i></a>
+                                    <a href="#" @click="deletePost(post.id)"><i style="color:red" class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                             </tbody>
@@ -84,7 +84,41 @@
                 this.showIndex=false;
                 this.editMode=true;
                 Fire.$emit('UpdatePost',post);
-            }
+            },
+            deletePost(id){
+                Fire.$emit('DeletePost',id);
+//                swal.fire({
+//                    title: 'Bạn Có Chắc Muốn Xóa Bài Viết Này Không?',
+//                    text: "Bạn sẽ mất bài viết này vĩnh viễn",
+//                    type: 'warning',
+//                    showCancelButton: true,
+//                    confirmButtonColor: '#3085d6',
+//                    cancelButtonColor: '#d33',
+//                    confirmButtonText: 'Vâng, Hãy xóa nó!'
+//                }).then((result) => {
+//                    console.log(result);
+//                    if (result.value) {
+//                        this.$Progress.start();
+//                        this.delete('api/post/' + id).then(() => {
+//                            swal.fire(
+//                                'Đã xóa!',
+//                                'Bài viết đã xóa.',
+//                                'success'
+//                            )
+//                            this.loadPosts();
+////                            Fire.$emit('ReloadTable');
+//                        }).catch(() => {
+//                            this.$Progress.fail();
+//                            swal.fire(
+//                                'Xóa thất bại!',
+//                                'Đã xảy ra sai xót gì đó.',
+//                                'warning'
+//                            )
+//                        });
+//                        this.$Progress.finish();
+//                    }
+//                })
+            },
         },
         created() {
             Fire.$on('searching', () => {

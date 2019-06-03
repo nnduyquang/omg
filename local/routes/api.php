@@ -16,12 +16,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Route::group(['middleware' => 'auth:api'], function() {
+Route::group(['middleware' => 'auth:api'], function() {
     Route::apiResources([
         'user' => 'API\UserController',
         'category-post' => 'API\CategoryPostController',
         'post' => 'API\PostController'
     ]);
-//});
+});
 Route::post('category-post/sort','API\CategoryPostController@sort');
 

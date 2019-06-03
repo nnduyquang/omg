@@ -285,6 +285,38 @@
                 // Fire.$emit('UpdateSeo',$content.seos);
 
             });
+            Fire.$on('DeletePost', ($content) => {
+                swal.fire({
+                    title: 'Bạn Có Chắc Muốn Xóa Bài Viết Này Không?',
+                    text: "Bạn sẽ mất bài viết này vĩnh viễn",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Vâng, Hãy xóa nó!'
+                }).then((result) => {
+                    if (result.value) {
+                        this.$Progress.start();
+                        this.form.delete('api/post/' + $content).then(() => {
+                            swal.fire(
+                                'Đã xóa!',
+                                'Bài viết đã xóa.',
+                                'success'
+                            )
+                            Fire.$emit('InsertSuccess');
+//                            Fire.$emit('ReloadTable');
+                        }).catch(() => {
+                            this.$Progress.fail();
+                            swal.fire(
+                                'Xóa thất bại!',
+                                'Đã xảy ra sai xót gì đó.',
+                                'warning'
+                            )
+                        });
+                        this.$Progress.finish();
+                    }
+                })
+            })
 
         }
     }

@@ -75456,6 +75456,40 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.showIndex = false;
             this.editMode = true;
             Fire.$emit('UpdatePost', post);
+        },
+        deletePost: function deletePost(id) {
+            Fire.$emit('DeletePost', id);
+            //                swal.fire({
+            //                    title: 'Bạn Có Chắc Muốn Xóa Bài Viết Này Không?',
+            //                    text: "Bạn sẽ mất bài viết này vĩnh viễn",
+            //                    type: 'warning',
+            //                    showCancelButton: true,
+            //                    confirmButtonColor: '#3085d6',
+            //                    cancelButtonColor: '#d33',
+            //                    confirmButtonText: 'Vâng, Hãy xóa nó!'
+            //                }).then((result) => {
+            //                    console.log(result);
+            //                    if (result.value) {
+            //                        this.$Progress.start();
+            //                        this.delete('api/post/' + id).then(() => {
+            //                            swal.fire(
+            //                                'Đã xóa!',
+            //                                'Bài viết đã xóa.',
+            //                                'success'
+            //                            )
+            //                            this.loadPosts();
+            ////                            Fire.$emit('ReloadTable');
+            //                        }).catch(() => {
+            //                            this.$Progress.fail();
+            //                            swal.fire(
+            //                                'Xóa thất bại!',
+            //                                'Đã xảy ra sai xót gì đó.',
+            //                                'warning'
+            //                            )
+            //                        });
+            //                        this.$Progress.finish();
+            //                    }
+            //                })
         }
     },
     created: function created() {
@@ -75588,7 +75622,11 @@ var render = function() {
                               "a",
                               {
                                 attrs: { href: "#" },
-                                on: { click: function($event) {} }
+                                on: {
+                                  click: function($event) {
+                                    return _vm.deletePost(post.id)
+                                  }
+                                }
                               },
                               [
                                 _c("i", {
@@ -76538,6 +76576,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             Fire.$emit('UpdateTextarea', $content.content);
             Fire.$emit('UpdateTreeView', _this3.form.list_id_category);
             // Fire.$emit('UpdateSeo',$content.seos);
+        });
+        Fire.$on('DeletePost', function ($content) {
+            swal.fire({
+                title: 'Bạn Có Chắc Muốn Xóa Bài Viết Này Không?',
+                text: "Bạn sẽ mất bài viết này vĩnh viễn",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Vâng, Hãy xóa nó!'
+            }).then(function (result) {
+                if (result.value) {
+                    _this3.$Progress.start();
+                    _this3.form.delete('api/post/' + $content).then(function () {
+                        swal.fire('Đã xóa!', 'Bài viết đã xóa.', 'success');
+                        Fire.$emit('InsertSuccess');
+                        //                            Fire.$emit('ReloadTable');
+                    }).catch(function () {
+                        _this3.$Progress.fail();
+                        swal.fire('Xóa thất bại!', 'Đã xảy ra sai xót gì đó.', 'warning');
+                    });
+                    _this3.$Progress.finish();
+                }
+            });
         });
     }
 });

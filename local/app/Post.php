@@ -42,4 +42,15 @@ class Post extends Model
         }
         return $datas;
     }
+    protected static function boot() {
+        parent::boot();
+
+        static::deleting(function($post) { // before delete() method call this
+            if (!is_null($post->seo_id)){
+                $post->seos->delete();
+            }
+            $post->manaycategoryitems($post->post_type)->detach();
+        });
+
+    }
 }
