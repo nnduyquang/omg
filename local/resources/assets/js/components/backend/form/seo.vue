@@ -6,22 +6,22 @@
             </div>
             <div class="card-body pad table-responsive">
                 <div class="form-group">
-                    <input  @change="changeKeywordSeo" type="text" name="keywordSeo"
+                    <input v-model="form.seo_keyword"  @change="changeKeywordSeo" type="text" name="keywordSeo"
                            placeholder="Từ khóa cần SEO, tốt nhất là duy nhất 1 từ, nếu nhiều từ thì cách nhau dấu phẩy ','"
                            class="form-control">
                 </div>
                 <div class="form-group">
-                    <input @change="changeTitleSeo" type="text" name="titleSeo"
-                           placeholder="Tiêu đề SEO" class="form-control" :value="title">
+                    <input v-model="form.seo_title" @change="changeTitleSeo" type="text" name="titleSeo"
+                           placeholder="Tiêu đề SEO" class="form-control">
                 </div>
                 <div class="form-group">
-                            <textarea @change="changeDescriptionSeo" id="description" name="descriptionSeo" placeholder="Mô tả ngắn về bài viết"
+                            <textarea v-model="form.seo_description" @change="changeDescriptionSeo" id="description" name="descriptionSeo" placeholder="Mô tả ngắn về bài viết"
                                       class="form-control" >
                             </textarea>
                 </div>
                 <div class="form-group">
-                    <main-image v-show="!editMode" :pathImage="pathImage" idShow="showHinhMXH" idInputPath="pathImageMXH" idInputHidden="seo_image_id"></main-image>
-                    <main-image v-show="editMode" :pathImage="pathImageSeo" idShow="showHinhMXH" idInputPath="pathImageMXH" idInputHidden="seo_image_id"></main-image>
+                    <!--<main-image v-show="!editMode" :pathImage="pathImage" idShow="showHinhMXH" idInputPath="pathImageMXH" idInputHidden="seo_image_id"></main-image>-->
+                    <main-image :pathImage="form.seo_image" idShow="showHinhMXH" idInputPath="pathImageMXH" idInputHidden="seo_image_id"></main-image>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success">Kiểm Tra SEO</button>
@@ -33,7 +33,7 @@
 
 <script>
     export default {
-        props: ['editMode','title','description','pathImage'],
+        props: ['form','editMode'],
 //        props: {
 //            title: {
 //                type: Object
@@ -50,7 +50,6 @@
 //                title: this.title,
 //                description:this.description,
 //                keywordSeo:'',
-                pathImageSeo:''
             }
 
         },
@@ -70,15 +69,11 @@
             console.log('Component mounted.')
         },
         created(){
-            Fire.$on('UpdateSeo', ($content) => {
-                $('input[name=keywordSeo]').val($content.seo_keyword);
-                $('input[name=titleSeo]').val($content.seo_title);
-                $('textarea[name=descriptionSeo]').val($content.seo_description);
-//                this.title = $content.seo_title;
-//                this.description = $content.seo_description;
-//                this.keywordSeo = $content.seo_keyword;
-                this.pathImageSeo = $content.seo_image;
-            });
+            // Fire.$on('UpdateSeo', ($content) => {
+            //     $('input[name=keywordSeo]').val($content.seo_keyword);
+            //     $('input[name=titleSeo]').val($content.seo_title);
+            //     $('textarea[name=descriptionSeo]').val($content.seo_description);
+            // });
         }
     }
 </script>

@@ -84,7 +84,7 @@
                             <h3 class="card-title">Danh Mục Bài Viết</h3>
                         </div>
                         <div class="card-body pad table-responsive">
-                            <tree-view-category-post class="form-control"
+                            <tree-view-category-post :form="form" class="form-control"
                                                      :class="{ 'is-invalid': form.errors.has('list_id_category') }"></tree-view-category-post>
                             <has-error :form="form" field="list_id_category"></has-error>
                         </div>
@@ -103,7 +103,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <seos :editMode="editMode" :pathImage="form.img_primary" :title="form.title" :description="form.description"></seos>
+                    <seos :form="form" :editMode="editMode"></seos>
                 </div>
             </div>
         </form>
@@ -247,13 +247,20 @@
             Fire.$on('UpdatePost', ($content) => {
                 console.log($content);
                 this.form.fill($content);
+                this.form.list_id_category=$content.listCategory.split(',');
+                this.form.seo_title=$content.seos.seo_title;
+                this.form.seo_keyword=$content.seos.seo_keyword;
+                this.form.seo_description=$content.seos.seo_description;
+                this.form.seo_image=$content.seos.seo_image;
                 if($content.is_active==1){
                     $('input[name=is_active]').prop('checked', true).change();
                 }else{
                     $('input[name=is_active]').prop('checked', false).change();
                 }
-                Fire.$emit('UpdateTextarea',$content.description);
-                Fire.$emit('UpdateSeo',$content.seos);
+                Fire.$emit('UpdateTextarea',$content.content);
+                Fire.$emit('UpdateTreeView',this.form.list_id_category);
+                // Fire.$emit('UpdateSeo',$content.seos);
+
             });
 
         }

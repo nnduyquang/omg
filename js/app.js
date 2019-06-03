@@ -75744,26 +75744,9 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("textarea", {
-    directives: [
-      {
-        name: "model",
-        rawName: "v-model",
-        value: _vm.form.content,
-        expression: "form.content"
-      }
-    ],
     staticClass: "form-control",
     class: { "is-invalid": _vm.form.errors.has("description") },
-    attrs: { id: "content-post", name: "description", placeholder: "" },
-    domProps: { value: _vm.form.content },
-    on: {
-      input: function($event) {
-        if ($event.target.composing) {
-          return
-        }
-        _vm.$set(_vm.form, "content", $event.target.value)
-      }
-    }
+    attrs: { id: "content-post", name: "description", placeholder: "" }
   })
 }
 var staticRenderFns = []
@@ -76019,7 +76002,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['editMode', 'title', 'description', 'pathImage'],
+    props: ['form', 'editMode'],
     //        props: {
     //            title: {
     //                type: Object
@@ -76036,7 +76019,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //                title: this.title,
             //                description:this.description,
             //                keywordSeo:'',
-            pathImageSeo: ''
         };
     },
 
@@ -76055,17 +76037,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         console.log('Component mounted.');
     },
     created: function created() {
-        var _this = this;
-
-        Fire.$on('UpdateSeo', function ($content) {
-            $('input[name=keywordSeo]').val($content.seo_keyword);
-            $('input[name=titleSeo]').val($content.seo_title);
-            $('textarea[name=descriptionSeo]').val($content.seo_description);
-            //                this.title = $content.seo_title;
-            //                this.description = $content.seo_description;
-            //                this.keywordSeo = $content.seo_keyword;
-            _this.pathImageSeo = $content.seo_image;
-        });
+        // Fire.$on('UpdateSeo', ($content) => {
+        //     $('input[name=keywordSeo]').val($content.seo_keyword);
+        //     $('input[name=titleSeo]').val($content.seo_title);
+        //     $('textarea[name=descriptionSeo]').val($content.seo_description);
+        // });
     }
 });
 
@@ -76087,6 +76063,14 @@ var render = function() {
         _c("div", { staticClass: "card-body pad table-responsive" }, [
           _c("div", { staticClass: "form-group" }, [
             _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.seo_keyword,
+                  expression: "form.seo_keyword"
+                }
+              ],
               staticClass: "form-control",
               attrs: {
                 type: "text",
@@ -76094,32 +76078,74 @@ var render = function() {
                 placeholder:
                   "Từ khóa cần SEO, tốt nhất là duy nhất 1 từ, nếu nhiều từ thì cách nhau dấu phẩy ','"
               },
-              on: { change: _vm.changeKeywordSeo }
+              domProps: { value: _vm.form.seo_keyword },
+              on: {
+                change: _vm.changeKeywordSeo,
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "seo_keyword", $event.target.value)
+                }
+              }
             })
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
             _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.seo_title,
+                  expression: "form.seo_title"
+                }
+              ],
               staticClass: "form-control",
               attrs: {
                 type: "text",
                 name: "titleSeo",
                 placeholder: "Tiêu đề SEO"
               },
-              domProps: { value: _vm.title },
-              on: { change: _vm.changeTitleSeo }
+              domProps: { value: _vm.form.seo_title },
+              on: {
+                change: _vm.changeTitleSeo,
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "seo_title", $event.target.value)
+                }
+              }
             })
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
             _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.seo_description,
+                  expression: "form.seo_description"
+                }
+              ],
               staticClass: "form-control",
               attrs: {
                 id: "description",
                 name: "descriptionSeo",
                 placeholder: "Mô tả ngắn về bài viết"
               },
-              on: { change: _vm.changeDescriptionSeo }
+              domProps: { value: _vm.form.seo_description },
+              on: {
+                change: _vm.changeDescriptionSeo,
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "seo_description", $event.target.value)
+                }
+              }
             })
           ]),
           _vm._v(" "),
@@ -76128,33 +76154,8 @@ var render = function() {
             { staticClass: "form-group" },
             [
               _c("main-image", {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: !_vm.editMode,
-                    expression: "!editMode"
-                  }
-                ],
                 attrs: {
-                  pathImage: _vm.pathImage,
-                  idShow: "showHinhMXH",
-                  idInputPath: "pathImageMXH",
-                  idInputHidden: "seo_image_id"
-                }
-              }),
-              _vm._v(" "),
-              _c("main-image", {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.editMode,
-                    expression: "editMode"
-                  }
-                ],
-                attrs: {
-                  pathImage: _vm.pathImageSeo,
+                  pathImage: _vm.form.seo_image,
                   idShow: "showHinhMXH",
                   idInputPath: "pathImageMXH",
                   idInputHidden: "seo_image_id"
@@ -76499,13 +76500,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         Fire.$on('UpdatePost', function ($content) {
             console.log($content);
             _this2.form.fill($content);
+            _this2.form.list_id_category = $content.listCategory.split(',');
+            _this2.form.seo_title = $content.seos.seo_title;
+            _this2.form.seo_keyword = $content.seos.seo_keyword;
+            _this2.form.seo_description = $content.seos.seo_description;
+            _this2.form.seo_image = $content.seos.seo_image;
             if ($content.is_active == 1) {
                 $('input[name=is_active]').prop('checked', true).change();
             } else {
                 $('input[name=is_active]').prop('checked', false).change();
             }
-            Fire.$emit('UpdateTextarea', $content.description);
-            Fire.$emit('UpdateSeo', $content.seos);
+            Fire.$emit('UpdateTextarea', $content.content);
+            Fire.$emit('UpdateTreeView', _this2.form.list_id_category);
+            // Fire.$emit('UpdateSeo',$content.seos);
         });
     }
 });
@@ -76834,7 +76841,8 @@ var render = function() {
                     staticClass: "form-control",
                     class: {
                       "is-invalid": _vm.form.errors.has("list_id_category")
-                    }
+                    },
+                    attrs: { form: _vm.form }
                   }),
                   _vm._v(" "),
                   _c("has-error", {
@@ -76889,16 +76897,7 @@ var render = function() {
           _c(
             "div",
             { staticClass: "col-md-12" },
-            [
-              _c("seos", {
-                attrs: {
-                  editMode: _vm.editMode,
-                  pathImage: _vm.form.img_primary,
-                  title: _vm.form.title,
-                  description: _vm.form.description
-                }
-              })
-            ],
+            [_c("seos", { attrs: { form: _vm.form, editMode: _vm.editMode } })],
             1
           )
         ])
@@ -77012,8 +77011,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['form'],
     data: function data() {
         return {
             categories: {}
@@ -77032,6 +77033,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     created: function created() {
         this.loadCategories();
+        Fire.$on('UpdateTreeView', function ($content) {
+            $.each($content, function (key, value) {
+                $("#treeview").hummingbird("checkNode", { attr: "id", name: value, expandParents: false });
+            });
+        });
     },
     mounted: function mounted() {},
     updated: function updated() {
@@ -77188,11 +77194,13 @@ var render = function() {
             attrs: {
               id: _vm.category.id,
               "data-id": _vm.category.id,
+              name: _vm.category.id,
               type: "checkbox"
             }
           })
         : _c("input", {
             attrs: {
+              name: _vm.category.id,
               id: _vm.category.id,
               "data-id": _vm.category.id,
               type: "checkbox"

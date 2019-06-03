@@ -3,8 +3,8 @@
         <i class="fa fa-plus"></i>
         <label>
             <!--<input  id="xnode-0-1" :data-id="category.id" type="checkbox" /> {{category.title}}-->
-            <input v-if="category.children.length==0" class="hummingbird-end-node"   :id="category.id" :data-id="category.id" type="checkbox" />
-            <input v-else  :id="category.id" :data-id="category.id" type="checkbox" />
+            <input v-if="category.children.length==0" class="hummingbird-end-node"   :id="category.id" :data-id="category.id" :name="category.id" type="checkbox" />
+            <input v-else :name="category.id"  :id="category.id" :data-id="category.id" type="checkbox" />
             {{category.title}}
         </label>
         <ul>

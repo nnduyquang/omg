@@ -15,7 +15,7 @@ class Post extends Model
     }
     public function manaycategoryitems($type)
     {
-        return $this->belongsToMany('App\ManyCategoryItem', 'many_category_items', 'item_id', 'category_id')->withPivot('type')->wherePivot('type',$type)->withTimestamps();
+        return $this->belongsToMany('App\Category', 'many_category_items', 'item_id', 'category_id')->withPivot('type')->wherePivot('type',$type)->withTimestamps();
     }
     public function seos(){
         return $this->belongsTo('App\Seo','seo_id');
@@ -35,12 +35,11 @@ class Post extends Model
         return $parameters;
     }
     public function getAllPost($post_type){
-//        $datas=$this->where('post_type', $post_type)->orderBy('created_at','DESC')->with('seos')->get();
-//        foreach ($datas as $key=>$item){
-//            $listCategory=$item->manaycategoryitems(0)->withPivot('categoty_id')->get();
-//            dd($listCategory);
-//        }
-//        dd($datas);
-        return $this->where('post_type', $post_type)->orderBy('created_at','DESC')->with('seos')->get();
+        $datas=$this->where('post_type', $post_type)->orderBy('created_at','DESC')->with('seos')->get();
+        foreach ($datas as $key=>$item){
+            $listCategory=$item->manaycategoryitems(0)->get()->implode('id',',');
+            $item->listCategory=$listCategory;
+        }
+        return $datas;
     }
 }

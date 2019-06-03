@@ -1,5 +1,5 @@
 <template>
-     <textarea id="content-post" v-model="form.content" name="description"
+     <textarea id="content-post"  name="description"
                placeholder=""
                class="form-control"
                :class="{ 'is-invalid': form.errors.has('description') }">
