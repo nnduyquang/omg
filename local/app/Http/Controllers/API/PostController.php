@@ -108,7 +108,43 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post=Post::findOrFail($id);
+        $customMessages = [
+            'title.required' => 'Mời bạn nhập tiêu đề',
+            'slug.required'=>'Bạn chưa nhập tiêu đề.',
+            'slug.unique'=>'Đường dẫn đã tồn tại',
+            'list_id_category.required'=>'Mời bạn chọn danh mục bài viết'
+        ];
+        $this->validate($request, [
+            'title' => 'required|string',
+            'slug' => 'required|string|unique:posts,slug,'.$post->id,
+            'list_id_category' => 'required',
+        ],$customMessages);
+        $parameters = $post->prepareParameters($request);
+        $result = Post::find($id)->update($parameters->all());
+        $seo = new Seo();
+        if (!$seo->isSeoParameterEmpty($request)) {
+            $paramSeo=$seo->prepareParameters($request);
+
+            if (is_null($post->seo_id)) {
+                $data = Seo::create($paramSeo->all());
+                Post::find($id)->update(['seo_id' => $data->id]);
+            } else {
+                Post::find($id)->seos->update($paramSeo->all());
+            }
+        } else {
+            if (!is_null($result->seo_id)) {
+                $result->seos->delete();
+            }
+        }
+
+        if ($parameters->type == IS_POST) {
+            $syncData = array();
+            foreach ($parameters['list_id_category'] as $key => $item) {
+                $attachData[$item] = array('type' => CATEGORY_POST);
+            }
+            Post::find($id)->manaycategoryitems(CATEGORY_POST)->sync($syncData);
+        }
     }
 
     /**

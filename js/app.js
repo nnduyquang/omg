@@ -76367,6 +76367,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -76424,6 +76425,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
             this.$Progress.finish();
         },
+        updatePost: function updatePost() {
+            var _this2 = this;
+
+            this.$Progress.start();
+            this.form.put('api/post/' + this.form.id).then(function () {
+                _this2.stateTitle = false;
+                _this2.hideSpanSlug = false;
+                _this2.form.reset();
+                _this2.slug = '';
+                _this2.hideSpanSlug = false;
+                _this2.stateTitle = false;
+                $('input[name=is_active]').prop('checked', false);
+                Fire.$emit('ResetTextarea');
+                Fire.$emit('ResetMainImage');
+                Fire.$emit('InsertSuccess');
+                toast.fire({
+                    type: 'success',
+                    title: 'Bài Viết đã được cập nhật'
+                });
+            }).catch(function () {
+                _this2.$Progress.fail();
+            });
+            this.$Progress.finish();
+        },
         changeInputSlug: function changeInputSlug(event) {
             if (!this.hideSpanSlug) {
                 this.slug = ChangeToSlug(event.target.value);
@@ -76470,48 +76495,48 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         });
     },
     created: function created() {
-        var _this2 = this;
+        var _this3 = this;
 
         Fire.$on('InsertTextarea', function ($content) {
-            _this2.form.content = $content;
+            _this3.form.content = $content;
         });
         Fire.$on('UpdateImgPrimary', function ($content) {
-            _this2.form.img_primary = $content;
+            _this3.form.img_primary = $content;
         });
         Fire.$on('UpdateListIdCategory', function ($content) {
-            _this2.form.list_id_category = $content.split(",");
+            _this3.form.list_id_category = $content.split(",");
         });
         Fire.$on('UpdateActive', function ($content) {
-            _this2.form.is_active = $content;
+            _this3.form.is_active = $content;
         });
         Fire.$on('UpdateTitleSeo', function ($content) {
             console.log('Title_seo');
-            _this2.form.seo_title = $content;
+            _this3.form.seo_title = $content;
         });
         Fire.$on('UpdateDescriptionSeo', function ($content) {
-            _this2.form.seo_description = $content;
+            _this3.form.seo_description = $content;
         });
         Fire.$on('UpdateImageSeo', function ($content) {
-            _this2.form.seo_image = $content;
+            _this3.form.seo_image = $content;
         });
         Fire.$on('UpdateKeywordSeo', function ($content) {
-            _this2.form.seo_keyword = $content;
+            _this3.form.seo_keyword = $content;
         });
         Fire.$on('UpdatePost', function ($content) {
             console.log($content);
-            _this2.form.fill($content);
-            _this2.form.list_id_category = $content.listCategory.split(',');
-            _this2.form.seo_title = $content.seos.seo_title;
-            _this2.form.seo_keyword = $content.seos.seo_keyword;
-            _this2.form.seo_description = $content.seos.seo_description;
-            _this2.form.seo_image = $content.seos.seo_image;
+            _this3.form.fill($content);
+            _this3.form.list_id_category = $content.listCategory.split(',');
+            _this3.form.seo_title = $content.seos.seo_title;
+            _this3.form.seo_keyword = $content.seos.seo_keyword;
+            _this3.form.seo_description = $content.seos.seo_description;
+            _this3.form.seo_image = $content.seos.seo_image;
             if ($content.is_active == 1) {
                 $('input[name=is_active]').prop('checked', true).change();
             } else {
                 $('input[name=is_active]').prop('checked', false).change();
             }
             Fire.$emit('UpdateTextarea', $content.content);
-            Fire.$emit('UpdateTreeView', _this2.form.list_id_category);
+            Fire.$emit('UpdateTreeView', _this3.form.list_id_category);
             // Fire.$emit('UpdateSeo',$content.seos);
         });
     }
@@ -76566,7 +76591,7 @@ var render = function() {
         on: {
           submit: function($event) {
             $event.preventDefault()
-            return _vm.createPost($event)
+            _vm.editMode ? _vm.updatePost() : _vm.createPost()
           },
           keydown: function($event) {
             return _vm.form.onKeydown($event)

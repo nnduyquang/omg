@@ -6,7 +6,8 @@
                 <h1 v-show="editMode">Cập Nhật Bài Viết</h1>
             </div>
         </div>
-        <form @submit.prevent="createPost"
+        <form
+              @submit.prevent="editMode? updatePost():createPost()"
               @keydown="form.onKeydown($event)">
             <div class="row">
 
@@ -160,6 +161,28 @@
                     Fire.$emit('ResetMainImage');
                     Fire.$emit('InsertSuccess');
 
+                }).catch(() => {
+                    this.$Progress.fail();
+                });
+                this.$Progress.finish();
+            },
+            updatePost(){
+                this.$Progress.start();
+                this.form.put('api/post/' + this.form.id).then(() => {
+                    this.stateTitle = false;
+                    this.hideSpanSlug = false;
+                    this.form.reset();
+                    this.slug='';
+                    this.hideSpanSlug = false;
+                    this.stateTitle = false;
+                    $('input[name=is_active]').prop('checked', false);
+                    Fire.$emit('ResetTextarea');
+                    Fire.$emit('ResetMainImage');
+                    Fire.$emit('InsertSuccess');
+                    toast.fire({
+                        type: 'success',
+                        title: 'Bài Viết đã được cập nhật'
+                    });
                 }).catch(() => {
                     this.$Progress.fail();
                 });
