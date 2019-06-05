@@ -2,13 +2,13 @@
     <div>
         <div class="row mb-2">
             <div class="col-md-12">
-                <h1 v-show="!editMode">Thêm Mới Bài Viết</h1>
-                <h1 v-show="editMode">Cập Nhật Bài Viết</h1>
+                <h1 v-show="!editMode">Thêm Mới Sản Phẩm</h1>
+                <h1 v-show="editMode">Cập Nhật Sản Phẩm</h1>
             </div>
         </div>
         <form
-              @submit.prevent="editMode? updatePost():createPost()"
-              @keydown="form.onKeydown($event)">
+                @submit.prevent="editMode? updateProduct():createProduct()"
+                @keydown="form.onKeydown($event)">
             <div class="row">
 
                 <div class="col-md-8">
@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="form-group">
                             <textarea @change="changeDescription" id="description" v-model="form.description" name="description"
-                                      placeholder="Mô tả ngắn về bài viết"
+                                      placeholder="Mô tả ngắn về sản phẩm"
                                       class="form-control"
                                       :class="{ 'is-invalid': form.errors.has('description') }">
                             </textarea>
@@ -82,11 +82,11 @@
                     </div>
                     <div class="card card-primary card-outline">
                         <div class="card-header">
-                            <h3 class="card-title">Danh Mục Bài Viết</h3>
+                            <h3 class="card-title">Danh Mục Sản Phẩm</h3>
                         </div>
                         <div class="card-body pad table-responsive">
-                            <tree-view-category-post :form="form" class="form-control"
-                                                     :class="{ 'is-invalid': form.errors.has('list_id_category') }"></tree-view-category-post>
+                            <tree-view-category category_type="1" class="form-control"
+                                                     :class="{ 'is-invalid': form.errors.has('list_id_category') }"></tree-view-category>
                             <has-error :form="form" field="list_id_category"></has-error>
                         </div>
 
@@ -134,7 +134,6 @@
                     content: '',
                     is_active: 0,
                     img_primary: '',
-                    type: 0,
                     list_id_category: '',
                     seo_title: '',
                     seo_keyword:'',
@@ -145,12 +144,12 @@
         },
 
         methods: {
-            createPost() {
+            createProduct() {
                 this.$Progress.start();
-                this.form.post('api/post').then(() => {
+                this.form.post('api/product').then(() => {
                     toast.fire({
                         type: 'success',
-                        title: 'Post created in successfully'
+                        title: 'Product created in successfully'
                     });
                     this.form.reset();
                     this.slug='';
@@ -166,9 +165,9 @@
                 });
                 this.$Progress.finish();
             },
-            updatePost(){
+            updateProduct(){
                 this.$Progress.start();
-                this.form.put('api/post/' + this.form.id).then(() => {
+                this.form.put('api/product/' + this.form.id).then(() => {
                     this.stateTitle = false;
                     this.hideSpanSlug = false;
                     this.form.reset();
@@ -181,7 +180,7 @@
                     Fire.$emit('InsertSuccess');
                     toast.fire({
                         type: 'success',
-                        title: 'Bài Viết đã được cập nhật'
+                        title: 'Sản Phẩm đã được cập nhật'
                     });
                 }).catch(() => {
                     this.$Progress.fail();
@@ -267,7 +266,7 @@
             Fire.$on('UpdateKeywordSeo', ($content) => {
                 this.form.seo_keyword = $content
             });
-            Fire.$on('UpdatePost', ($content) => {
+            Fire.$on('UpdateProduct', ($content) => {
                 console.log($content);
                 this.form.fill($content);
                 this.form.list_id_category=$content.listCategory.split(',');
@@ -285,7 +284,7 @@
                 // Fire.$emit('UpdateSeo',$content.seos);
 
             });
-            Fire.$on('DeletePost', ($content) => {
+            Fire.$on('DeleteProduct', ($content) => {
                 swal.fire({
                     title: 'Bạn Có Chắc Muốn Xóa Bài Viết Này Không?',
                     text: "Bạn sẽ mất bài viết này vĩnh viễn",
@@ -297,10 +296,10 @@
                 }).then((result) => {
                     if (result.value) {
                         this.$Progress.start();
-                        this.form.delete('api/post/' + $content).then(() => {
+                        this.form.delete('api/product/' + $content).then(() => {
                             swal.fire(
                                 'Đã xóa!',
-                                'Bài viết đã xóa.',
+                                'Sản Phẩm đã xóa.',
                                 'success'
                             )
                             Fire.$emit('InsertSuccess');

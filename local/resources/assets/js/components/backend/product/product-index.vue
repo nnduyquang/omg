@@ -4,10 +4,10 @@
             <div class="col-md-12 mt-5">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Quản Lý Bài Viết</h3>
+                        <h3 class="card-title">Quản Lý Sản Phẩm</h3>
 
                         <div class="card-tools">
-                            <button class="btn btn-success" @click.prevent="insertPost">Thêm Mới <i
+                            <button class="btn btn-success" @click.prevent="insertProduct">Thêm Mới <i
                                     class="fas fa-plus fa-fw"></i></button>
                         </div>
                     </div>
@@ -17,28 +17,28 @@
                             <tbody>
                             <tr>
                                 <th>ID</th>
-                                <th>Bài Viết</th>
+                                <th>Sản Phẩm</th>
                                 <th>Đường Dẫn</th>
                                 <th>Ngày Tạo</th>
                                 <th>Tình Trạng</th>
                                 <th>Hành Động</th>
                             </tr>
-                            <tr v-for="post in posts"
-                                :key="post.id">
-                                <td>{{post.id}}</td>
-                                <td>{{post.title}}</td>
-                                <td>{{post.slug}}</td>
-                                <td>{{post.created_at | myDate}}</td>
-                                <td v-if="post.is_active==1"><i style="color:green;"
+                            <tr v-for="product in products"
+                                :key="product.id">
+                                <td>{{product.id}}</td>
+                                <td>{{product.title}}</td>
+                                <td>{{product.slug}}</td>
+                                <td>{{product.created_at | myDate}}</td>
+                                <td v-if="product.is_active==1"><i style="color:green;"
                                                                 class="fas fa-circle"></i>
                                 </td>
-                                <td v-if="post.is_active==0"><i style="color:red;"
+                                <td v-if="product.is_active==0"><i style="color:red;"
                                                                 class="fas fa-circle"></i>
                                 </td>
                                 <td>
-                                    <a href="#" @click="editPost(post)"><i class="fa fa-edit"></i></a>
+                                    <a href="#" @click="editProduct(product)"><i class="fa fa-edit"></i></a>
                                     /
-                                    <a href="#" @click="deletePost(post.id)"><i style="color:red" class="fa fa-trash"></i></a>
+                                    <a href="#" @click="deletePost(product.id)"><i style="color:red" class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                             </tbody>
@@ -53,7 +53,7 @@
                 <!-- /.card -->
             </div>
         </div>
-        <insert-update-post v-show="showUpdate" :editMode="editMode"></insert-update-post>
+        <insert-update-product v-show="showUpdate" :editMode="editMode"></insert-update-product>
     </div>
 </template>
 <script>
@@ -62,27 +62,27 @@
             return {
                 showUpdate:false,
                 showIndex:true,
-                posts: {},
+                products: {},
                 editMode: false,
             }
         },
         methods: {
-            loadPosts() {
-                axios.get('api/post').then(({data}) => (this.posts = data));
+            loadProducts() {
+                axios.get('api/product').then(({data}) => (this.products = data));
             },
-            insertPost(){
+            insertProduct(){
                 this.showUpdate=true;
                 this.showIndex=false;
                 this.editMode=false;
             },
-            editPost(post){
+            editProduct(post){
                 this.showUpdate=true;
                 this.showIndex=false;
                 this.editMode=true;
-                Fire.$emit('UpdatePost',post);
+                Fire.$emit('UpdateProduct',post);
             },
             deletePost(id){
-                Fire.$emit('DeletePost',id);
+                Fire.$emit('DeleteProduct',id);
             },
         },
         created() {
@@ -94,12 +94,12 @@
 
                 })
             });
-            Fire.$on('InsertSuccess', () => {
+            Fire.$on('InsertSuccessProduct', () => {
                 this.showUpdate=false;
                 this.showIndex=true;
-                this.loadPosts();
+                this.loadProducts();
             });
-            this.loadPosts();
+            this.loadProducts();
         },
         mounted() {
             console.log('Component mounted.')

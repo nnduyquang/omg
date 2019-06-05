@@ -13,10 +13,10 @@ class CategoryPostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $category = new Category();
-        return $category->getCategoriesByType(CATEGORY_POST);
+        return $category->getCategoriesByType($request->category_type);
     }
 
     /**
@@ -44,14 +44,6 @@ class CategoryPostController extends Controller
         $category = new Category();
         $parameters = $category->prepareParameters($request);
         return Category::create($parameters->all());
-//        return User::create([
-//            'name' => $request['name'],
-//            'email' => $request['email'],
-//            'type' => $request['type'],
-//            'bio' => $request['bio'],
-//            'photo' => $request['photo'],
-//            'password' => bcrypt($request['password'])
-//        ]);
     }
 
     /**

@@ -20,7 +20,8 @@ Route::group(['middleware' => 'auth:api'], function() {
     Route::apiResources([
         'user' => 'API\UserController',
         'category-post' => 'API\CategoryPostController',
-        'post' => 'API\PostController'
+        'post' => 'API\PostController',
+        'product' => 'API\ProductController'
     ]);
 });
 Route::post('category-post/sort','API\CategoryPostController@sort');

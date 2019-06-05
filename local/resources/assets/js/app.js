@@ -34,16 +34,20 @@ Vue.component(
     require('./components/backend/user/user.vue')
 );
 Vue.component(
-    'category-post-manager',
-    require('./components/backend/category-post/category-post.vue')
+    'category-manager',
+    require('./components/backend/category-manager/category-manager.vue')
 );
 Vue.component(
-    'loop-li',
-    require('./components/backend/category-post/loop-li.vue')
+    'category-loop-li',
+    require('./components/backend/category-manager/category-loop-li.vue')
 );
 Vue.component(
     'post-index',
     require('./components/backend/post/post-index.vue')
+);
+Vue.component(
+    'product-index',
+    require('./components/backend/product/product-index.vue')
 );
 Vue.component(
     'text-area',
@@ -58,8 +62,12 @@ Vue.component(
     require('./components/backend/form/seo.vue')
 );
 Vue.component(
-    'insert-post',
-    require('./components/backend/post/insert-post.vue')
+    'insert-update-post',
+    require('./components/backend/post/insert-update-post.vue')
+);
+Vue.component(
+    'insert-update-product',
+    require('./components/backend/product/insert-update-product.vue')
 );
 Vue.component(
     'tree-view-category-post',
@@ -68,6 +76,14 @@ Vue.component(
 Vue.component(
     'loop-li-post',
     require('./components/backend/post/loop-li-post.vue')
+);
+Vue.component(
+    'tree-view-category',
+    require('./components/backend/form/tree-view-category/tree-view-category.vue')
+);
+Vue.component(
+    'tree-loop-li',
+    require('./components/backend/form/tree-view-category/loop-li.vue')
 );
 
 

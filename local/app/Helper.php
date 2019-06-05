@@ -11,10 +11,33 @@ function get_base_url()
     else
         return '/';
 }
-function IsNullOrEmptyString($string){
-    return (!isset($string) || trim($string)==='');
+
+function IsNullOrEmptyString($string)
+{
+    return (!isset($string) || trim($string) === '');
 }
-function hasHttpOrHttps($str){
+
+function hasHttpOrHttps($str)
+{
     $parsed = parse_url($str);
-    return (isset($parsed['scheme']))?true:false;
+    return (isset($parsed['scheme'])) ? true : false;
+}
+
+function set_active($path)
+{
+    return Request::is($path . '*') ? ' active' : '';
+}
+
+function set_open_active_child_menu($listPath)
+{
+    foreach ($listPath as $key => $item)
+        if (Request::is($item . '*'))
+            return Request::is($item . '*') ? ' block' : '';
+}
+
+function set_open_is_open_menu($listPath)
+{
+    foreach ($listPath as $key => $item)
+        if (Request::is($item . '*'))
+            return Request::is($item . '*') ? ' menu-open' : '';
 }

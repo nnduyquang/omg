@@ -10,7 +10,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>AdminLTE 3 | Starter</title>
+    <title>Smartlinks | Quản Trị</title>
 
     <link rel="stylesheet" href="{{URL::to('css/app.css')}}">
     <link rel="stylesheet" href="{{URL::to('css/backend.css')}}">
@@ -49,7 +49,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <img src="{{URL::to('img/backend/icon/logo.png')}}" alt="AdminLTE Logo"
                  class="brand-image img-circle elevation-3"
                  style="opacity: .8">
-            <span class="brand-text font-weight-light">AdminLTE 3</span>
+            <span class="brand-text font-weight-light">Administrator</span>
         </a>
 
         <!-- Sidebar -->
@@ -81,43 +81,82 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                     </li>
                     {{--@can('isAdmin')--}}
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-cog"></i>
-                                <p>
-                                    Management
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a  href="{{route('user.active')}}" class="nav-link active">
-                                        <i class="fas fa-user nav-icon"></i>
-                                        <p>Users</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="fa fa-circle-o nav-icon"></i>
-                                        <p>Inactive Page</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                        {{--<li class="nav-item has-treeview {{set_open_is_open_menu('user')}}">--}}
+                            {{--<a href="#" class="nav-link">--}}
+                                {{--<i class="nav-icon fas fa-cog"></i>--}}
+                                {{--<p>--}}
+                                    {{--Management--}}
+                                    {{--<i class="right fas fa-angle-left"></i>--}}
+                                {{--</p>--}}
+                            {{--</a>--}}
+                            {{--<ul class="nav nav-treeview" style="display:{{set_open_active_child_menu('user')}};">--}}
+                                {{--<li class="nav-item">--}}
+                                    {{--<a  href="{{route('user.active')}}" class="nav-link {{ set_active('user') }}">--}}
+                                        {{--<i class="fas fa-user nav-icon"></i>--}}
+                                        {{--<p>Users</p>--}}
+                                    {{--</a>--}}
+                                {{--</li>--}}
+                                {{--<li class="nav-item">--}}
+                                    {{--<a href="#" class="nav-link">--}}
+                                        {{--<i class="fa fa-circle-o nav-icon"></i>--}}
+                                        {{--<p>Inactive Page</p>--}}
+                                    {{--</a>--}}
+                                {{--</li>--}}
+                            {{--</ul>--}}
+                        {{--</li>--}}
                     {{--@endcan--}}
-                    <li class="nav-item">
-                        <a  href="{{route('category-post')}}" class="nav-link">
-                            <i class="nav-icon fas fas fa-book"></i>
+                    <li class="nav-item has-treeview {{set_open_is_open_menu(['category-post','category-product'])}}">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-book"></i>
                             <p>
-                                Danh Mục Bài Viết
+                                Danh Mục
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview" style="display:{{set_open_active_child_menu(['category-post','category-product'])}};">
+                            <li class="pl-5 nav-item">
+                                <a  href="{{route('category-post')}}" class="nav-link {{ set_active('category-post') }}">
+                                    <i class="fas fa-server nav-icon"></i>
+                                    <p>Bài Viết</p>
+                                </a>
+                            </li>
+                            <li class="pl-5 nav-item">
+                                <a href="{{route('category-product')}}" class="nav-link {{ set_active('category-product')}}">
+                                    <i class="fas fa-boxes nav-icon"></i>
+                                    <p>Sản Phẩm</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    {{--<li class="nav-item">--}}
+                        {{--<a  href="{{route('category-post')}}" class="nav-link {{ set_active('category-post') }}">--}}
+                            {{--<i class="nav-icon fas fas fa-book"></i>--}}
+                            {{--<p>--}}
+                                {{--Danh Mục Bài Viết--}}
+                            {{--</p>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
+                    <li class="nav-item">
+                        <a  href="{{route('user.active')}}" class="nav-link {{ set_active('user') }}">
+                            <i class="nav-icon fas fa-user"></i>
+                            <p>
+                                Người Dùng
                             </p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a  href="{{route('post')}}" class="nav-link">
+                        <a  href="{{route('post')}}" class="nav-link {{ set_active('post') }}">
                             <i class="nav-icon fas fa-newspaper"></i>
                             <p>
-                                Bài Viết
+                                Quản Lý Bài Viết
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a  href="{{route('product')}}" class="nav-link {{ set_active('product') }}">
+                            <i class="nav-icon fas fa-cubes"></i>
+                            <p>
+                                Quản Lý Sản Phẩm
                             </p>
                         </a>
                     </li>
@@ -134,26 +173,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <a  href="#" class="nav-link">
                                 <i class="nav-icon fas fa-cogs"></i>
                                 <p>
-                                    Developer
+                                   Cấu Hình
                                 </p>
                             </a>
                         </li>
                     {{--@endcan--}}
-                    <li class="nav-item">
-                        <a  href="#" class="nav-link">
-                            <i class="nav-icon fas fa-user"></i>
-                            <p>
-                                Profile
-                            </p>
-                        </a>
-                    </li>
+                    {{--<li class="nav-item">--}}
+                        {{--<a  href="#" class="nav-link">--}}
+                            {{--<i class="nav-icon fas fa-user"></i>--}}
+                            {{--<p>--}}
+                                {{--Profile--}}
+                            {{--</p>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                             <i class="nav-icon fas fa-power-off"></i>
                             <p>
-                                Logout
+                                Đăng Xuất
                             </p>
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -197,10 +236,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <footer class="main-footer">
         <!-- To the right -->
         <div class="float-right d-none d-sm-inline">
-            Anything you want
+            Điện Thoại Hỗ Trợ: (028) 66.83.00.91
         </div>
         <!-- Default to the left -->
-        <strong>Copyright &copy; 2014-2018 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2019 <a href="https://smartlinks.vn">Smartlinks.vn</a>.</strong> All rights reserved.
     </footer>
 </div>
 <!-- ./wrapper -->

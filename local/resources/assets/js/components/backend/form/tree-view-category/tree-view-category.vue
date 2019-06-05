@@ -1,8 +1,8 @@
 <template>
     <div id="treeview_container" class="hummingbird-treeview" style="height: 230px; overflow-y: scroll;">
         <ul id="treeview" class="hummingbird-base">
-            <loop-li-post v-if="category.level==0" :key="index" v-for="(category,index) in categories" :level="0"
-                          :category="category"></loop-li-post>
+            <tree-loop-li v-if="category.level==0" :key="index" v-for="(category,index) in categories" :level="0"
+                          :category="category"></tree-loop-li>
         </ul>
     </div>
 </template>

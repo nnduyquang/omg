@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\API;
 
 use App\Post;
-use App\Seo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Backend\Post\PostRepositoryInterface;

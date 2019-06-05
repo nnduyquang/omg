@@ -1,8 +1,8 @@
 @extends('backend.admin.master')
 @section('title-page')
-    Thêm Bài Viết
+    Danh Mục Sản Phẩm
 @stop
 
 @section('container')
-    <insert-post></insert-post>
+    <category-manager category_type="1"></category-manager>
 @stop

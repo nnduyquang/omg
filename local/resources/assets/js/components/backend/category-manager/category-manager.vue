@@ -45,7 +45,8 @@
                                 <td>
                                     <a href="#" @click="editModal(category)"><i class="fa fa-edit"></i></a>
                                     /
-                                    <a href="#" @click="deleteCategory(category.id)"><i style="color:red" class="fa fa-trash"></i></a>
+                                    <a href="#" @click="deleteCategory(category.id)"><i style="color:red"
+                                                                                        class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                             </tbody>
@@ -136,7 +137,8 @@
                             <div class="dd" id="nestable">
                                 <ol ref="add_loop_li" class="dd-list">
                                     <!--vòng lặp-->
-                                    <loop-li :key="index" v-for="(category,index) in categories" :level="0" :category="category"></loop-li>
+                                    <category-loop-li :key="index" v-for="(category,index) in categories" :level="0"
+                                             :category="category"></category-loop-li>
                                     <!--kết thúc vòng lạp-->
                                 </ol>
                             </div>
@@ -157,6 +159,7 @@
 
 <script>
     export default {
+        props: ['category_type'],
         data() {
             return {
                 stateTitle: false,
@@ -173,12 +176,12 @@
                     slug: '',
                     description: '',
                     is_active: 0,
-                    type: 0
+                    type: this.category_type
                 })
             }
         },
         methods: {
-            applySort(){
+            applySort() {
 
                 this.$Progress.start();
                 this.formSort.post('api/category-post/sort').then(() => {
@@ -196,7 +199,7 @@
                 });
                 this.$Progress.finish();
             },
-            sortModal(){
+            sortModal() {
                 this.loadCategories();
                 $('#sortModal').modal('show');
             },
@@ -256,7 +259,7 @@
             newModal() {
                 this.editMode = false;
                 this.form.reset();
-                this.slug='';
+                this.slug = '';
                 this.stateTitle = false;
                 this.hideSpanSlug = false;
                 $('input[type=checkbox]').bootstrapToggle('off')
@@ -270,9 +273,9 @@
                 this.form.reset();
                 $('#addNew').modal('show');
                 this.form.fill(category);
-                if(category.is_active==1){
+                if (category.is_active == 1) {
                     $('input[type=checkbox]').bootstrapToggle('on')
-                }else{
+                } else {
                     $('input[type=checkbox]').bootstrapToggle('off')
                 }
             },
@@ -310,7 +313,7 @@
             loadCategories() {
                 // if (this.$gate.isAdminOrAuthor()) {
 //                axios.get('api/user').then(({data}) => (this.users = data.data));
-                axios.get('api/category-post').then(({data}) => (this.categories = data));
+                axios.get('api/category-post',{params:this.axiosParams}).then(({data}) => (this.categories = data));
 
                 // }
             },
@@ -370,6 +373,7 @@
                     Fire.$emit('checkActive', 0)
                 }
             });
+
             function update_out(selector) {
                 let out = $(selector).nestable('serialize');
                 Fire.$emit('changeSort', window.JSON.stringify(out));
@@ -383,6 +387,13 @@
             });
 //            $('.dd').nestable('serialize');
 
+        },
+        computed: {
+            axiosParams() {
+                const params = new URLSearchParams();
+                params.append('category_type', this.category_type);
+                return params;
+            }
         }
     }
 </script>
