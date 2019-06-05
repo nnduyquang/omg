@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 05, 2019 lúc 05:48 AM
+-- Thời gian đã tạo: Th6 05, 2019 lúc 11:23 AM
 -- Phiên bản máy phục vụ: 10.1.31-MariaDB
 -- Phiên bản PHP: 7.0.29
 
@@ -83,8 +83,12 @@ INSERT INTO `categories` (`id`, `title`, `slug`, `description`, `img_primary`, `
 (3, 'tinh te 4', 'tinh-te-4', NULL, NULL, NULL, NULL, 1, 1, NULL, 0, 0, 1, '2019-05-11 18:57:02', '2019-05-16 00:54:45'),
 (4, 'tinh te 5', 'tinh-te-5', NULL, NULL, NULL, NULL, 0, 1, 3, 1, 0, 1, '2019-05-11 21:56:30', '2019-05-16 00:33:34'),
 (5, 'tinh te 6', 'tinh-te-6', NULL, NULL, NULL, NULL, 0, 1, 4, 2, 0, 1, '2019-05-12 07:59:07', '2019-05-16 19:00:39'),
-(6, 'tinh te 7', 'tinh-te-7', NULL, NULL, NULL, NULL, 0, 1, 2, 1, 0, 1, '2019-05-12 07:59:28', '2019-05-27 23:44:29'),
-(7, 'tinh te 8', 'tinh-te-8', NULL, NULL, NULL, NULL, 0, 2, NULL, 0, 0, 1, '2019-05-12 08:00:06', '2019-05-27 23:44:25');
+(6, 'tinh te 7', 'tinh-te-7', NULL, NULL, NULL, NULL, 0, 5, NULL, 0, 0, 1, '2019-05-12 07:59:28', '2019-06-05 00:32:29'),
+(7, 'tinh te 8', 'tinh-te-8', NULL, NULL, NULL, NULL, 0, 2, NULL, 0, 0, 1, '2019-05-12 08:00:06', '2019-05-27 23:44:25'),
+(8, 'tinh te 2000', 'tinh-te-2000', NULL, NULL, NULL, NULL, 0, 0, NULL, 0, 0, 1, '2019-06-05 00:58:53', '2019-06-05 00:58:53'),
+(9, 'gamek 2000', 'gamek-2000', NULL, NULL, NULL, NULL, 1, 1, NULL, 0, 1, 1, '2019-06-05 00:59:12', '2019-06-05 01:00:03'),
+(10, 'game k100', 'game-k100', NULL, NULL, NULL, NULL, 1, 1, 9, 1, 1, 1, '2019-06-05 00:59:52', '2019-06-05 01:00:18'),
+(11, 'gamek 9000', 'gamek-9000', NULL, NULL, NULL, NULL, 0, 1, 10, 2, 1, 1, '2019-06-05 01:00:00', '2019-06-05 01:00:14');
 
 -- --------------------------------------------------------
 
@@ -603,7 +607,7 @@ ALTER TABLE `attribute_values`
 -- AUTO_INCREMENT cho bảng `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT cho bảng `configs`
