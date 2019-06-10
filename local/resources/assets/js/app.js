@@ -12,6 +12,7 @@ var globals = require('./config');
 window.Vue = require('vue');
 
 
+
 // IMPORT
 import VueProgressBar from 'vue-progressbar';
 import CKEditor from '@ckeditor/ckeditor5-vue';
@@ -69,23 +70,20 @@ Vue.component(
     'insert-update-product',
     require('./components/backend/product/insert-update-product.vue')
 );
-Vue.component(
-    'tree-view-category-post',
-    require('./components/backend/post/tree-view-category-post.vue')
-);
-Vue.component(
-    'loop-li-post',
-    require('./components/backend/post/loop-li-post.vue')
-);
+
 Vue.component(
     'tree-view-category',
     require('./components/backend/form/tree-view-category/tree-view-category.vue')
 );
+
 Vue.component(
     'tree-loop-li',
     require('./components/backend/form/tree-view-category/loop-li.vue')
 );
-
+Vue.component(
+    'multi-image',
+    require('./components/backend/form/multi-image.vue')
+);
 
 
 //USING

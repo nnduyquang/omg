@@ -44,7 +44,7 @@
         },
         created(){
             Fire.$on('ResetMainImage', () => {
-                CKEDITOR.instances['content-post'].setData('');
+                // CKEDITOR.instances['content-post'].setData('');
             });
         }
 

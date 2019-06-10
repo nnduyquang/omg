@@ -34,22 +34,10 @@
 <script>
     export default {
         props: ['form','editMode'],
-//        props: {
-//            title: {
-//                type: Object
-//            },
-//            description: {
-//                type: Object
-//            },
-//            pathImage: {
-//                type: Object
-//            }
-//        },
+
         data(){
             return {
-//                title: this.title,
-//                description:this.description,
-//                keywordSeo:'',
+
             }
 
         },

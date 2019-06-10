@@ -104,6 +104,11 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
+                    <multi-image :form="form" :editMode="editMode"></multi-image>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
                     <seos :form="form" :editMode="editMode"></seos>
                 </div>
             </div>
@@ -134,6 +139,7 @@
                     content: '',
                     is_active: 0,
                     img_primary: '',
+                    img_sub_list:'',
                     list_id_category: '',
                     seo_title: '',
                     seo_keyword:'',
@@ -317,6 +323,13 @@
                 })
             })
 
+            Fire.$on('UpdateListImage', ($content) => {
+                let arrayImageList=[];
+                $.each($content, function (key, value) {
+                    arrayImageList.push(value.obj_image)
+                });
+                this.form.img_sub_list = arrayImageList;
+            });
         }
     }
 </script>
