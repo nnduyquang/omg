@@ -60,13 +60,13 @@ class PostRepository extends EloquentRepository implements PostRepositoryInterfa
             }
         }
 
-        if ($parameters->type == IS_POST) {
-            $syncData = array();
+
+        $syncData = array();
             foreach ($parameters['list_id_category'] as $key => $item) {
-                $attachData[$item] = array('type' => CATEGORY_POST);
+                $syncData[$item] = array('type' => CATEGORY_POST);
             }
             $result->manaycategoryitems(CATEGORY_POST)->sync($syncData);
-        }
+
     }
 
     public function deletePost($id)

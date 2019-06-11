@@ -47,7 +47,7 @@
                                     <has-error :form="form" field="description"></has-error>
                                 </div>
                                 <div class="form-group">
-                                    <text-area :form="form"></text-area>
+                                    <text-area id="content-product" :form="form"></text-area>
                                     <has-error :form="form" field="description"></has-error>
 
                                 </div>
@@ -151,7 +151,8 @@
                     seo_title: '',
                     seo_keyword: '',
                     seo_description: '',
-                    seo_image: ''
+                    seo_image: '',
+                    type:1
                 }),
             }
         },
@@ -325,7 +326,7 @@
                 } else {
                     $('input[name=is_hot]').prop('checked', false).change();
                 }
-                Fire.$emit('UpdateTextarea', $content.content);
+                Fire.$emit('UpdateTextarea', {data:$content.content,id:'content-product'});
                 Fire.$emit('UpdateListImage', $content.img_sub_list);
                 Fire.$emit('UpdateTreeView', this.form.list_id_category);
                 // Fire.$emit('UpdateSeo',$content.seos);

@@ -46,7 +46,7 @@
                                     <has-error :form="form" field="description"></has-error>
                                 </div>
                                 <div class="form-group">
-                                    <text-area :form="form"></text-area>
+                                    <text-area id="content-post" :form="form"></text-area>
                                     <has-error :form="form" field="description"></has-error>
 
                                 </div>
@@ -280,7 +280,7 @@
                 }else{
                     $('input[name=is_active]').prop('checked', false).change();
                 }
-                Fire.$emit('UpdateTextarea',$content.content);
+                Fire.$emit('UpdateTextarea',{data:$content.content,id:'content-post'});
                 Fire.$emit('UpdateTreeView',this.form.list_id_category);
                 // Fire.$emit('UpdateSeo',$content.seos);
 

@@ -39,6 +39,7 @@ class ProductRepository extends EloquentRepository implements ProductRepositoryI
 
     public function updateProduct($request, $id)
     {
+
         $parameters = $this->_model->prepareParameters($request);
         $result = $this->update($id, $parameters->all());
         $seo = new Seo();

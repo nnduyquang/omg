@@ -57,11 +57,10 @@
                 this.$Progress.finish();
             },
             loadConfigs() {
-                // axios.get('api/config-info').then(({data}) => ( console.log('haha')));
                 axios.get('api/config-info').then(response=>{
                     this.form=response.data;
                     Fire.$emit('SetInfoConfig', this.form);
-                    Fire.$emit('UpdateTextarea', response.data.config_describe_contact);
+                    Fire.$emit('UpdateTextarea', {data: response.data.config_describe_contact,id: 'content-contact'});
                 });
             },
         },

@@ -41,7 +41,7 @@
                             <h3 class="card-title">Mô Tả Liên Hệ</h3>
                         </div>
                         <div class="card-body pad table-responsive">
-                            <text-area :form="formInfo"></text-area>
+                            <text-area id="content-contact" :form="formInfo"></text-area>
                         </div>
                     </div>
                 </div>
