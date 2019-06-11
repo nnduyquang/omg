@@ -36,6 +36,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('product', function () {
         return view('backend.admin.product.index');
     })->name('product');
+    Route::get('config', function () {
+        return view('backend.admin.config.index');
+    })->name('config');
     Route::get('user', function () {
         return view('backend.admin.user.index');
     })->name('user.active');

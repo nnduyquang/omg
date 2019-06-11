@@ -60,7 +60,7 @@ class ProductRepository extends EloquentRepository implements ProductRepositoryI
 
         $syncData = array();
         foreach ($parameters['list_id_category'] as $key => $item) {
-            $attachData[$item] = array('type' => CATEGORY_PRODUCT);
+            $syncData[$item] = array('type' => CATEGORY_PRODUCT);
         }
         $result->manaycategoryitems(CATEGORY_PRODUCT)->sync($syncData);
 

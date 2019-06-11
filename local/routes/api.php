@@ -23,6 +23,8 @@ Route::group(['middleware' => 'auth:api'], function() {
         'post' => 'API\PostController',
         'product' => 'API\ProductController'
     ]);
+    Route::get('config-info', ['as' => 'config.index', 'uses' => 'API\ConfigController@getConfig']);
+    Route::post('config', ['as' => 'config.store', 'uses' => 'API\ConfigController@saveConfig']);
 });
 Route::post('category-post/sort','API\CategoryPostController@sort');
 

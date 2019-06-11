@@ -2,7 +2,7 @@
      <textarea id="content-post"  name="description"
                placeholder=""
                class="form-control"
-               :class="{ 'is-invalid': form.errors.has('description') }">
+               >
                             </textarea>
 </template>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Product;
 use App\Repositories\Backend\Product\ProductRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -42,7 +43,18 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $customMessages = [
+            'title.required' => 'Mời bạn nhập tên sản phẩm',
+            'slug.required'=>'Bạn chưa nhập tên sản phẩm.',
+            'slug.unique'=>'Đường dẫn đã tồn tại',
+            'list_id_category.required'=>'Mời bạn chọn danh mục sản phẩm'
+        ];
+        $this->validate($request, [
+            'title' => 'required|string',
+            'slug' => 'required|string|unique:posts',
+            'list_id_category' => 'required',
+        ],$customMessages);
+        $this->productRepository->storeProduct($request);
     }
 
     /**
@@ -76,7 +88,19 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product=Product::findOrFail($id);
+        $customMessages = [
+            'title.required' => 'Mời bạn nhập tên sản phẩm',
+            'slug.required'=>'Bạn chưa nhập tên sản phẩm.',
+            'slug.unique'=>'Đường dẫn đã tồn tại',
+            'list_id_category.required'=>'Mời bạn chọn danh mục sản phẩm'
+        ];
+        $this->validate($request, [
+            'title' => 'required|string',
+            'slug' => 'required|string|unique:posts,slug,'.$product->id,
+            'list_id_category' => 'required',
+        ],$customMessages);
+        $this->productRepository->updateProduct($request, $id);
     }
 
     /**
@@ -87,6 +111,6 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->productRepository->deleteProduct($id);
     }
 }

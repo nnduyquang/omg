@@ -68,7 +68,7 @@
             },
             removeItem(image) {
                 this.list_images.splice(this.list_images.indexOf(image), 1);
-                Fire.$emit('UpdateListImage',this.list_images);
+                Fire.$emit('InsertListImage',this.list_images);
             }
         },
         mounted() {
@@ -116,9 +116,30 @@
                     obj_image: obj_image
                 }
                 this.list_images.push(image);
-                Fire.$emit('UpdateListImage',this.list_images);
+                Fire.$emit('InsertListImage',this.list_images);
             });
+            Fire.$on('UpdateListImage',($content)=>{
+                let list=[];
+                $.each(JSON.parse($content), function (key, value) {
+                    let obj_image = JSON.stringify({
+                        path: value.path,
+                        name: value.name,
+                        width: value.width,
+                        height: value.height
+                    });
 
+                    const image = {
+                        path: value.path.replace('origins', 'thumbs'),
+                        name: value.name, //name here
+                        width: value.width,
+                        height: value.height,
+                        obj_image: obj_image
+                    }
+                    list.push(image);
+                    console.log(list);
+                });
+                this.list_images=list;
+            });
         },
     }
 </script>

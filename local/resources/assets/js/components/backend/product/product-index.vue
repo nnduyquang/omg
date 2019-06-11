@@ -20,6 +20,7 @@
                                 <th>Sản Phẩm</th>
                                 <th>Đường Dẫn</th>
                                 <th>Ngày Tạo</th>
+                                <th>Sản Phẩm Hot?</th>
                                 <th>Tình Trạng</th>
                                 <th>Hành Động</th>
                             </tr>
@@ -29,6 +30,12 @@
                                 <td>{{product.title}}</td>
                                 <td>{{product.slug}}</td>
                                 <td>{{product.created_at | myDate}}</td>
+                                <td v-if="product.is_hot==1"><i style="color:green;"
+                                                                   class="fas fa-circle"></i>
+                                </td>
+                                <td v-if="product.is_hot==0"><i style="color:red;"
+                                                                   class="fas fa-circle"></i>
+                                </td>
                                 <td v-if="product.is_active==1"><i style="color:green;"
                                                                 class="fas fa-circle"></i>
                                 </td>
@@ -75,11 +82,11 @@
                 this.showIndex=false;
                 this.editMode=false;
             },
-            editProduct(post){
+            editProduct(product){
                 this.showUpdate=true;
                 this.showIndex=false;
                 this.editMode=true;
-                Fire.$emit('UpdateProduct',post);
+                Fire.$emit('UpdateProduct',product);
             },
             deletePost(id){
                 Fire.$emit('DeleteProduct',id);

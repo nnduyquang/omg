@@ -84,6 +84,30 @@ Vue.component(
     'multi-image',
     require('./components/backend/form/multi-image.vue')
 );
+Vue.component(
+    'config-index',
+    require('./components/backend/config/config-index.vue')
+);
+Vue.component(
+    'email-config',
+    require('./components/backend/config/detail/email-config.vue')
+);
+Vue.component(
+    'info-config',
+    require('./components/backend/config/detail/info-config.vue')
+);
+Vue.component(
+    'script-config',
+    require('./components/backend/config/detail/script-config.vue')
+);
+Vue.component(
+    'seo-config',
+    require('./components/backend/config/detail/seo-config.vue')
+);
+Vue.component(
+    'slider-config',
+    require('./components/backend/config/detail/slider-config.vue')
+);
 
 
 //USING

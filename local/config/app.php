@@ -179,6 +179,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         App\Providers\PostServiceProvider::class,
         App\Providers\ProductServiceProvider::class,
+        App\Providers\ConfigServiceProvider::class,
 
     ],
 

@@ -104,7 +104,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <seos :form="form" :editMode="editMode"></seos>
+                    <seos :form="form"></seos>
                 </div>
             </div>
         </form>

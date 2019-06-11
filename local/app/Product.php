@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable = [
-        'title', 'slug', 'description', 'content', 'img_primary', 'img_sub_list', 'is_active', 'post_type', 'user_id', 'seo_id', 'is_hot'
+        'title', 'slug', 'description', 'content', 'img_primary', 'img_sub_list', 'is_active', 'post_type','has_promotion', 'user_id', 'seo_id', 'is_hot'
     ];
 
     public function users()
@@ -41,6 +41,24 @@ class Product extends Model
             $parameters->request->add(['img_primary' => $pathImage]);
         } else {
             $parameters->request->add(['img_primary' => null]);
+        }
+        $listImageInfo = $parameters->input('img_sub_list');
+        if(isset($listImageInfo)){
+            if (count($listImageInfo) != 0) {
+                $sub_image=[];
+                foreach ($listImageInfo as $key => $item) {
+                    $itemToArray=json_decode($item);
+                    if (hasHttpOrHttps($itemToArray->path))
+                        $itemToArray->path = substr($itemToArray->path, strpos($itemToArray->path, 'images'), strlen($itemToArray->path) - 1);
+                    else {
+                        $itemToArray->path =  $itemToArray->path;
+                    }
+                    array_push( $sub_image,$itemToArray);
+                }
+                $parameters->request->add(['img_sub_list' => str_replace("\\/", "/", json_encode($sub_image))]);
+            }
+        }else {
+            $parameters->request->add(['img_sub_list' => null]);
         }
         return $parameters;
     }

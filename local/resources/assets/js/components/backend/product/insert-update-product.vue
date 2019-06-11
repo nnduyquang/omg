@@ -38,7 +38,8 @@
                                           v-if="form.errors.has('slug')">{{form.errors.get('slug')}}</span>
                                 </div>
                                 <div class="form-group">
-                            <textarea @change="changeDescription" id="description" v-model="form.description" name="description"
+                            <textarea @change="changeDescription" id="description" v-model="form.description"
+                                      name="description"
                                       placeholder="Mô tả ngắn về sản phẩm"
                                       class="form-control"
                                       :class="{ 'is-invalid': form.errors.has('description') }">
@@ -68,6 +69,11 @@
                             <input name="is_active" type="checkbox"
                                    data-toggle="toggle">
                         </div>
+                        <div class="card-body pad table-responsive">
+                            <span>Sản Phẩm Hot?</span>
+                            <input name="is_hot" type="checkbox"
+                                   data-toggle="toggle">
+                        </div>
                         <!-- /.card -->
                     </div>
                     <div class="card card-primary card-outline">
@@ -86,7 +92,7 @@
                         </div>
                         <div class="card-body pad table-responsive">
                             <tree-view-category category_type="1" class="form-control"
-                                                     :class="{ 'is-invalid': form.errors.has('list_id_category') }"></tree-view-category>
+                                                :class="{ 'is-invalid': form.errors.has('list_id_category') }"></tree-view-category>
                             <has-error :form="form" field="list_id_category"></has-error>
                         </div>
 
@@ -109,7 +115,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <seos :form="form" :editMode="editMode"></seos>
+                    <seos :form="form"></seos>
                 </div>
             </div>
         </form>
@@ -138,11 +144,12 @@
                     description: '',
                     content: '',
                     is_active: 0,
+                    is_hot: 0,
                     img_primary: '',
-                    img_sub_list:'',
+                    img_sub_list: '',
                     list_id_category: '',
                     seo_title: '',
-                    seo_keyword:'',
+                    seo_keyword: '',
                     seo_description: '',
                     seo_image: ''
                 }),
@@ -158,32 +165,34 @@
                         title: 'Product created in successfully'
                     });
                     this.form.reset();
-                    this.slug='';
+                    this.slug = '';
                     this.hideSpanSlug = false;
                     this.stateTitle = false;
                     $('input[name=is_active]').prop('checked', false);
+                    $('input[name=is_hot]').prop('checked', false);
                     Fire.$emit('ResetTextarea');
                     Fire.$emit('ResetMainImage');
-                    Fire.$emit('InsertSuccess');
+                    Fire.$emit('InsertSuccessProduct');
 
                 }).catch(() => {
                     this.$Progress.fail();
                 });
                 this.$Progress.finish();
             },
-            updateProduct(){
+            updateProduct() {
                 this.$Progress.start();
                 this.form.put('api/product/' + this.form.id).then(() => {
                     this.stateTitle = false;
                     this.hideSpanSlug = false;
                     this.form.reset();
-                    this.slug='';
+                    this.slug = '';
                     this.hideSpanSlug = false;
                     this.stateTitle = false;
                     $('input[name=is_active]').prop('checked', false);
+                    $('input[name=is_hot]').prop('checked', false);
                     Fire.$emit('ResetTextarea');
                     Fire.$emit('ResetMainImage');
-                    Fire.$emit('InsertSuccess');
+                    Fire.$emit('InsertSuccessProduct');
                     toast.fire({
                         type: 'success',
                         title: 'Sản Phẩm đã được cập nhật'
@@ -217,7 +226,7 @@
             },
             showSlug(event) {
                 if (event.target.value) {
-                    Fire.$emit('UpdateTitleSeo',event.target.value);
+                    Fire.$emit('UpdateTitleSeo', event.target.value);
                     this.stateTitle = true;
                     this.slug = ChangeToSlug(event.target.value);
                     this.form.slug = ChangeToSlug(event.target.value);
@@ -228,8 +237,8 @@
                     this.form.slug = '';
                 }
             },
-            changeDescription(event){
-                Fire.$emit('UpdateDescriptionSeo',event.target.value);
+            changeDescription(event) {
+                Fire.$emit('UpdateDescriptionSeo', event.target.value);
             }
         },
         mounted() {
@@ -238,11 +247,23 @@
                 off: 'Không Đăng',
                 width: '50%'
             });
+            $('input[name=is_hot]').bootstrapToggle({
+                on: 'Có',
+                off: 'Không',
+                width: '50%'
+            });
             $('input[name=is_active]').change(function () {
                 if ($(this).prop('checked'))
                     Fire.$emit('UpdateActive', 1);
                 else
                     Fire.$emit('UpdateActive', 0);
+
+            })
+            $('input[name=is_hot]').change(function () {
+                if ($(this).prop('checked'))
+                    Fire.$emit('UpdateIsHot', 1);
+                else
+                    Fire.$emit('UpdateIsHot', 0);
 
             })
         },
@@ -259,8 +280,10 @@
             Fire.$on('UpdateActive', ($content) => {
                 this.form.is_active = $content
             });
+            Fire.$on('UpdateIsHot', ($content) => {
+                this.form.is_hot = $content
+            });
             Fire.$on('UpdateTitleSeo', ($content) => {
-                console.log('Title_seo');
                 this.form.seo_title = $content
             });
             Fire.$on('UpdateDescriptionSeo', ($content) => {
@@ -273,20 +296,38 @@
                 this.form.seo_keyword = $content
             });
             Fire.$on('UpdateProduct', ($content) => {
-                console.log($content);
+
                 this.form.fill($content);
-                this.form.list_id_category=$content.listCategory.split(',');
-                this.form.seo_title=$content.seos.seo_title;
-                this.form.seo_keyword=$content.seos.seo_keyword;
-                this.form.seo_description=$content.seos.seo_description;
-                this.form.seo_image=$content.seos.seo_image;
-                if($content.is_active==1){
+                this.form.list_id_category = $content.listCategory.split(',');
+                this.form.seo_title = $content.seos.seo_title;
+                this.form.seo_keyword = $content.seos.seo_keyword;
+                this.form.seo_description = $content.seos.seo_description;
+                this.form.seo_image = $content.seos.seo_image;
+                let list = [];
+                $.each(JSON.parse($content.img_sub_list), function (key, value) {
+                    let obj_image = JSON.stringify({
+                        path: value.path,
+                        name: value.name,
+                        width: value.width,
+                        height: value.height
+                    });
+                    list.push(obj_image);
+                });
+
+                this.form.img_sub_list = list;
+                if ($content.is_active == 1) {
                     $('input[name=is_active]').prop('checked', true).change();
-                }else{
+                } else {
                     $('input[name=is_active]').prop('checked', false).change();
                 }
-                Fire.$emit('UpdateTextarea',$content.content);
-                Fire.$emit('UpdateTreeView',this.form.list_id_category);
+                if ($content.is_hot == 1) {
+                    $('input[name=is_hot]').prop('checked', true).change();
+                } else {
+                    $('input[name=is_hot]').prop('checked', false).change();
+                }
+                Fire.$emit('UpdateTextarea', $content.content);
+                Fire.$emit('UpdateListImage', $content.img_sub_list);
+                Fire.$emit('UpdateTreeView', this.form.list_id_category);
                 // Fire.$emit('UpdateSeo',$content.seos);
 
             });
@@ -308,7 +349,17 @@
                                 'Sản Phẩm đã xóa.',
                                 'success'
                             )
-                            Fire.$emit('InsertSuccess');
+                            this.stateTitle = false;
+                            this.hideSpanSlug = false;
+                            this.form.reset();
+                            this.slug = '';
+                            this.hideSpanSlug = false;
+                            this.stateTitle = false;
+                            $('input[name=is_active]').prop('checked', false);
+                            $('input[name=is_hot]').prop('checked', false);
+                            Fire.$emit('ResetTextarea');
+                            Fire.$emit('ResetMainImage');
+                            Fire.$emit('InsertSuccessProduct');
 //                            Fire.$emit('ReloadTable');
                         }).catch(() => {
                             this.$Progress.fail();
@@ -323,12 +374,16 @@
                 })
             })
 
-            Fire.$on('UpdateListImage', ($content) => {
-                let arrayImageList=[];
+            Fire.$on('InsertListImage', ($content) => {
+                let arrayImageList = [];
                 $.each($content, function (key, value) {
                     arrayImageList.push(value.obj_image)
                 });
-                this.form.img_sub_list = arrayImageList;
+                if (arrayImageList.length == 0) {
+                    this.form.img_sub_list = '';
+                } else {
+                    this.form.img_sub_list = arrayImageList;
+                }
             });
         }
     }

@@ -20,12 +20,12 @@
                             </textarea>
                 </div>
                 <div class="form-group">
-                    <!--<main-image v-show="!editMode" :pathImage="pathImage" idShow="showHinhMXH" idInputPath="pathImageMXH" idInputHidden="seo_image_id"></main-image>-->
                     <main-image :pathImage="form.seo_image" idShow="showHinhMXH" idInputPath="pathImageMXH" idInputHidden="seo_image_id"></main-image>
                 </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Kiểm Tra SEO</button>
+                <div v-if="type==0" class="modal-footer">
+                    <button  type="submit" class="btn btn-success">Kiểm Tra SEO</button>
                 </div>
+
             </div>
         </div>
     </div>
@@ -33,7 +33,14 @@
 
 <script>
     export default {
-        props: ['form','editMode'],
+        // props: ['form','type'],
+        props: {
+            form: Object,
+            type:{
+                type:Number,
+                default: 0
+            }
+        },
 
         data(){
             return {
