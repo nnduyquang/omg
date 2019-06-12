@@ -33,7 +33,7 @@
 
 <script>
     export default {
-        props: ['form', 'editMode'],
+        props: ['form'],
         data() {
             return {
                 width: '',
@@ -86,13 +86,6 @@
                         Fire.$emit('UpdateImageDimension', [defs, list_img]);
                     });
                 }
-                // // let img=$('input[name*="image_info"]').val();
-                // // console.log(img);
-                // $('input[name^="image_info"]').each(function() {
-                //     console.log($(this).val());
-                // });
-                // Fire.$emit('UpdateImageSeo', img);
-
 
             });
 
@@ -136,7 +129,6 @@
                         obj_image: obj_image
                     }
                     list.push(image);
-                    console.log(list);
                 });
                 this.list_images=list;
             });

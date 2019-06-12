@@ -47,7 +47,7 @@
                                     <has-error :form="form" field="description"></has-error>
                                 </div>
                                 <div class="form-group">
-                                    <text-area id="content-product" :form="form"></text-area>
+                                    <text-area id="content-product" :form="form" height="800"></text-area>
                                     <has-error :form="form" field="description"></has-error>
 
                                 </div>
@@ -110,7 +110,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <multi-image :form="form" :editMode="editMode"></multi-image>
+                    <multi-image :form="form"></multi-image>
                 </div>
             </div>
             <div class="row">
@@ -270,7 +270,7 @@
         },
         created() {
             Fire.$on('InsertTextarea', ($content) => {
-                this.form.content = $content
+                this.form.content = $content.data
             });
             Fire.$on('UpdateImgPrimary', ($content) => {
                 this.form.img_primary = $content

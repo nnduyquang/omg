@@ -76113,12 +76113,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 var mylib = __webpack_require__(141);
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['form', 'id'],
+    props: ['form', 'id', 'height'],
     mounted: function mounted() {
         var now_id = this.id;
-        mylib.integratedCKEDITOR(this.id, 800);
+        mylib.integratedCKEDITOR(this.id, this.height);
         CKEDITOR.instances[this.id].on('change', function () {
-            Fire.$emit('InsertTextarea', CKEDITOR.instances[now_id].getData());
+            Fire.$emit('InsertTextarea', { data: CKEDITOR.instances[now_id].getData(), id: now_id });
         });
     },
     created: function created() {
@@ -76887,7 +76887,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var _this3 = this;
 
         Fire.$on('InsertTextarea', function ($content) {
-            _this3.form.content = $content;
+            _this3.form.content = $content.data;
         });
         Fire.$on('UpdateImgPrimary', function ($content) {
             _this3.form.img_primary = $content;
@@ -77233,7 +77233,11 @@ var render = function() {
                     { staticClass: "form-group" },
                     [
                       _c("text-area", {
-                        attrs: { id: "content-post", form: _vm.form }
+                        attrs: {
+                          id: "content-post",
+                          form: _vm.form,
+                          height: "800"
+                        }
                       }),
                       _vm._v(" "),
                       _c("has-error", {
@@ -77709,7 +77713,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var _this3 = this;
 
         Fire.$on('InsertTextarea', function ($content) {
-            _this3.form.content = $content;
+            _this3.form.content = $content.data;
         });
         Fire.$on('UpdateImgPrimary', function ($content) {
             _this3.form.img_primary = $content;
@@ -78097,7 +78101,11 @@ var render = function() {
                     { staticClass: "form-group" },
                     [
                       _c("text-area", {
-                        attrs: { id: "content-product", form: _vm.form }
+                        attrs: {
+                          id: "content-product",
+                          form: _vm.form,
+                          height: "800"
+                        }
                       }),
                       _vm._v(" "),
                       _c("has-error", {
@@ -78201,11 +78209,7 @@ var render = function() {
           _c(
             "div",
             { staticClass: "col-md-12" },
-            [
-              _c("multi-image", {
-                attrs: { form: _vm.form, editMode: _vm.editMode }
-              })
-            ],
+            [_c("multi-image", { attrs: { form: _vm.form } })],
             1
           )
         ]),
@@ -78652,7 +78656,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['form', 'editMode'],
+    props: ['form'],
     data: function data() {
         return {
             width: '',
@@ -78707,13 +78711,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     Fire.$emit('UpdateImageDimension', [defs, list_img]);
                 });
             }
-            // // let img=$('input[name*="image_info"]').val();
-            // // console.log(img);
-            // $('input[name^="image_info"]').each(function() {
-            //     console.log($(this).val());
-            // });
-            // Fire.$emit('UpdateImageSeo', img);
-
         });
     },
     created: function created() {
@@ -78757,7 +78754,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     obj_image: obj_image
                 };
                 list.push(image);
-                console.log(list);
             });
             _this.list_images = list;
         });
@@ -78982,8 +78978,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             axios.get('api/config-info').then(function (response) {
                 _this2.form = response.data;
+                Fire.$emit('UpdateListImage', _this2.form.config_slider);
+                var list = [];
+                $.each(JSON.parse(_this2.form.config_slider), function (key, value) {
+                    var obj_image = JSON.stringify({
+                        path: value.path,
+                        name: value.name,
+                        width: value.width,
+                        height: value.height
+                    });
+                    list.push(obj_image);
+                });
+
+                _this2.form.config_slider = list;
                 Fire.$emit('SetInfoConfig', _this2.form);
+
                 Fire.$emit('UpdateTextarea', { data: response.data.config_describe_contact, id: 'content-contact' });
+                Fire.$emit('UpdateTextarea', { data: response.data.config_email_content_to_customer, id: 'content-to-customer' });
+                Fire.$emit('UpdateTextarea', { data: response.data.config_email_signatures, id: 'content-signatures' });
             });
         }
     },
@@ -79209,6 +79221,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -79216,8 +79230,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             formInfo: {}
         };
     },
+    methods: {
+        updateConfig: function updateConfig() {
+            Fire.$emit('UpdateConfig', this.formInfo);
+        }
+    },
     mounted: function mounted() {
         console.log('Component mounted.');
+    },
+    created: function created() {
+        var _this = this;
+
+        Fire.$on('InsertTextarea', function ($content) {
+            if ($content.id == 'content-to-customer') _this.formInfo.config_email_content_to_customer = $content.data;
+            if ($content.id == 'content-signatures') _this.formInfo.config_email_signatures = $content.data;
+        });
+        Fire.$on('SetInfoConfig', function ($content) {
+            _this.formInfo = $content;
+        });
     }
 });
 
@@ -79229,207 +79259,228 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-md-12" }, [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", [_vm._v("Email Nhận Thông Tin")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.formInfo.config_email_receive,
-              expression: "formInfo.config_email_receive"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: {
-            type: "text",
-            name: "",
-            placeholder: "Email Nhận Thông Tin"
-          },
-          domProps: { value: _vm.formInfo.config_email_receive },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+  return _c(
+    "form",
+    {
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.updateConfig()
+        }
+      }
+    },
+    [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [_vm._v("Email Nhận Thông Tin")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.formInfo.config_email_receive,
+                  expression: "formInfo.config_email_receive"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                name: "",
+                placeholder: "Email Nhận Thông Tin"
+              },
+              domProps: { value: _vm.formInfo.config_email_receive },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.formInfo,
+                    "config_email_receive",
+                    $event.target.value
+                  )
+                }
               }
-              _vm.$set(
-                _vm.formInfo,
-                "config_email_receive",
-                $event.target.value
-              )
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", [_vm._v("Tiêu Đề Email Khách Hàng Nhận Phản Hồi")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.formInfo.config_email_sender_subject,
-              expression: "formInfo.config_email_sender_subject"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: {
-            type: "text",
-            name: "",
-            placeholder: "Tiêu Đề Email Khách Hàng Nhận Phản Hồi"
-          },
-          domProps: { value: _vm.formInfo.config_email_sender_subject },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(
-                _vm.formInfo,
-                "config_email_sender_subject",
-                $event.target.value
-              )
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", [_vm._v("From Email Khách Hàng Nhận Phản Hồi")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.formInfo.config_email_sender_from,
-              expression: "formInfo.config_email_sender_from"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: {
-            type: "text",
-            name: "",
-            placeholder: "From Email Khách Hàng Nhận Phản Hồi"
-          },
-          domProps: { value: _vm.formInfo.config_email_sender_from },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(
-                _vm.formInfo,
-                "config_email_sender_from",
-                $event.target.value
-              )
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", [_vm._v("Tiêu Đề Email Nhận Thông Tin Từ Khách Hàng")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.formInfo.config_email_receive_subject,
-              expression: "formInfo.config_email_receive_subject"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: {
-            type: "text",
-            name: "",
-            placeholder: "Tiêu Đề Email Nhận Thông Tin Từ Khách Hàng"
-          },
-          domProps: { value: _vm.formInfo.config_email_receive_subject },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(
-                _vm.formInfo,
-                "config_email_receive_subject",
-                $event.target.value
-              )
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", [_vm._v("From Email Nhận Thông Tin Từ Khách Hàng")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.formInfo.config_email_receive_from,
-              expression: "formInfo.config_email_receive_from"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: {
-            type: "text",
-            name: "",
-            placeholder: "From Email Nhận Thông Tin Từ Khách Hàng"
-          },
-          domProps: { value: _vm.formInfo.config_email_receive_from },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(
-                _vm.formInfo,
-                "config_email_receive_from",
-                $event.target.value
-              )
-            }
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "form-group" },
-        [
-          _c("label", [_vm._v("Nội Dung Gửi Cho Khách Hàng")]),
+            })
+          ]),
           _vm._v(" "),
-          _c("text-area", {
-            attrs: { id: "content-to-customer", form: _vm.formInfo }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "form-group" },
-        [
-          _c("label", [_vm._v("Chữ Ký Mail")]),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [_vm._v("Tiêu Đề Email Khách Hàng Nhận Phản Hồi")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.formInfo.config_email_sender_subject,
+                  expression: "formInfo.config_email_sender_subject"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                name: "",
+                placeholder: "Tiêu Đề Email Khách Hàng Nhận Phản Hồi"
+              },
+              domProps: { value: _vm.formInfo.config_email_sender_subject },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.formInfo,
+                    "config_email_sender_subject",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ]),
           _vm._v(" "),
-          _c("text-area", {
-            attrs: { id: "content-signatures", form: _vm.formInfo }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _vm._m(0)
-    ])
-  ])
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [_vm._v("From Email Khách Hàng Nhận Phản Hồi")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.formInfo.config_email_sender_from,
+                  expression: "formInfo.config_email_sender_from"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                name: "",
+                placeholder: "From Email Khách Hàng Nhận Phản Hồi"
+              },
+              domProps: { value: _vm.formInfo.config_email_sender_from },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.formInfo,
+                    "config_email_sender_from",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [_vm._v("Tiêu Đề Email Nhận Thông Tin Từ Khách Hàng")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.formInfo.config_email_receive_subject,
+                  expression: "formInfo.config_email_receive_subject"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                name: "",
+                placeholder: "Tiêu Đề Email Nhận Thông Tin Từ Khách Hàng"
+              },
+              domProps: { value: _vm.formInfo.config_email_receive_subject },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.formInfo,
+                    "config_email_receive_subject",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [_vm._v("From Email Nhận Thông Tin Từ Khách Hàng")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.formInfo.config_email_receive_from,
+                  expression: "formInfo.config_email_receive_from"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                name: "",
+                placeholder: "From Email Nhận Thông Tin Từ Khách Hàng"
+              },
+              domProps: { value: _vm.formInfo.config_email_receive_from },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.formInfo,
+                    "config_email_receive_from",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c("label", [_vm._v("Nội Dung Gửi Cho Khách Hàng")]),
+              _vm._v(" "),
+              _c("text-area", {
+                attrs: {
+                  height: "300",
+                  id: "content-to-customer",
+                  form: _vm.formInfo
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c("label", [_vm._v("Chữ Ký Mail")]),
+              _vm._v(" "),
+              _c("text-area", {
+                attrs: {
+                  height: "300",
+                  id: "content-signatures",
+                  form: _vm.formInfo
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm._m(0)
+        ])
+      ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
@@ -79633,7 +79684,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             _this.formInfo.seo_description = $content;
         });
         Fire.$on('InsertTextarea', function ($content) {
-            _this.formInfo.config_describe_contact = $content;
+            _this.formInfo.config_describe_contact = $content.data;
         });
         Fire.$on('SetInfoConfig', function ($content) {
             _this.formInfo = $content;
@@ -79768,7 +79819,11 @@ var render = function() {
                 { staticClass: "card-body pad table-responsive" },
                 [
                   _c("text-area", {
-                    attrs: { id: "content-contact", form: _vm.formInfo }
+                    attrs: {
+                      height: "300",
+                      id: "content-contact",
+                      form: _vm.formInfo
+                    }
                   })
                 ],
                 1
@@ -80042,10 +80097,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            formInfo: {}
+        };
+    },
+    methods: {
+        updateConfig: function updateConfig() {
+            Fire.$emit('UpdateConfig', this.formInfo);
+        }
+    },
     mounted: function mounted() {
         console.log('Component mounted.');
+    },
+    created: function created() {
+        var _this = this;
+
+        Fire.$on('SetInfoConfig', function ($content) {
+            _this.formInfo = $content;
+        });
     }
 });
 
@@ -80057,25 +80141,104 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "form",
+    {
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.updateConfig()
+        }
+      }
+    },
+    [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [_vm._v("Cài Đặt Code Trong header")]),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.formInfo.config_script_header,
+                  expression: "formInfo.config_script_header"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                rows: "10",
+                name: "description",
+                placeholder: "Cài Đặt Code Trong Header"
+              },
+              domProps: { value: _vm.formInfo.config_script_header },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.formInfo,
+                    "config_script_header",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", [_vm._v("Cài Đặt Code Trước Thẻ /body")]),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.formInfo.config_script_body,
+                  expression: "formInfo.config_script_body"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                rows: "10",
+                name: "description",
+                placeholder: "Cài Đặt Code Trong Header"
+              },
+              domProps: { value: _vm.formInfo.config_script_body },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(
+                    _vm.formInfo,
+                    "config_script_body",
+                    $event.target.value
+                  )
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _vm._m(0)
+        ])
+      ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-12 text-center" }, [
-            _c(
-              "button",
-              { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-              [_vm._v("Lưu Cấu Hình")]
-            )
-          ])
-        ])
-      ])
+    return _c("div", { staticClass: "col-md-12 text-center" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Lưu Cấu Hình")]
+      )
     ])
   }
 ]
@@ -80267,10 +80430,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            formInfo: {}
+        };
+    },
+    methods: {
+        updateConfig: function updateConfig() {
+            Fire.$emit('UpdateConfig', this.formInfo);
+        }
+    },
+
     mounted: function mounted() {
         console.log('Component mounted.');
+    },
+    created: function created() {
+        var _this = this;
+
+        Fire.$on('SetInfoConfig', function ($content) {
+            _this.formInfo = $content;
+        });
+        Fire.$on('InsertListImage', function ($content) {
+            var arrayImageList = [];
+            $.each($content, function (key, value) {
+                arrayImageList.push(value.obj_image);
+            });
+            if (arrayImageList.length == 0) {
+                _this.formInfo.config_slider = '';
+            } else {
+                _this.formInfo.config_slider = arrayImageList;
+            }
+        });
     }
 });
 
@@ -80282,24 +80477,42 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "form",
+    {
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.updateConfig()
+        }
+      }
+    },
+    [
+      _c("div", { staticClass: "row" }, [
+        _c(
+          "div",
+          { staticClass: "col-md-12" },
+          [_c("multi-image", { attrs: { form: _vm.formInfo } })],
+          1
+        ),
+        _vm._v(" "),
+        _vm._m(0)
+      ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-12 text-center" }, [
-            _c(
-              "button",
-              { staticClass: "btn btn-success", attrs: { type: "submit" } },
-              [_vm._v("Lưu Cấu Hình")]
-            )
-          ])
-        ])
+    return _c("div", { staticClass: "col-md-12" }, [
+      _c("div", { staticClass: "col-md-12 text-center" }, [
+        _c(
+          "button",
+          { staticClass: "btn btn-success", attrs: { type: "submit" } },
+          [_vm._v("Lưu Cấu Hình")]
+        )
       ])
     ])
   }

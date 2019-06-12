@@ -41,7 +41,7 @@
                             <h3 class="card-title">Mô Tả Liên Hệ</h3>
                         </div>
                         <div class="card-body pad table-responsive">
-                            <text-area id="content-contact" :form="formInfo"></text-area>
+                            <text-area height="300" id="content-contact" :form="formInfo"></text-area>
                         </div>
                     </div>
                 </div>
@@ -120,7 +120,7 @@
                 this.formInfo.seo_description = $content
             });
             Fire.$on('InsertTextarea', ($content) => {
-                this.formInfo.config_describe_contact = $content
+                this.formInfo.config_describe_contact = $content.data
             });
             Fire.$on('SetInfoConfig', ($content) => {
                 this.formInfo = $content

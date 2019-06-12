@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 11, 2019 lúc 12:04 PM
+-- Thời gian đã tạo: Th6 12, 2019 lúc 04:20 AM
 -- Phiên bản máy phục vụ: 10.1.31-MariaDB
 -- Phiên bản PHP: 7.0.29
 
@@ -110,19 +110,28 @@ CREATE TABLE `configs` (
 
 INSERT INTO `configs` (`id`, `name`, `content`, `created_at`, `updated_at`) VALUES
 (1, 'config_logo', 'images/upload/origins/image-81.png', NULL, '2019-06-11 03:00:30'),
-(2, 'config_title', 'Tên Doanh Nghiệp 2', NULL, '2019-06-11 02:55:03'),
+(2, 'config_title', 'Công Ty Smartlinks', NULL, '2019-06-11 18:29:59'),
 (3, 'config_descrtiption', 'Mô Tả Ngắn Về DN s d  f', NULL, '2019-06-11 03:02:12'),
 (4, 'config_address', 'Địa Chỉ Doanh Nghiệp', NULL, '2019-06-11 02:03:21'),
 (5, 'config_info_email', 'nnduyquang@gmail.com', NULL, '2019-06-11 02:03:21'),
-(6, 'config_describe_contact', '<p>Mô Tả Liên Hệ DN asdasdad das dad</p>', NULL, '2019-06-11 03:02:12'),
+(6, 'config_describe_contact', '<p>Chữ ký nè má</p>', NULL, '2019-06-11 19:14:25'),
 (7, 'config_phone', '0907468264 - 0902710212', NULL, '2019-06-11 02:03:22'),
-(8, 'seo_title', 'Tên Doanh Nghiệp 2', NULL, '2019-06-11 02:55:03'),
+(8, 'seo_title', 'Công Ty Smartlinks', NULL, '2019-06-11 18:29:59'),
 (9, 'seo_keyword', 'từ khóa', NULL, '2019-06-11 02:03:22'),
 (10, 'seo_description', 'Mô Tả Ngắn Về DN ma ma ma s s  df', NULL, '2019-06-11 03:02:58'),
-(11, 'seo_image', 'images/upload/origins/image-81.png', NULL, '2019-06-11 03:00:30'),
-(12, 'config_slider', NULL, NULL, NULL),
+(11, 'seo_image', 'images/upload/origins/capture.png', NULL, '2019-06-11 18:29:59'),
+(12, 'config_slider', '[{\"path\":\"images/upload/origins/image-81.png\",\"name\":\"image-81.png\",\"width\":257,\"height\":214}]', NULL, '2019-06-11 19:18:27'),
 (13, 'config_hotline_call', '0902710212', NULL, '2019-06-11 02:03:22'),
-(14, 'config_hotline_show', '0902710.212', NULL, '2019-06-11 03:00:30');
+(14, 'config_hotline_show', '0902710.212', NULL, '2019-06-11 03:00:30'),
+(15, 'config_email_receive', 'nnduyquang@gmail.com', NULL, '2019-06-11 18:29:33'),
+(16, 'config_email_sender_subject', 'Chúng Tôi Đã Nhận Được Mail, Xin Chân Thành Cảm Ơn', NULL, '2019-06-11 18:29:33'),
+(17, 'config_email_sender_from', 'Công Ty Smartlinks', NULL, '2019-06-11 18:29:33'),
+(18, 'config_email_receive_subject', 'Có Báo Giá Mới Từ Khách Hàng', NULL, '2019-06-11 18:29:33'),
+(19, 'config_email_receive_from', 'Công Ty Smartlinks', NULL, '2019-06-11 18:29:33'),
+(20, 'config_email_content_to_customer', '<p>Cảm Ơn</p>', NULL, '2019-06-11 18:29:33'),
+(21, 'config_email_signatures', '<p>Chữ ký nè má</p>', NULL, '2019-06-11 18:29:33'),
+(22, 'config_script_header', 'sdadasdasdasd', NULL, '2019-06-11 18:48:36'),
+(23, 'config_script_body', 'dsadasdsadasd', NULL, '2019-06-11 18:48:36');
 
 -- --------------------------------------------------------
 
@@ -138,25 +147,6 @@ CREATE TABLE `many_category_items` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Đang đổ dữ liệu cho bảng `many_category_items`
---
-
-INSERT INTO `many_category_items` (`id`, `category_id`, `item_id`, `type`, `created_at`, `updated_at`) VALUES
-(1, 5, 1, 0, '2019-06-02 01:31:17', '2019-06-02 01:31:17'),
-(2, 5, 2, 0, '2019-06-02 01:32:34', '2019-06-02 01:32:34'),
-(3, 1, 3, 0, '2019-06-02 01:34:41', '2019-06-02 01:34:41'),
-(4, 6, 3, 0, '2019-06-02 01:34:41', '2019-06-02 01:34:41'),
-(5, 5, 4, 0, '2019-06-02 01:37:16', '2019-06-02 01:37:16'),
-(6, 1, 4, 0, '2019-06-02 01:37:16', '2019-06-02 01:37:16'),
-(7, 6, 5, 0, '2019-06-02 01:39:52', '2019-06-02 01:39:52'),
-(8, 5, 6, 0, '2019-06-02 01:40:47', '2019-06-02 01:40:47'),
-(9, 5, 7, 0, '2019-06-02 01:43:06', '2019-06-02 01:43:06'),
-(10, 6, 8, 0, '2019-06-02 01:46:20', '2019-06-02 01:46:20'),
-(11, 5, 9, 0, '2019-06-02 01:52:05', '2019-06-02 01:52:05'),
-(12, 5, 10, 0, '2019-06-02 01:54:59', '2019-06-02 01:54:59'),
-(17, 11, 5, 1, '2019-06-10 20:50:46', '2019-06-10 20:50:46');
 
 -- --------------------------------------------------------
 
@@ -315,24 +305,6 @@ CREATE TABLE `posts` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Đang đổ dữ liệu cho bảng `posts`
---
-
-INSERT INTO `posts` (`id`, `title`, `slug`, `description`, `content`, `img_primary`, `img_sub_list`, `post_type`, `is_hot`, `is_active`, `seo_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'asdasd', 'asdasd', 'asdasd', '<p>dasdadasdasd</p>', 'images/upload/origins/image-81.png', NULL, 0, 0, 0, 1, 1, '2019-06-02 01:31:17', '2019-06-02 01:31:17'),
-(2, 'asdasd', 'asdasd111', 'asdasd', '<p>dasdadasdasd</p>', 'images/upload/origins/image-81.png', NULL, 0, 0, 0, 2, 1, '2019-06-02 01:32:34', '2019-06-02 01:32:34'),
-(3, 'asdxxxcc', 'asdxxxcc', 'asdxxxx', '<p>asdasddasd</p>', 'images/upload/origins/capture.png', NULL, 0, 0, 1, 3, 1, '2019-06-02 01:34:41', '2019-06-02 01:34:41'),
-(4, 'asdasxxcv', 'asdasxxcv', 'dasdasdasdasdasd', '<p>sadasdxcxzczxc</p>', 'images/upload/origins/image-81.png', NULL, 0, 0, 1, 5, 1, '2019-06-02 01:37:16', '2019-06-02 01:37:16'),
-(5, 'asdsagg', 'asdsagg', 'dasd', '<p>vvnnm,</p>', 'images/upload/origins/capture.png', NULL, 0, 0, 1, 6, 1, '2019-06-02 01:39:52', '2019-06-02 01:39:52'),
-(6, 'asdsghjkk;l\';', 'asdsghjkkl', 'g', '<p>sdsadasdx</p>', 'images/upload/origins/capture.png', NULL, 0, 0, 0, 7, 1, '2019-06-02 01:40:47', '2019-06-02 01:40:47'),
-(7, 'asdasm ,./?', 'asdasm', 'dasdasda', '<p>zxczxc</p>', 'images/upload/origins/capture.png', NULL, 0, 0, 1, 8, 1, '2019-06-02 01:43:06', '2019-06-02 01:43:06'),
-(8, 'sadas57457', 'sadas57457', 'dasddd', '<p>xczxczxc</p>', 'images/upload/origins/capture.png', NULL, 0, 0, 1, 9, 1, '2019-06-02 01:46:20', '2019-06-02 01:46:20'),
-(9, 'dflllll', 'dflllll', 'zcxzxczxc', '<p>zxc&nbsp;</p>', 'images/upload/origins/capture.png', NULL, 0, 0, 1, 10, 1, '2019-06-02 01:52:05', '2019-06-02 01:52:05'),
-(10, 'quang', 'quang', 'dsadasdasd', '<p>asdasdasdasd</p>', 'images/upload/origins/capture.png', NULL, 0, 0, 1, 11, 1, '2019-06-02 01:54:59', '2019-06-02 01:54:59'),
-(11, 'Đây là tiêu đề', 'day-la-tieu-de', 'mô tả ngắn về bài viết', '<p>đây là nội dung</p>', 'images/upload/origins/capture.png', NULL, 0, 0, 1, 12, 1, '2019-06-02 02:18:48', '2019-06-02 02:18:48'),
-(12, 'Tiêu đề tại công ty updated', 'tieu-de-tai-cong-ty-updated', 'Mô tả ngắn tại công ty', '<p>Nội dung tại công ty cập nhật</p>', 'images/upload/origins/capture.png', NULL, 0, 0, 1, 13, 1, '2019-06-02 20:51:35', '2019-06-02 21:29:12');
-
 -- --------------------------------------------------------
 
 --
@@ -358,13 +330,6 @@ CREATE TABLE `products` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Đang đổ dữ liệu cho bảng `products`
---
-
-INSERT INTO `products` (`id`, `title`, `slug`, `description`, `content`, `sku`, `qty_on_hand`, `price`, `img_primary`, `img_sub_list`, `is_hot`, `is_active`, `has_promotion`, `seo_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(5, 'ccc', 'ccc', 'adasdasdda', '<p>dafasfas</p>', NULL, NULL, NULL, 'images/upload/origins/capture.png', NULL, 0, 0, NULL, 18, 1, '2019-06-10 20:50:46', '2019-06-10 20:50:46');
 
 -- --------------------------------------------------------
 
@@ -457,7 +422,9 @@ INSERT INTO `seos` (`id`, `seo_title`, `seo_description`, `seo_keyword`, `seo_im
 (11, 'quang', 'dsadasdasd', NULL, 'http://localhost:8080/omg/images/upload/origins/capture.png', '2019-06-02 01:54:59', '2019-06-02 01:54:59'),
 (12, 'Đây là tiêu đề', 'mô tả ngắn về bài viết', 'từ khóa cần SEO nè', 'images/upload/origins/capture.png', '2019-06-02 02:18:48', '2019-06-02 21:28:06'),
 (13, 'Tiêu đề tại công ty updated', 'Mô tả ngắn SEO tại công ty updadte', 'từ khóa seo tại công ty updated', 'images/upload/origins/capture.png', '2019-06-02 20:51:35', '2019-06-02 21:29:22'),
-(18, 'ccc', 'adasdasdda', 'fasdad', 'images/upload/origins/capture.png', '2019-06-10 20:50:46', '2019-06-10 20:50:46');
+(18, 'ccc', 'adasdasdda', 'fasdad', 'images/upload/origins/capture.png', '2019-06-10 20:50:46', '2019-06-10 20:50:46'),
+(19, 'Bài Viết Mới đã cập nhật', 'đây là bài viết mô tả', 'từ khóa seo nè pa', 'images/upload/origins/image-81.png', '2019-06-11 19:16:27', '2019-06-11 19:16:44'),
+(20, 'Đây là sản phẩm mới', 'mô tả ngắn về sản phẩm nè pa', 'seo thì seo', 'images/upload/origins/capture.png', '2019-06-11 19:17:26', '2019-06-11 19:17:26');
 
 -- --------------------------------------------------------
 
@@ -484,7 +451,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `type`, `bio`, `photo`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Quang Nguyen', 'nnduyquang@gmail.com', '$2y$10$ib1t864vWVMu5et8xCJ20./MPSab4D1tQkQWfXVoZBZ/119OZdu9K', 'user', NULL, 'profile.png', 'lmdr7H7rqibHVbpEYjwL6ODEzY6gCKYXZPStUyZrrwjSY3cFCoH579Mnks49', '2019-05-08 19:37:03', '2019-05-08 19:37:03'),
-(2, 'Thư Nguyễn', 'thunguyen@gmail.com', '$2y$10$/wAAE93VmqaZIkMy8mc8XegKmz0P6LPAAsuqbkX68Y/aW/dzg.pyq', 'user', NULL, 'profile.png', NULL, '2019-05-08 21:18:31', '2019-05-08 21:18:31');
+(2, 'Thư Nguyễn 2', 'thunguyen@gmail.com', '$2y$10$/wAAE93VmqaZIkMy8mc8XegKmz0P6LPAAsuqbkX68Y/aW/dzg.pyq', 'user', NULL, 'profile.png', NULL, '2019-05-08 21:18:31', '2019-06-11 19:18:42');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -641,13 +608,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT cho bảng `configs`
 --
 ALTER TABLE `configs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT cho bảng `many_category_items`
 --
 ALTER TABLE `many_category_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `migrations`
@@ -671,13 +638,13 @@ ALTER TABLE `oauth_personal_access_clients`
 -- AUTO_INCREMENT cho bảng `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT cho bảng `product_attributes`
@@ -707,7 +674,7 @@ ALTER TABLE `promotion_prices`
 -- AUTO_INCREMENT cho bảng `seos`
 --
 ALTER TABLE `seos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT cho bảng `users`

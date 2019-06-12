@@ -59,8 +59,24 @@
             loadConfigs() {
                 axios.get('api/config-info').then(response=>{
                     this.form=response.data;
+                    Fire.$emit('UpdateListImage', this.form.config_slider);
+                    let list = [];
+                    $.each(JSON.parse(this.form.config_slider), function (key, value) {
+                        let obj_image = JSON.stringify({
+                            path: value.path,
+                            name: value.name,
+                            width: value.width,
+                            height: value.height
+                        });
+                        list.push(obj_image);
+                    });
+
+                    this.form.config_slider = list;
                     Fire.$emit('SetInfoConfig', this.form);
+
                     Fire.$emit('UpdateTextarea', {data: response.data.config_describe_contact,id: 'content-contact'});
+                    Fire.$emit('UpdateTextarea', {data: response.data.config_email_content_to_customer,id: 'content-to-customer'});
+                    Fire.$emit('UpdateTextarea', {data: response.data.config_email_signatures,id: 'content-signatures'});
                 });
             },
         },

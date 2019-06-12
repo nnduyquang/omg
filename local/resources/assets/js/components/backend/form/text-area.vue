@@ -1,19 +1,19 @@
 <template>
-     <textarea :id="id" name="description" placeholder="" class="form-control"></textarea>
+    <textarea :id="id" name="description" placeholder="" class="form-control"></textarea>
 </template>
 
 <script>
     var mylib = require('../../../ulti');
     export default {
-        props: ['form','id'],
+        props: ['form', 'id','height'],
         mounted() {
-            var now_id=this.id;
-            mylib.integratedCKEDITOR(this.id, 800);
+            var now_id = this.id;
+            mylib.integratedCKEDITOR(this.id, this.height);
             CKEDITOR.instances[this.id].on('change', function () {
-                Fire.$emit('InsertTextarea',CKEDITOR.instances[now_id].getData());
+                Fire.$emit('InsertTextarea', {data: CKEDITOR.instances[now_id].getData(),id:now_id});
             });
         },
-        created(){
+        created() {
             Fire.$on('ResetTextarea', () => {
                 CKEDITOR.instances[this.id].setData('');
             });
