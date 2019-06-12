@@ -3,11 +3,19 @@
 namespace App\Http\Controllers\API;
 
 use App\Category;
+use App\Repositories\Backend\Category\CategoryRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class CategoryPostController extends Controller
+class CategoryController extends Controller
 {
+    protected $categoryRepository;
+
+    public function __construct(CategoryRepositoryInterface $categoryRepository)
+    {
+        $this->categoryRepository = $categoryRepository;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,8 +23,7 @@ class CategoryPostController extends Controller
      */
     public function index(Request $request)
     {
-        $category = new Category();
-        return $category->getCategoriesByType($request->category_type);
+        return $this->categoryRepository->index($request);
     }
 
     /**
@@ -41,9 +48,7 @@ class CategoryPostController extends Controller
             'title' => 'required|string|max:255',
             'slug' => 'unique:categories',
         ]);
-        $category = new Category();
-        $parameters = $category->prepareParameters($request);
-        return Category::create($parameters->all());
+        $this->categoryRepository->storeCategory($request);
     }
 
     /**
@@ -82,10 +87,7 @@ class CategoryPostController extends Controller
             'title' => 'required|string|max:255',
             'slug' => 'sometimes|unique:categories,slug,' . $category->id,
         ]);
-        $parameters = $category->prepareParameters($request);
-        $category->update($parameters->all());
-
-        return ['message' => 'Update the category info'];
+        $this->categoryRepository->updateCategory($request, $id);
     }
 
     /**
@@ -96,30 +98,11 @@ class CategoryPostController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::findOrFail($id);
-        $category->delete();
-        return ['message' => 'Category deleted'];
+        $this->categoryRepository->deleteCategory($id);
     }
 
     public function sort(Request $request)
     {
-        $sortItems = json_decode($request->listSort);
-        $this->doSortItem($sortItems, null, 0);
-        return ['message' => 'Update the category info'];
-    }
-
-    public function doSortItem(array $sortItems, $parentId, $level)
-    {
-
-        foreach ($sortItems as $index => $sortItem) {
-            $item = Category::find($sortItem->id);
-            $item->order = $index + 1;
-            $item->parent_id = $parentId;
-            $item->level = $level;
-            $item->save();
-            if (isset($sortItem->children)) {
-                self::doSortItem($sortItem->children, $item->id, $item->level+1);
-            }
-        }
+        $this->categoryRepository->sort($request);
     }
 }
