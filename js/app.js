@@ -76222,6 +76222,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 var mylib = __webpack_require__(141);
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -76271,37 +76273,39 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "form-group" }, [
-    _c("input", {
-      staticClass: "form-control",
-      attrs: { id: _vm.idInputPath, type: "text", name: "image" },
-      domProps: { value: _vm.pathImage }
-    }),
-    _vm._v(" "),
-    _c("input", {
-      attrs: { id: _vm.idInputHidden, type: "hidden", name: "image" }
-    }),
-    _vm._v(" "),
-    _c(
-      "a",
-      {
-        staticClass: "btn iframe-btn",
-        attrs: { type: "button" },
-        on: {
-          click: function($event) {
-            return _vm.openPopup(
-              "js/filemanager/dialog.php?type=1&popup=1&field_id="
-            )
+  return _c("div", { staticClass: "main-image" }, [
+    _c("div", { staticClass: "form-group" }, [
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { id: _vm.idInputPath, type: "text", name: "image" },
+        domProps: { value: _vm.pathImage }
+      }),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { id: _vm.idInputHidden, type: "hidden", name: "image" }
+      }),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "btn iframe-btn",
+          attrs: { type: "button" },
+          on: {
+            click: function($event) {
+              return _vm.openPopup(
+                "js/filemanager/dialog.php?type=1&popup=1&field_id="
+              )
+            }
           }
-        }
-      },
-      [_vm._v("Thêm Hình")]
-    ),
-    _vm._v(" "),
-    _c("img", {
-      staticClass: "show-image",
-      attrs: { src: _vm.pathImage, id: _vm.idShow, alt: "" }
-    })
+        },
+        [_vm._v("Thêm Hình")]
+      ),
+      _vm._v(" "),
+      _c("img", {
+        staticClass: "show-image",
+        attrs: { src: _vm.pathImage, id: _vm.idShow, alt: "" }
+      })
+    ])
   ])
 }
 var staticRenderFns = []

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 12, 2019 lúc 04:20 AM
+-- Thời gian đã tạo: Th6 12, 2019 lúc 12:12 PM
 -- Phiên bản máy phục vụ: 10.1.31-MariaDB
 -- Phiên bản PHP: 7.0.29
 
@@ -78,15 +78,15 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `title`, `slug`, `description`, `img_primary`, `img_sub_list`, `img_primary_mobile`, `is_active`, `order`, `parent_id`, `level`, `type`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'tinh te 2', 'tinh-te-2', NULL, NULL, NULL, NULL, 1, 3, NULL, 0, 0, 1, '2019-05-11 18:16:23', '2019-05-27 23:44:25'),
-(2, 'tinh te 3', 'tinh-te-3', NULL, NULL, NULL, NULL, 1, 4, NULL, 0, 0, 1, '2019-05-11 18:28:16', '2019-05-27 23:44:25'),
-(3, 'tinh te 4', 'tinh-te-4', NULL, NULL, NULL, NULL, 1, 1, NULL, 0, 0, 1, '2019-05-11 18:57:02', '2019-05-16 00:54:45'),
+(1, 'tinh te 2', 'tinh-te-2', NULL, NULL, NULL, NULL, 1, 4, NULL, 0, 0, 1, '2019-05-11 18:16:23', '2019-06-11 20:11:25'),
+(2, 'tinh te 3', 'tinh-te-3', NULL, NULL, NULL, NULL, 1, 5, NULL, 0, 0, 1, '2019-05-11 18:28:16', '2019-06-11 20:11:25'),
+(3, 'tinh te 4', 'tinh-te-4', NULL, NULL, NULL, NULL, 1, 2, NULL, 0, 0, 1, '2019-05-11 18:57:02', '2019-06-11 20:11:11'),
 (4, 'tinh te 5', 'tinh-te-5', NULL, NULL, NULL, NULL, 0, 1, 3, 1, 0, 1, '2019-05-11 21:56:30', '2019-05-16 00:33:34'),
 (5, 'tinh te 6', 'tinh-te-6', NULL, NULL, NULL, NULL, 0, 1, 4, 2, 0, 1, '2019-05-12 07:59:07', '2019-05-16 19:00:39'),
-(6, 'tinh te 7', 'tinh-te-7', NULL, NULL, NULL, NULL, 0, 5, NULL, 0, 0, 1, '2019-05-12 07:59:28', '2019-06-05 00:32:29'),
-(7, 'tinh te 8', 'tinh-te-8', NULL, NULL, NULL, NULL, 0, 2, NULL, 0, 0, 1, '2019-05-12 08:00:06', '2019-05-27 23:44:25'),
-(8, 'tinh te 2000', 'tinh-te-2000', NULL, NULL, NULL, NULL, 0, 0, NULL, 0, 0, 1, '2019-06-05 00:58:53', '2019-06-05 00:58:53'),
-(9, 'gamek 2000', 'gamek-2000', NULL, NULL, NULL, NULL, 1, 1, NULL, 0, 1, 1, '2019-06-05 00:59:12', '2019-06-05 01:00:03'),
+(6, 'tinh te 7', 'tinh-te-7', NULL, NULL, NULL, NULL, 0, 1, 2, 1, 0, 1, '2019-05-12 07:59:28', '2019-06-11 20:11:30'),
+(7, 'tinh te 8', 'tinh-te-8', NULL, NULL, NULL, NULL, 0, 3, NULL, 0, 0, 1, '2019-05-12 08:00:06', '2019-06-11 20:11:11'),
+(8, 'tinh te 2000', 'tinh-te-2000', NULL, NULL, NULL, NULL, 0, 1, NULL, 0, 0, 1, '2019-06-05 00:58:53', '2019-06-11 20:11:11'),
+(9, 'gamek 2001', 'gamek-2001', NULL, NULL, NULL, NULL, 1, 1, NULL, 0, 1, 1, '2019-06-05 00:59:12', '2019-06-11 20:06:35'),
 (10, 'game k100', 'game-k100', NULL, NULL, NULL, NULL, 1, 1, 9, 1, 1, 1, '2019-06-05 00:59:52', '2019-06-05 01:00:18'),
 (11, 'gamek 9000', 'gamek-9000', NULL, NULL, NULL, NULL, 0, 1, 10, 2, 1, 1, '2019-06-05 01:00:00', '2019-06-05 01:00:14');
 
@@ -146,6 +146,27 @@ CREATE TABLE `many_category_items` (
   `type` tinyint(4) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `menus`
+--
+
+CREATE TABLE `menus` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `target` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '_self',
+  `icon_class` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `color` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `parent_id` int(11) DEFAULT NULL,
+  `order` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `route` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `parameters` text COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -451,7 +472,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `type`, `bio`, `photo`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Quang Nguyen', 'nnduyquang@gmail.com', '$2y$10$ib1t864vWVMu5et8xCJ20./MPSab4D1tQkQWfXVoZBZ/119OZdu9K', 'user', NULL, 'profile.png', 'lmdr7H7rqibHVbpEYjwL6ODEzY6gCKYXZPStUyZrrwjSY3cFCoH579Mnks49', '2019-05-08 19:37:03', '2019-05-08 19:37:03'),
-(2, 'Thư Nguyễn 2', 'thunguyen@gmail.com', '$2y$10$/wAAE93VmqaZIkMy8mc8XegKmz0P6LPAAsuqbkX68Y/aW/dzg.pyq', 'user', NULL, 'profile.png', NULL, '2019-05-08 21:18:31', '2019-06-11 19:18:42');
+(2, 'Thư Nguyễn 2 3 4 5', 'thunguyen@gmail.com', '$2y$10$/wAAE93VmqaZIkMy8mc8XegKmz0P6LPAAsuqbkX68Y/aW/dzg.pyq', 'user', NULL, 'profile.png', NULL, '2019-05-08 21:18:31', '2019-06-11 19:32:07');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -485,6 +506,12 @@ ALTER TABLE `configs`
 -- Chỉ mục cho bảng `many_category_items`
 --
 ALTER TABLE `many_category_items`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `menus`
+--
+ALTER TABLE `menus`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -614,6 +641,12 @@ ALTER TABLE `configs`
 -- AUTO_INCREMENT cho bảng `many_category_items`
 --
 ALTER TABLE `many_category_items`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `menus`
+--
+ALTER TABLE `menus`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --

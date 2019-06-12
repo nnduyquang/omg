@@ -13,9 +13,9 @@ class PostRepository extends EloquentRepository implements PostRepositoryInterfa
         return \App\Post::class;
     }
 
-    public function index()
+    public function index($request)
     {
-        return $this->_model->getAllPost(IS_POST);
+        return $this->_model->getAllPost($request->post_type);
     }
 
     public function storePost($request)
@@ -60,13 +60,13 @@ class PostRepository extends EloquentRepository implements PostRepositoryInterfa
             }
         }
 
-
-        $syncData = array();
+        if ($parameters->type == IS_POST) {
+            $syncData = array();
             foreach ($parameters['list_id_category'] as $key => $item) {
                 $syncData[$item] = array('type' => CATEGORY_POST);
             }
             $result->manaycategoryitems(CATEGORY_POST)->sync($syncData);
-
+        }
     }
 
     public function deletePost($id)

@@ -1,10 +1,12 @@
 <template>
-    <div class="form-group">
-        <input :value="pathImage" class="form-control" :id="idInputPath" type="text" name="image">
-        <input :id="idInputHidden" type="hidden" name="image">
-        <a @click="openPopup('js/filemanager/dialog.php?type=1&popup=1&field_id=')" class="btn iframe-btn"
-           type="button">Thêm Hình</a>
-        <img :src="pathImage" :id="idShow" class="show-image" alt="">
+    <div class="main-image">
+        <div class="form-group">
+            <input :value="pathImage" class="form-control" :id="idInputPath" type="text" name="image">
+            <input :id="idInputHidden" type="hidden" name="image">
+            <a @click="openPopup('js/filemanager/dialog.php?type=1&popup=1&field_id=')" class="btn iframe-btn"
+               type="button">Thêm Hình</a>
+            <img :src="pathImage" :id="idShow" class="show-image" alt="">
+        </div>
     </div>
 </template>
 
@@ -26,7 +28,7 @@
             }
         },
         mounted() {
-            if(this.idInputHidden=='one_image_id'){
+            if (this.idInputHidden == 'one_image_id') {
                 $("#" + this.idInputPath).change(function () {
                     let img = $(this).val().toString();
                     Fire.$emit('UpdateImgPrimary', img);
@@ -34,15 +36,15 @@
                 });
             }
         },
-        updated(){
-            if(this.idInputHidden=='seo_image_id') {
+        updated() {
+            if (this.idInputHidden == 'seo_image_id') {
                 $("#" + this.idInputPath).change(function () {
                     let img = $(this).val().toString();
                     Fire.$emit('UpdateImageSeo', img);
                 });
             }
         },
-        created(){
+        created() {
             Fire.$on('ResetMainImage', () => {
                 // CKEDITOR.instances['content-post'].setData('');
             });

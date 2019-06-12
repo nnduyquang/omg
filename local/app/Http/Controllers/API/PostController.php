@@ -25,9 +25,9 @@ class PostController extends Controller
         $this->postRepository = $postRepository;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return $this->postRepository->index();
+        return $this->postRepository->index($request);
     }
 
     /**
