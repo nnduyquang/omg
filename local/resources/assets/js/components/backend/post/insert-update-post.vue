@@ -134,7 +134,7 @@
                     content: '',
                     is_active: 0,
                     img_primary: '',
-                    type: 0,
+                    post_type: 0,
                     list_id_category: '',
                     seo_title: '',
                     seo_keyword:'',

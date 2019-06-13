@@ -31,7 +31,7 @@ class PostRepository extends EloquentRepository implements PostRepositoryInterfa
         }
 
         $result = $this->_model->create($parameters->all());
-        if ($parameters->type == IS_POST) {
+        if ($parameters->post_type == IS_POST) {
             $attachData = array();
             foreach ($parameters['list_id_category'] as $key => $item) {
                 $attachData[$item] = array('type' => CATEGORY_POST);
@@ -60,7 +60,7 @@ class PostRepository extends EloquentRepository implements PostRepositoryInterfa
             }
         }
 
-        if ($parameters->type == IS_POST) {
+        if ($parameters->post_type == IS_POST) {
             $syncData = array();
             foreach ($parameters['list_id_category'] as $key => $item) {
                 $syncData[$item] = array('type' => CATEGORY_POST);
