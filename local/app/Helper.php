@@ -46,3 +46,6 @@ function clean_phone($string) {
 
     return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
 }
+function loai_bo_html_tag($str){
+    return strip_tags($str);
+}
